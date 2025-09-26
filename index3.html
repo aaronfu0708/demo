@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+        }
+
+        .frame {
+            background-color: #ffffff;
+            overflow: visible;
+            overflow-x: hidden;
+
+        }
+
+        .frame .image-container {
+            position: relative;
+        }
+
+        .frame .element {
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: auto;
+        }
+
+        .frame .text-wrapper {
+            position: absolute;
+            width: 80%;
+            top: 1%;
+            left: 10%;
+            font-family: "Inter-Regular", Helvetica;
+            font-weight: 400;
+            color: #578ec8;
+            font-size: 4.5vw;
+            text-align: center;
+            letter-spacing: 0;
+            line-height: normal;
+        }
+
+        .frame .text-wrapper-1 {
+            position: absolute;
+            width: 40%;
+            top: 5.5%;
+            left: 4.5%;
+            font-family: "Inter-Regular", Helvetica;
+            font-weight: 400;
+            color: #4f4f4f;
+            font-size: 5vw;
+            text-align: center;
+            letter-spacing: 0;
+            line-height: normal;
+        }
+
+        .frame .text-wrapper-2 {
+            position: absolute;
+            top: 5.75%;
+            left: 28%;
+            font-family: "Inter-Regular", Helvetica;
+            font-weight: 400;
+            color: #4f4f4f;
+            font-size: 5vw;
+            letter-spacing: 0;
+            line-height: normal;
+        }
+
+        .frame .text-wrapper-3 {
+            position: absolute;
+            top: 5.3%;
+            left: 34%;
+            font-family: "Inter-Regular", Helvetica;
+            font-weight: 400;
+            color: #768b53;
+            font-size: 7vw;
+            letter-spacing: 0;
+            line-height: normal;
+            white-space: nowrap;
+        }
+
+        .frame .text-wrapper-4 {
+            position: absolute;
+            top: 6%;
+            left: 42%;
+            font-family: "Inter-Regular", Helvetica;
+            font-weight: 400;
+            color: #768b53;
+            font-size: 4vw;
+            letter-spacing: 0;
+            line-height: normal;
+        }
+
+        .frame .text-wrapper-5 {
+            position: absolute;
+            width: 40%;
+            top: 7%;
+            left: 16%;
+            font-family: "Inter-Regular", Helvetica;
+            font-weight: 400;
+            color: #4f4f4f;
+            font-size: 4vw;
+            text-align: center;
+            letter-spacing: 0;
+            line-height: normal;
+        }
+
+        .frame .text-wrapper-6 {
+            position: absolute;
+            top: 8.47%;
+            left: 23.83%;
+            font-family: "Microsoft Sans Serif-Regular", Helvetica;
+            font-weight: 400;
+            color: #ffffff;
+            font-size: 2.5vw;
+            letter-spacing: 0;
+            line-height: normal;
+        }
+
+
+        .frame .text-wrapper-7 {
+            position: absolute;
+            top: 9.8%;
+            left: 15%;
+            width: 20%;
+            font-family: "Inter-Regular", Helvetica;
+            font-weight: 400;
+            color: #768b53;
+            text-align: center;
+            font-size: 2.5vw;
+            letter-spacing: 0;
+            line-height: normal;
+        }
+
+        .frame .text-wrapper-8 {
+            position: absolute;
+            width: 15%;
+            top: 10.3%;
+            left: 17.6%;
+            font-family: "Inter-Regular", Helvetica;
+            font-weight: 400;
+            color: #4f4f4f;
+            text-align: center;
+            font-size: 2.5vw;
+            letter-spacing: 0;
+            line-height: normal;
+        }
+
+        .frame .text-wrapper-72 {
+            position: absolute;
+            top: 9.8%;
+            left: 28%;
+            width: 15%;
+            font-family: "Inter-Regular", Helvetica;
+            font-weight: 400;
+            color: #768b53;
+            font-size: 2.5vw;
+            text-align: center;
+            letter-spacing: 0;
+            line-height: normal;
+        }
+
+        .frame .text-wrapper-82 {
+            position: absolute;
+            top: 10.3%;
+            left: 28%;
+            width: 15%;
+            font-family: "Inter-Regular", Helvetica;
+            font-weight: 400;
+            color: #4f4f4f;
+            font-size: 2.5vw;
+            text-align: center;
+            letter-spacing: 0;
+            line-height: normal;
+        }
+
+        .frame .text-wrapper-73 {
+            position: absolute;
+            top: 9.8%;
+            left: 38%;
+            width: 15%;
+            font-family: "Inter-Regular", Helvetica;
+            font-weight: 400;
+            color: #768b53;
+            font-size: 2.5vw;
+            text-align: center;
+            letter-spacing: 0;
+            line-height: normal;
+        }
+
+        .frame .text-wrapper-83 {
+            position: absolute;
+            top: 10.3%;
+            left: 38%;
+            width: 15%;
+            font-family: "Inter-Regular", Helvetica;
+            font-weight: 400;
+            color: #4f4f4f;
+            font-size: 2.5vw;
+            text-align: center;
+            letter-spacing: 0;
+            line-height: normal;
+        }
+
+
+        .frame .text-wrapper-9 {
+            position: absolute;
+            width: 80%;
+            top: 14.4%;
+            left: 9%;
+            font-family: "Inter-Regular", Helvetica;
+            font-weight: 400;
+            color: #ff8ca5;
+            font-size: 4.5vw;
+            text-align: center;
+            letter-spacing: 0;
+            line-height: normal;
+        }
+
+        .frame .text-wrapper-10 {
+            position: absolute;
+            width: 50%;
+            top: 17.16%;
+            left: 14.62%;
+            font-family: "Inter-Regular", Helvetica;
+            font-weight: 400;
+            color: #878787;
+            font-size: 3vw;
+            text-align: left;
+        }
+
+        .frame .text-wrapper-11 {
+            position: absolute;
+            width: 50%;
+            top: 18.70%;
+            width: 80%;
+            left: 14.62%;
+            font-family: "Inter-Regular", Helvetica;
+            font-weight: 400;
+            color: #878787;
+            font-size: 3vw;
+            letter-spacing: 0;
+            text-align: left;
+            line-height: normal;
+        }
+
+        .frame .text-wrapper-12 {
+            position: absolute;
+            width: 50%;
+            top: 20.24%;
+            left: 14.62%;
+            font-family: "Inter-Regular", Helvetica;
+            font-weight: 400;
+            color: #878787;
+            text-align: left;
+            font-size: 3vw;
+            letter-spacing: 0;
+            line-height: normal;
+        }
+
+        .frame .text-wrapper-13 {
+            position: absolute;
+            width: 50%;
+            top: 21.78%;
+            left: 14.62%;
+            font-family: "Inter-Regular", Helvetica;
+            font-weight: 400;
+            color: #878787;
+            font-size: 3vw;
+            text-align: left;
+            letter-spacing: 0;
+            line-height: normal;
+        }
+
+        .frame .text-wrapper-14 {
+            position: absolute;
+            width: 50%;
+            top: 23.32%;
+            left: 14.62%;
+            font-family: "Inter-Regular", Helvetica;
+            font-weight: 400;
+            color: #878787;
+            font-size: 3vw;
+            text-align: left;
+            letter-spacing: 0;
+            line-height: normal;
+        }
+
+        .frame .text-wrapper-15 {
+            position: absolute;
+            top: 27.3%;
+            left: 30%;
+            background: linear-gradient(88deg,
+                    rgba(175, 117, 21, 1) 0%,
+                    rgba(223, 185, 95, 1) 9%,
+                    rgba(244, 214, 127, 1) 14%,
+                    rgba(255, 255, 214, 1) 26%,
+                    rgba(244, 214, 127, 1) 36%,
+                    rgba(175, 117, 21, 1) 49%,
+                    rgba(223, 185, 95, 1) 57%,
+                    rgba(244, 214, 127, 1) 61%,
+                    rgba(255, 255, 214, 1) 74%,
+                    rgba(244, 214, 127, 1) 84%,
+                    rgba(175, 117, 21, 1) 100%);
+            -webkit-background-clip: text !important;
+            background-clip: text;
+            font-family: "Cousine-Bold", Helvetica;
+            font-weight: 700;
+            color: transparent;
+            font-size: 8vw;
+            letter-spacing: 0;
+            line-height: normal;
+        }
+
+        .frame .text-wrapper-16 {
+            position: absolute;
+            top: 25.6%;
+            left: 77%;
+            background: linear-gradient(88deg,
+                    rgba(175, 117, 21, 1) 0%,
+                    rgba(223, 185, 95, 1) 9%,
+                    rgba(244, 214, 127, 1) 14%,
+                    rgba(255, 255, 214, 1) 26%,
+                    rgba(244, 214, 127, 1) 36%,
+                    rgba(175, 117, 21, 1) 49%,
+                    rgba(223, 185, 95, 1) 57%,
+                    rgba(244, 214, 127, 1) 61%,
+                    rgba(255, 255, 214, 1) 74%,
+                    rgba(244, 214, 127, 1) 84%,
+                    rgba(175, 117, 21, 1) 100%);
+            -webkit-background-clip: text !important;
+            background-clip: text;
+            font-family: "Cousine-Bold", Helvetica;
+            font-weight: 700;
+            color: transparent;
+            font-size: 8vw;
+            letter-spacing: 0;
+            line-height: normal;
+        }
+
+        .frame .text-wrapper-17 {
+            position: absolute;
+            width: 40%;
+            top: 39.60%;
+            left: 7%;
+            font-family: "Inter-Regular", Helvetica;
+            font-weight: 400;
+            color: #ffffff;
+            font-size: 3vw;
+            text-align: center;
+            letter-spacing: 0;
+            line-height: normal;
+        }
+
+        .frame .text-wrapper-18 {
+            position: absolute;
+            width: 40%;
+            top: 39.62%;
+            left: 53.5%;
+            font-family: "Inter-Regular", Helvetica;
+            font-weight: 400;
+            color: #ffffff;
+            font-size: 3vw;
+            text-align: center;
+            letter-spacing: 0;
+            line-height: normal;
+        }
+
+        .frame .text-wrapper-19 {
+            position: absolute;
+            width: 40%;
+            top: 37.82%;
+            left: 53.5%;
+            font-family: "Inter-Regular", Helvetica;
+            font-weight: 400;
+            color: #ffffff;
+            font-size: 3vw;
+            text-align: center;
+            letter-spacing: 0;
+            line-height: normal;
+        }
+
+        .frame .text-wrapper-20 {
+            position: absolute;
+            width: 40%;
+            top: 36.01%;
+            left: 53%;
+            font-family: "Inter-Regular", Helvetica;
+            font-weight: 400;
+            color: #ffffff;
+            font-size: 3vw;
+            text-align: center;
+            letter-spacing: 0;
+            line-height: normal;
+        }
+
+        .frame .text-wrapper-21 {
+            position: absolute;
+            width: 40%;
+            width: 23.46%;
+            top: 34.25%;
+            left: 61.5%;
+            font-family: "Inter-Regular", Helvetica;
+            font-weight: 400;
+            color: #ffffff;
+            font-size: 3vw;
+            text-align: center;
+            letter-spacing: 0;
+            line-height: normal;
+        }
+
+        .frame .text-wrapper-22 {
+            position: absolute;
+            width: 40%;
+            top: 32.50%;
+            left: 53%;
+            font-family: "Inter-Regular", Helvetica;
+            font-weight: 400;
+            color: #ffffff;
+            font-size: 3vw;
+            text-align: center;
+            letter-spacing: 0;
+            line-height: normal;
+        }
+
+        .frame .text-wrapper-23 {
+            position: absolute;
+            width: 40%;
+            top: 30.88%;
+            left: 53%;
+            font-family: "Inter-Regular", Helvetica;
+            font-weight: 400;
+            color: #ffffff;
+            font-size: 3vw;
+            text-align: center;
+            letter-spacing: 0;
+            line-height: normal;
+        }
+
+        .frame .text-wrapper-24 {
+            position: absolute;
+            width: 40%;
+            top: 32.6%;
+            left: 7%;
+            font-family: "Inter-Regular", Helvetica;
+            font-weight: 400;
+            color: #ffffff;
+            font-size: 3vw;
+            text-align: center;
+            letter-spacing: 0;
+            line-height: normal;
+        }
+
+        .frame .text-wrapper-25 {
+            position: absolute;
+            width: 40%;
+            top: 34.4%;
+            left: 7%;
+            font-family: "Inter-Regular", Helvetica;
+            font-weight: 400;
+            color: #ffffff;
+            font-size: 3vw;
+            text-align: center;
+            letter-spacing: 0;
+            line-height: normal;
+        }
+
+        .frame .text-wrapper-26 {
+            position: absolute;
+            width: 40%;
+            top: 36.23%;
+            left: 7%;
+            font-family: "Inter-Regular", Helvetica;
+            font-weight: 400;
+            color: #ffffff;
+            font-size: 3vw;
+            text-align: center;
+            letter-spacing: 0;
+            line-height: normal;
+        }
+
+        .frame .text-wrapper-27 {
+            position: absolute;
+            width: 40%;
+            top: 37.92%;
+            left: 7%;
+            font-family: "Inter-Regular", Helvetica;
+            font-weight: 400;
+            color: #ffffff;
+            font-size: 3vw;
+            text-align: center;
+            letter-spacing: 0;
+            line-height: normal;
+        }
+
+        .frame .text-wrapper-28 {
+            position: absolute;
+            width: 100%;
+            top: 42.5%;
+            left: 0;
+            background: linear-gradient(180deg,
+                    rgba(217, 217, 217, 1) 0%,
+                    rgba(115, 115, 115, 1) 100%);
+            -webkit-background-clip: text !important;
+            background-clip: text;
+            font-family: "Inter-Regular", Helvetica;
+            font-weight: 400;
+            color: transparent;
+            font-size: 5vw;
+            text-align: center;
+            letter-spacing: 0;
+            line-height: normal;
+        }
+
+        .frame .text-wrapper-29 {
+            position: absolute;
+            width: 100%;
+            top: 44.5%;
+            left: 0;
+            background: linear-gradient(90deg,
+                    rgba(217, 217, 217, 1) 0%,
+                    rgba(115, 115, 115, 1) 100%);
+            -webkit-background-clip: text !important;
+            background-clip: text;
+            font-family: "Inter-Bold", Helvetica;
+            font-weight: 700;
+            color: transparent;
+            font-size: 6vw;
+            text-align: center;
+            letter-spacing: 0;
+            line-height: normal;
+        }
+
+        .frame .text-wrapper-30 {
+            position: absolute;
+            top: 47.02%;
+            left: 11.06%;
+            font-family: "Inter-Regular", Helvetica;
+            font-weight: 400;
+            color: #b9752b;
+            font-size: 2vw;
+            letter-spacing: 0;
+            line-height: normal;
+        }
+
+        .frame .text-wrapper-31 {
+            position: absolute;
+            top: 47.9%;
+            left: 14.37%;
+            font-family: "Inter-Regular", Helvetica;
+            font-weight: 400;
+            color: #595757;
+            font-size: 1.5vw;
+            letter-spacing: 0;
+            line-height: normal;
+        }
+
+        .frame .text-wrapper-32 {
+            position: absolute;
+            top: 48.44%;
+            left: 11.06%;
+            font-family: "Inter-Regular", Helvetica;
+            font-weight: 400;
+            color: #b9752b;
+            font-size: 2vw;
+            letter-spacing: 0;
+            line-height: normal;
+        }
+
+        .frame .text-wrapper-33 {
+            position: absolute;
+            top: 49.3%;
+            left: 14.37%;
+            font-family: "Inter-Regular", Helvetica;
+            font-weight: 400;
+            color: #595757;
+            font-size: 1.5vw;
+            letter-spacing: 0;
+            line-height: normal;
+        }
+
+        .frame .text-wrapper-34 {
+            position: absolute;
+            top: 50.6%;
+            left: 14.37%;
+            font-family: "Inter-Regular", Helvetica;
+            font-weight: 400;
+            color: #595757;
+            font-size: 1.5vw;
+            letter-spacing: 0;
+            line-height: normal;
+        }
+
+        .frame .text-wrapper-35 {
+            position: absolute;
+            top: 49.85%;
+            left: 11.06%;
+            font-family: "Inter-Regular", Helvetica;
+            font-weight: 400;
+            color: #b9752b;
+            font-size: 2vw;
+            letter-spacing: 0;
+            line-height: normal;
+        }
+
+        .frame .SGS {
+            position: absolute;
+            top: 61.47%;
+            width: 100%;
+            left: 0;
+            font-family: "Inter-Regular", Helvetica;
+            font-weight: 400;
+            color: transparent;
+            text-align: center;
+            font-size: 5vw;
+            letter-spacing: 0;
+            line-height: normal;
+        }
+
+        .frame .span {
+            color: #c89859;
+        }
+
+        .frame .text-wrapper-36 {
+            color: #4f4f4f;
+        }
+
+        .frame .text-wrapper-37 {
+            position: absolute;
+            top: 80%;
+            width: 80%;
+            left: 10%;
+            font-family: "Inter-Bold", Helvetica;
+            font-weight: 700;
+            color: #83390c;
+            font-size: 4.5vw;
+            text-align: center;
+            letter-spacing: 0;
+            line-height: normal;
+        }
+
+        .frame .text-wrapper-38 {
+            position: absolute;
+            width: 80%;
+            top: 83.3%;
+            left: 15.36%;
+            font-family: "Inter-Regular", Helvetica;
+            font-weight: 400;
+            color: #7f7f7f;
+            font-size: 1.5vw;
+            letter-spacing: 0;
+            line-height: normal;
+        }
+
+        .frame .div-wrapper {
+            position: absolute;
+            width: 80%;
+            top: 84.9%;
+            left: 15.36%;
+        }
+
+        .frame .text-wrapper-39 {
+            flex: 1;
+            width: 80%;
+            font-family: "Inter-Regular", Helvetica;
+            font-weight: 400;
+            color: #7f7f7f;
+            font-size: 1.5vw;
+            letter-spacing: 0;
+            line-height: normal;
+        }
+
+        .frame .group-4 {
+            position: absolute;
+            top: 86.49%;
+            left: 15.36%;
+            
+        }
+
+        .frame .group-5 {
+            position: absolute;
+            top: 88.17%;
+            left: 15.36%;       
+        }
+
+        .frame .group-6 {
+            position: absolute;
+            top: 89.79%;
+            left: 15.36%;
+            
+        }
+
+        .frame .group-7 {
+            position: absolute;
+            top: 91.49%;
+            left: 15.36%;
+            
+        }
+
+        .frame .group-8 {
+            position: absolute;
+            top: 93.1%;
+            left: 15.36%;
+        }
+
+        .frame .group-9 {
+            position: absolute;
+            top: 96.4%;
+            left: 15.36%;
+        }
+
+        .frame .group-10 {
+            position: absolute;
+            top: 98%;
+            left: 15.6%;
+        }
+
+        .frame .group-12 {
+            position: absolute;
+            top: 94.75%;
+            left: 15.5%;
+        }
+
+        .frame .group-11 {
+            position: absolute;
+            top: 5.8%;
+            left: 43%;
+        }
+
+        .frame .text-wrapper-40 {
+            position: relative;
+            width: fit-content;
+            font-family: "Futura-Medium", Helvetica;
+            font-weight: 500;
+            color: #9d9c9c;
+            font-size: 1.3vw;
+            letter-spacing: 0;
+            line-height: normal;
+        }
+
+
+        .frame .text-wrapper-41 {
+            position: absolute;
+            top: -5%;
+            left: -18%;
+            font-family: "Futura-Bold", Helvetica;
+            font-weight: 700;
+            color: #9e9d9d;
+            font-size: 1.4vw;
+            letter-spacing: 0;
+            line-height: normal;
+        }
+
+        .frame .text-wrapper-42 {
+            position: absolute;
+            top: -15%;
+            left: 110%;
+            font-family: "Futura-Medium", Helvetica;
+            font-weight: 500;
+            color: #ea8e00;
+            font-size: 1.6vw;
+            letter-spacing: 0;
+            line-height: normal;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="frame">
+        <div class="image-container">
+            <img class="element" src="../img/demo3.png" />
+            <div class="text-wrapper">每天一杯肽 全家健康無老態</div>
+            <div class="text-wrapper-1">新</div>
+            <div class="text-wrapper-2">生</div>
+            <div class="text-wrapper-3">肽</div>
+            <div class="text-wrapper-4">奇蹟</div>
+            <div class="text-wrapper-5">生活擁有好生機</div>
+            <div class="text-wrapper-6">SOYBEAN PEPTIDE</div>
+
+            <div class="text-wrapper-7">日本</div>
+            <div class="text-wrapper-8">原料</div>
+
+            <div class="text-wrapper-72">高級</div>
+            <div class="text-wrapper-82">營養</div>
+            <div class="text-wrapper-73">安全</div>
+            <div class="text-wrapper-83">食品</div>
+            <div class="text-wrapper-9">推薦給想要美麗自信的妳</div>
+            <p class="text-wrapper-10">想維持水潤飽滿的妳</p>
+            <p class="text-wrapper-11">想要一直漂亮水水的妳</p>
+            <p class="text-wrapper-12">想煥發透亮光采的妳</p>
+            <p class="text-wrapper-13">想讓人看不出真實年齡的妳</p>
+            <p class="text-wrapper-14">想無論幾歲都能維持好狀態的妳</p>
+            <div class="text-wrapper-15">特<br />色</div>
+            <div class="text-wrapper-16">安<br />心</div>
+            <div class="text-wrapper-17">水溶性佳</div>
+            <div class="text-wrapper-18">無防腐劑</div>
+            <div class="text-wrapper-19">無甜味劑</div>
+            <div class="text-wrapper-20">無色素</div>
+            <div class="text-wrapper-21">無香精</div>
+            <div class="text-wrapper-22">純素食</div>
+            <div class="text-wrapper-23">SGS檢驗合格</div>
+            <div class="text-wrapper-24">高營養價值</div>
+            <div class="text-wrapper-25">9大必需胺基酸</div>
+            <div class="text-wrapper-26">高利用率</div>
+            <div class="text-wrapper-27">低過敏率</div>
+            <div class="text-wrapper-28">全球諾貝爾獎得主 研究勝肽受肯定</div>
+            <div class="text-wrapper-29">2.8萬份論文實證</div>
+            <div class="text-wrapper-30">◆「二十一世紀的生物工程就是研究基因和蛋白質。研究蛋白質工程，就是研究肽。」</div>
+            <div class="text-wrapper-31">- 美國著名華裔科學家、諾貝爾獎獲得者朱隸文博士</div>
+            <div class="text-wrapper-32">
+                ◆「生物活性肽具有極強的活性及多樣性，其營養價值及應用層面，優於任何營養品及藥品。」
+            </div>
+            <div class="text-wrapper-33">- 美國皮膚老化國際研討會主席 尼吉拉斯佩里孔 醫學博士</div>
+            <div class="text-wrapper-34">- 日本科學家 田澤惠一</div>
+            <div class="text-wrapper-35">◆「肽有全方位廣泛的作用」</div>
+            <p class="SGS"><span class="span">國際認證SGS</span> <span class="text-wrapper-36"> 食在安心</span></p>
+            <div class="text-wrapper-37">感謝顧客回饋</div>
+            <div class="text-wrapper-38">以前健身完都喝乳清，現在改喝肽，體態更好肌肉UPUP。</div>
+            <div class="div-wrapper">
+                <div class="text-wrapper-39">喝了氣色變超好，臉變亮還會自然紅潤，被說有新娘味。</div>
+            </div>
+            <div class="group-4">
+                <div class="text-wrapper-39">手術完之後人家推薦我喝肽，傷口恢復的很好，還沒什麼疤真是太神奇了！</div>
+            </div>
+            <div class="group-5">
+                <div class="text-wrapper-39">買給中風的爸爸喝，行動不便的他肌肉終於不會快速流失了。</div>
+            </div>
+            <div class="group-6">
+                <div class="text-wrapper-39">營養好喝，純素食的好選擇，一點都不會有腥臭味。</div>
+            </div>
+            <div class="group-7">
+                <div class="text-wrapper-39">每天早上一杯肽，維持氣色不老態。</div>
+            </div>
+            <div class="group-8">
+                <div class="text-wrapper-39">長年吃素常常被說身體太單薄，開始喝肽了之後發現我也開始長肌肉了。</div>
+            </div>
+            <div class="group-9">
+                <div class="text-wrapper-39">爬山好攜帶隨時補充好體力。</div>
+            </div>
+            <div class="group-10">
+                <div class="text-wrapper-39">因為過敏不能喝膠原蛋白，還好有肽讓我維持我的好狀態。</div>
+            </div>
+
+            <div class="group-12">
+                <div class="text-wrapper-39">生完小孩後朋友送了肽開始喝，跟其他媽媽聊天才發現我不怎麼掉頭髮，真是感謝肽。</div>
+            </div>
+
+            <div class="group-11">
+                <div class="text-wrapper-41">i</div>
+                <div class="text-wrapper-40">Smart</div>
+                <div class="text-wrapper-42">Tide</div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function hasChinese(str) {
+          return /[\u4E00-\u9FFF]/.test(str);
+        }
+        
+        // 記錄原始中文內容
+        const originalTexts = new Map();
+        
+        // 初始化時記錄所有原始文字
+        document.querySelectorAll(".frame div").forEach(el => {
+          const text = el.textContent.trim();
+          if (text) {
+            originalTexts.set(el, text);
+          }
+        });
+        
+        function adjustFontSize() {
+          document.querySelectorAll(".frame div").forEach(el => {
+            const text = el.textContent.trim();
+            if (!text) return;
+            
+            // 檢查原始內容是否為中文
+            const originalText = originalTexts.get(el);
+            const isOriginalChinese = originalText && hasChinese(originalText);
+            
+            // 檢查當前內容是否為中文
+            const isCurrentChinese = hasChinese(text);
+            
+            // 處理 text-wrapper-7,8,72,82,73,83 元素
+            if (el.className.includes('text-wrapper-7') || el.className.includes('text-wrapper-8') || el.className.includes('text-wrapper-72') || el.className.includes('text-wrapper-82') || el.className.includes('text-wrapper-73') || el.className.includes('text-wrapper-83')) {
+              const originalText = originalTexts.get(el);
+              const isTranslated = originalText && originalText !== text;
+              
+              if (isTranslated) {
+                // 被翻譯了：調整為 2vw
+                el.style.fontSize = '2vw';
+              } else {
+                // 沒被翻譯：保持原本字體大小
+                el.style.fontSize = '';
+              }
+            } else {
+              // 其他元素：清空所有樣式
+              el.style.fontSize = '';
+            }
+          });
+        }
+        
+        // 初始調整
+        adjustFontSize();
+        
+        // 定時檢查，確保翻譯後也能正確調整
+        setInterval(adjustFontSize, 1000);
+        
+        // 監聽DOM變化，處理翻譯後的情況
+        const observer = new MutationObserver(function(mutations) {
+          mutations.forEach(function(mutation) {
+            if (mutation.type === 'childList' || mutation.type === 'characterData') {
+              // 延遲執行，避免頻繁觸發
+              setTimeout(adjustFontSize, 100);
+            }
+          });
+        });
+        
+        // 開始監聽
+        observer.observe(document.body, {
+          childList: true,
+          subtree: true,
+          characterData: true
+        });
+        </script>
+</body>
+
+</html>
