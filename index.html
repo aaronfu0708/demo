@@ -815,13 +815,148 @@
 
         .fade-in {
             opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
+            transform: translateY(50px) scale(0.9);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .fade-in.visible {
             opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* 增強版動畫效果 */
+        .fade-in-left {
+            opacity: 0;
+            transform: translateX(-80px);
+            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .fade-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .fade-in-right {
+            opacity: 0;
+            transform: translateX(80px);
+            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .fade-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(60px) scale(0.8);
+            transition: all 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .fade-in-zoom {
+            opacity: 0;
+            transform: scale(0.3);
+            transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .fade-in-zoom.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .fade-in-bounce {
+            opacity: 0;
+            transform: translateY(100px);
+            transition: all 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .fade-in-bounce.visible {
+            opacity: 1;
             transform: translateY(0);
+        }
+
+        .fade-in-slide {
+            opacity: 0;
+            transform: translateX(-100px);
+            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .fade-in-slide.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* 特殊效果動畫 */
+
+
+
+        /* 額外的視覺效果 */
+        .section-title {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(74, 222, 128, 0.3), transparent);
+            transition: left 0.8s ease;
+        }
+
+        .section-title.visible::before {
+            left: 100%;
+        }
+
+
+        /* 文字閃爍效果 */
+        .text-shimmer {
+            background: linear-gradient(90deg, #1e3c72, #4ade80, #1e3c72);
+            background-size: 200% 100%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        /* 粒子效果背景 */
+        .particle-bg {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .particle-bg::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 20%, rgba(74, 222, 128, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(30, 60, 114, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 60%, rgba(74, 222, 128, 0.05) 0%, transparent 50%);
+            animation: particleFloat 20s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes particleFloat {
+            0%, 100% { transform: translate(0, 0); }
+            33% { transform: translate(30px, -30px); }
+            66% { transform: translate(-20px, 20px); }
         }
 
          /* Footer 樣式 */
@@ -1244,40 +1379,40 @@
     <!-- 企業使命 -->
     <section class="mission" id="mission">
         <div class="container">
-            <h2 class="section-title fade-in">企業使命</h2>
+            <h2 class="section-title fade-in-bounce text-shimmer">企業使命</h2>
             <div class="mission-content">
-                <div class="mission-text fade-in">
+                <div class="mission-text fade-in-up">
                     <h3>盛德信環球集團</h3>
                     <p>協助民眾擁有健康的加齡生活，與靜宜大學「國際加齡產業研究發展中心」共同合作，將學界研發技術轉化為產業界成功商品，以產學聯盟合作，以繼續擴張雙方合作領域，積極推動商品學術產業化；並且加速健康產品商品化，協助產業擴展國際市場，讓國人兼具健康與保健養生觀念，促進國內健康生技產業之技術提升，進而讓生技產業持續往國際化拓展，朝向「健康連鎖事業平台、拓展全球事業版圖」持續前進與事業夥伴共同創業，並集結多名博士級研發菁英，以負責原料開發、配方設計、產品研發、品管、品保及專利登記，實力堅強，驅動T&E Global科研團隊最強創新動能。</p>
                    
                 </div>
-                <div class="mission-image fade-in">
+                <div class="mission-image fade-in-up" style="animation-delay: 0.1s;">
                     <img src="img/share.jpg" alt="企業使命">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 產品類別 -->
-    <section class="products" id="products">
+    <!-- 專業與創新 -->
+    <section class="products particle-bg" id="products">
         <div class="container">
-            <h2 class="section-title fade-in">專業與創新</h2>
+            <h2 class="section-title fade-in-bounce text-shimmer">專業與創新</h2>
             <div class="products-grid">
-                <div class="product-card fade-in">
+                <div class="product-card fade-in-up">
                     <img src="img/nursing.png" alt="核心產品">
                     <div class="product-info">
                         <h3>核心產品</h3>
                         <p>採用最先進的技術和材料，為客戶提供最優質的產品。</p>
                     </div>
                 </div>
-                <div class="product-card fade-in">
+                <div class="product-card fade-in-up" style="animation-delay: 0.2s;">
                     <img src="img/6_team.jpg" alt="專業服務">
                     <div class="product-info">
                         <h3>服務據點</h3>
                         <p>提供全方位的服務，為客戶提供完整的解決方案。</p>
                     </div>
                 </div>
-                <div class="product-card fade-in">
+                <div class="product-card fade-in-up" style="animation-delay: 0.4s;">
                     <img src="img/doctor-number1.jpg" alt="創新技術">
                     <div class="product-info">
                         <h3>科學相關報導</h3>
@@ -1292,10 +1427,10 @@
     <section class="ceo" id="ceo">
         <div class="container">
             <div class="ceo-content">
-                <div class="ceo-image fade-in">
+                <div class="ceo-image fade-in-zoom">
                     <img src="img/ceo.jpg" alt="總裁">
                 </div>
-                <div class="ceo-text fade-in">
+                <div class="ceo-text fade-in-slide">
                     <h3>創辦人理念</h3>
                     <h4>以信以德豐盛人生</h4>
                     <p>我堅持創業的核心理念有二：以「為無助的人找到無限的希望」為初衷，期望成為「人類健康的守護者」。正信念產生正能量，也才能匯聚志同道合的夥伴，一齊踏上實踐理念的道路。同仁們與我，真誠期望給人們帶來健康，自許「盛德信」是充滿誠信與愛心，銷售過程絕不誇大，絕不作假，信用第一，要發揮愛、關懷與生命力，幫助那些需要幫助的人。「盛德信」的名字，望文生義，正是我立志以信以德豐盛人生的願望。</p>
@@ -1305,31 +1440,31 @@
     </section>
 
     <!-- 研發團隊 -->
-    <section class="team" id="team">
+    <section class="team particle-bg" id="team">
         <div class="container">
-            <h2 class="section-title fade-in">研發團隊</h2>
+            <h2 class="section-title fade-in-bounce text-shimmer">研發團隊</h2>
             <div class="team-grid">
-                <div class="team-member fade-in">
+                <div class="team-member fade-in-up">
                     <img src="img/1.png" alt="研發總監">
                     <h4>王銘富博士</h4>
                     <p>研究專長:老年營養；保健營養學；營養生理學；臨床生化學；臨床營養、藥理學</p>
                 </div>
-                <div class="team-member fade-in">
+                <div class="team-member fade-in-up" style="animation-delay: 0.1s;">
                     <img src="img/2.png" alt="技術經理">
                     <h4>謝明哲博士</h4>
                     <p>研究專長：營養學、營養生化、脂質與維生素代謝</p>
                 </div>
-                <div class="team-member fade-in">
+                <div class="team-member fade-in-up" style="animation-delay: 0.2s;">
                     <img src="img/3.png" alt="設計師">
                     <h4>蔡英傑博士</h4>
                     <p>研究專長:生物化學、微生物學、漢方芳療</p>
                 </div>
-                <div class="team-member fade-in">
+                <div class="team-member fade-in-up" style="animation-delay: 0.3s;">
                     <img src="img/4.png" alt="工程師">
                     <h4>周明宇博士</h4>
                     <p>研究專長:經營管理、整合行銷、休閒產業管理、文化創意、活動策劃與執行及電腦資訊等國內外專業證照55張</p>
                 </div>
-                <div class="team-member fade-in">
+                <div class="team-member fade-in-up" style="animation-delay: 0.4s;">
                     <img src="img/5.png" alt="工程師">
                     <h4>細田和昭博士</h4>
                     <p>研究專長:營養學、臨床營養學、營養生理學、藥理學、生化學</p>
@@ -1339,32 +1474,32 @@
     </section>
 
     <!-- 熱門商品 -->
-    <section class="popular-products" id="popular">
+    <section class="popular-products particle-bg" id="popular">
         <div class="container">
-            <h2 class="section-title fade-in">熱門商品</h2>
+            <h2 class="section-title fade-in-bounce text-shimmer">熱門商品</h2>
             <div class="products-showcase">
-                <div class="showcase-item fade-in">
+                <div class="showcase-item fade-in-up">
                     <img src="img/18.png" alt="熱門商品1">
                     <div class="showcase-overlay">
                         <h4>101</h4>
                         <p>最新技術，卓越性能</p>
                     </div>
                 </div>
-                <div class="showcase-item fade-in">
+                <div class="showcase-item fade-in-up" style="animation-delay: 0.1s;">
                     <img src="img/28.png" alt="熱門商品2">
                     <div class="showcase-overlay">
                         <h4>102</h4>
                         <p>創新設計，用戶首選</p>
                     </div>
                 </div>
-                <div class="showcase-item fade-in">
+                <div class="showcase-item fade-in-up" style="animation-delay: 0.2s;">
                     <img src="img/21.png" alt="熱門商品3">
                     <div class="showcase-overlay">
                         <h4>602</h4>
                         <p>高品質，值得信賴</p>
                     </div>
                 </div>
-                <div class="showcase-item fade-in">
+                <div class="showcase-item fade-in-up" style="animation-delay: 0.3s;">
                     <img src="img/61.png" alt="熱門商品4">
                     <div class="showcase-overlay">
                         <h4>605</h4>
@@ -1445,23 +1580,26 @@
     </footer>
 
     <script>
-        // 滾動動畫 - 可重複觸發
+        // 增強版滾動動畫 - 可重複觸發
         const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
+            threshold: 0.15,
+            rootMargin: '0px 0px -100px 0px'
         };
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
+                    
+                    
                 } else {
                     entry.target.classList.remove('visible');
                 }
             });
         }, observerOptions);
 
-        document.querySelectorAll('.fade-in').forEach(el => {
+        // 觀察所有動畫元素
+        document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right, .fade-in-up, .fade-in-zoom, .fade-in-bounce, .fade-in-slide').forEach(el => {
             observer.observe(el);
         });
 
