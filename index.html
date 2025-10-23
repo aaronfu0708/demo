@@ -1605,6 +1605,19 @@
             transform: translateY(0);
         }
 
+        /* 動畫延遲類別 */
+        .delay-1 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.4s;
+        }
+
+        .delay-3 {
+            animation-delay: 0.6s;
+        }
+
         @media (max-width: 768px) {
             .hamburger {
                 display: flex;
@@ -1837,7 +1850,7 @@
                     <h3>盛德信環球集團</h3>
                     <p>協助民眾擁有健康的加齡生活，與靜宜大學「國際加齡產業研究發展中心」共同合作，將學界研發技術轉化為產業界成功商品，以產學聯盟合作，以繼續擴張雙方合作領域，積極推動商品學術產業化；並且加速健康產品商品化，協助產業擴展國際市場，讓國人兼具健康與保健養生觀念，促進國內健康生技產業之技術提升，進而讓生技產業持續往國際化拓展，朝向「健康連鎖事業平台、拓展全球事業版圖」持續前進與事業夥伴共同創業，並集結多名博士級研發菁英，以負責原料開發、配方設計、產品研發、品管、品保及專利登記，實力堅強，驅動T&E Global科研團隊最強創新動能。</p>
                 </div>
-                <div class="mission-image fade-in-up" style="animation-delay: 0.1s;">
+                <div class="mission-image fade-in-up delay-1">
                     <img src="img/share.jpg" alt="企業使命">
                 </div>
             </div>
@@ -1923,7 +1936,7 @@
                     </div>
                 </div>
                 
-                <div class="product-feature fade-in-up" style="animation-delay: 0.2s;">
+                <div class="product-feature fade-in-up delay-1">
                     <div class="product-visual">
                         <img src="img/ai1.jpg" alt="專業服務" class="product-image">
                     </div>
@@ -1943,7 +1956,7 @@
                     </div>
                 </div>
                 
-                <div class="product-feature fade-in-up" style="animation-delay: 0.4s;">
+                <div class="product-feature fade-in-up delay-2">
                     <div class="product-visual">
                         <img src="img/science.jpg" alt="科學報導" class="product-image">
                     </div>
@@ -2016,21 +2029,21 @@
                         <p>最新技術，卓越性能</p>
                     </div>
                 </div>
-                <div class="showcase-item fade-in-up" style="animation-delay: 0.1s;">
+                <div class="showcase-item fade-in-up delay-1">
                     <img src="img/28.png" alt="熱門商品2">
                     <div class="showcase-overlay">
                         <h4>102</h4>
                         <p>創新設計，用戶首選</p>
                     </div>
                 </div>
-                <div class="showcase-item fade-in-up" style="animation-delay: 0.2s;">
+                <div class="showcase-item fade-in-up delay-2">
                     <img src="img/21.png" alt="熱門商品3">
                     <div class="showcase-overlay">
                         <h4>602</h4>
                         <p>高品質，值得信賴</p>
                     </div>
                 </div>
-                <div class="showcase-item fade-in-up" style="animation-delay: 0.3s;">
+                <div class="showcase-item fade-in-up delay-3">
                     <img src="img/61.png" alt="熱門商品4">
                     <div class="showcase-overlay">
                         <h4>605</h4>
@@ -2136,8 +2149,8 @@
     <script>
         // 滾動動畫觀察器
         const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
+            threshold: 0.15,
+            rootMargin: '0px 0px -100px 0px'
         };
 
         const observer = new IntersectionObserver((entries) => {
@@ -2145,7 +2158,15 @@
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
                 } else {
-                    entry.target.classList.remove('visible');
+                    // 只有主視覺區域的動畫不重複觸發，其他區域可以重複觸發
+                    const isHeroElement = entry.target.classList.contains('hero-title-animated') || 
+                                        entry.target.classList.contains('hero-subtitle-animated') || 
+                                        entry.target.classList.contains('hero-cta-animated') ||
+                                        entry.target.classList.contains('search-section-animated');
+                    
+                    if (!isHeroElement) {
+                        entry.target.classList.remove('visible');
+                    }
                 }
             });
         }, observerOptions);
