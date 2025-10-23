@@ -2158,7 +2158,7 @@
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
                 } else {
-                    // 只有主視覺區域的動畫不重複觸發，其他區域可以重複觸發
+                    // 主視覺區域的動畫不重複觸發，其他重複觸發
                     const isHeroElement = entry.target.classList.contains('hero-title-animated') || 
                                         entry.target.classList.contains('hero-subtitle-animated') || 
                                         entry.target.classList.contains('hero-cta-animated') ||
