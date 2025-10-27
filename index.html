@@ -1801,6 +1801,45 @@
                 padding: 0 20px;
             }
         }
+
+        /* Curved Loop 動畫樣式 */
+        .curved-loop-section {
+            background: #ffffff;
+            position: relative;
+            overflow: visible;
+        }
+
+        .curved-loop-container {
+            width: 100%;
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .curved-loop-svg {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 1440 / 500;
+            overflow: visible;
+            display: block;
+        }
+
+        .curved-loop-text {
+            font-size: 6rem;
+            fill: #000000;
+            font-weight: 700;
+            text-transform: uppercase;
+            user-select: none;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+        }
+        @media (max-width: 768px) {
+            .curved-loop-text {
+                font-size: 7rem;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -1890,7 +1929,22 @@
         </div>
     </section>
 
-    <!-- 全球 -->
+    <!-- Curved Loop 動畫區域 -->
+    <section class="curved-loop-section" id="curvedLoop">
+        <div class="curved-loop-container" id="curvedLoopContainer">
+            <svg class="curved-loop-svg" viewBox="0 0 1440 500" xmlns="http://www.w3.org/2000/svg">
+                <text id="measureText" style="visibility: hidden; opacity: 0; pointer-events: none;">T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL</text>
+                <defs>
+                    <path id="curvePath" d="M-100,100 Q500,400 1540,100" fill="none" stroke="transparent" />
+                </defs>
+                <text class="curved-loop-text">
+                    <textPath id="textPath" href="#curvePath" startOffset="0px">T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL</textPath>
+                </text>
+            </svg>
+        </div>
+    </section>
+
+     <!-- 全球 -->
     <section class="global-reach" id="global">
         <div class="container">
             <div class="global-header fade-in">
@@ -2481,7 +2535,54 @@
         // 初始化 Profile Card
         document.addEventListener('DOMContentLoaded', () => {
             new ProfileCard();
+            
+            // 初始化 Curved Loop
+            initCurvedLoop();
         });
+
+        // Curved Loop 動畫功能
+        function initCurvedLoop() {
+            const container = document.getElementById('curvedLoopContainer');
+            const measureText = document.getElementById('measureText');
+            const textPath = document.getElementById('textPath');
+            
+            if (!container || !measureText || !textPath) return;
+
+            // 獲取文字寬度
+            const textLength = measureText.getComputedTextLength();
+            if (!textLength) return;
+
+            // 初始化偏移量
+            let offset = -textLength;
+            let speed = 2.5;
+            let animationFrame = null;
+
+            // 更新位置函數
+            function updatePosition() {
+                offset -= speed;
+                
+                // 循環處理
+                if (offset <= -textLength) {
+                    offset += textLength;
+                }
+                
+                // 更新 DOM
+                textPath.setAttribute('startOffset', offset + 'px');
+                animationFrame = requestAnimationFrame(updatePosition);
+            }
+
+            // 停止動畫函數（目前未使用）
+            function stopAnimation() {
+                if (animationFrame) {
+                    cancelAnimationFrame(animationFrame);
+                    animationFrame = null;
+                }
+            }
+
+            // 開始動畫
+            textPath.setAttribute('startOffset', offset + 'px');
+            updatePosition();
+        }
     </script>
 </body>
 </html>
