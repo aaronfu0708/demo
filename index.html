@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,8 +33,9 @@
         }
 
         .navbar.scrolled {
-         background: rgba(0, 93, 145, 0.9); 
+            background: rgba(0, 93, 145, 0.9);
         }
+
         .nav-container {
             max-width: 1400px;
             width: 100%;
@@ -245,10 +247,10 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, 
-                rgba(0, 212, 255, 0.1) 0%, 
-                rgba(74, 222, 128, 0.1) 50%,
-                rgba(255, 0, 150, 0.1) 100%);
+            background: linear-gradient(135deg,
+                    rgba(0, 212, 255, 0.1) 0%,
+                    rgba(74, 222, 128, 0.1) 50%,
+                    rgba(255, 0, 150, 0.1) 100%);
             z-index: 2;
             animation: overlayFadeIn 1.5s ease-in-out 0.5s both;
         }
@@ -258,6 +260,7 @@
                 opacity: 0;
                 transform: scale(1.1);
             }
+
             100% {
                 opacity: 0.3;
                 transform: scale(1);
@@ -268,6 +271,7 @@
             0% {
                 opacity: 0;
             }
+
             100% {
                 opacity: 1;
             }
@@ -327,9 +331,11 @@
                 opacity: 0;
                 transform: translateY(100px) scale(0.8);
             }
+
             50% {
                 transform: translateY(-10px) scale(1.05);
             }
+
             100% {
                 opacity: 1;
                 transform: translateY(0) scale(1);
@@ -341,6 +347,7 @@
                 opacity: 0;
                 transform: translateY(50px);
             }
+
             100% {
                 opacity: 1;
                 transform: translateY(0);
@@ -352,6 +359,7 @@
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             100% {
                 opacity: 1;
                 transform: translateY(0);
@@ -363,6 +371,7 @@
                 opacity: 0;
                 transform: translateY(40px) scale(0.95);
             }
+
             100% {
                 opacity: 1;
                 transform: translateY(0) scale(1);
@@ -544,6 +553,7 @@
             margin-left: auto;
             margin-right: auto;
         }
+
         .section2-title {
             text-align: center;
             font-size: 3.5rem;
@@ -564,6 +574,7 @@
             margin-left: auto;
             margin-right: auto;
         }
+
         .mission-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -827,12 +838,20 @@
         }
 
         @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
         }
+
         .products {
             padding: 120px 0;
-            background:url('img/bg1.jpg') center/cover;
+            background: url('img/bg1.jpg') center/cover;
             /* background: linear-gradient(135deg, #2a2a4e 0%, #1a1a2e 100%); */
             position: relative;
         }
@@ -862,7 +881,7 @@
         .product-feature {
             display: flex;
             flex-direction: column;
-            background-color:rgba(119, 109, 168, 0.1);
+            background-color: rgba(119, 109, 168, 0.1);
             backdrop-filter: blur(20px);
             border-radius: 25px;
             padding: 30px;
@@ -875,6 +894,7 @@
             text-decoration: none;
             color: inherit;
         }
+
         /* .product-feature:hover {
             
         } */
@@ -909,7 +929,7 @@
             font-size: 1.5rem;
             margin-bottom: 15px;
             font-weight: 700;
-            background-color: #00b141; 
+            background-color: #00b141;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -1037,8 +1057,7 @@
             position: relative;
             background-blend-mode: color-dodge, normal, normal, normal;
             animation: glow-bg 12s linear infinite;
-            box-shadow: rgba(0, 0, 0, 0.8) calc((var(--pointer-from-left) * 10px) - 3px)
-                calc((var(--pointer-from-top) * 20px) - 6px) 20px -5px;
+            box-shadow: rgba(0, 0, 0, 0.8) calc((var(--pointer-from-left) * 10px) - 3px) calc((var(--pointer-from-top) * 20px) - 6px) 20px -5px;
             transition: transform 1s ease;
             transform: translate3d(0, 0, 0.1px) rotateX(0deg) rotateY(0deg);
             background-size: 100% 100%;
@@ -1048,13 +1067,11 @@
                 50% 50%,
                 0 0;
             background-image:
-                radial-gradient(
-                    farthest-side circle at var(--pointer-x) var(--pointer-y),
+                radial-gradient(farthest-side circle at var(--pointer-x) var(--pointer-y),
                     hsla(266, 100%, 90%, var(--card-opacity)) 4%,
                     hsla(266, 50%, 80%, calc(var(--card-opacity) * 0.75)) 10%,
                     hsla(266, 25%, 70%, calc(var(--card-opacity) * 0.5)) 50%,
-                    hsla(266, 0%, 60%, 0) 100%
-                ),
+                    hsla(266, 0%, 60%, 0) 100%),
                 radial-gradient(35% 52% at 55% 20%, #00ffaac4 0%, #073aff00 100%),
                 radial-gradient(100% 100% at 50% 50%, #00c1ffff 1%, #073aff00 76%),
                 conic-gradient(from 124deg at 50% 50%, #c137ffff 0%, #07c6ffff 40%, #07c6ffff 60%, #c137ffff 100%);
@@ -1098,11 +1115,9 @@
         .pc-glare {
             transform: translate3d(0, 0, 1.1px);
             overflow: hidden;
-            background-image: radial-gradient(
-                farthest-corner circle at var(--pointer-x) var(--pointer-y),
-                hsl(248, 25%, 80%) 12%,
-                hsla(207, 40%, 30%, 0.8) 90%
-            );
+            background-image: radial-gradient(farthest-corner circle at var(--pointer-x) var(--pointer-y),
+                    hsl(248, 25%, 80%) 12%,
+                    hsla(207, 40%, 30%, 0.8) 90%);
             mix-blend-mode: overlay;
             filter: brightness(0.8) contrast(1.2);
             z-index: 4;
@@ -1127,13 +1142,11 @@
             inset: 0;
             z-index: 1;
             backdrop-filter: blur(30px);
-            mask: linear-gradient(
-                to bottom,
-                rgba(0, 0, 0, 0) 0%,
-                rgba(0, 0, 0, 0) 80%,
-                rgba(0, 0, 0, 1) 95%,
-                rgba(0, 0, 0, 1) 100%
-            );
+            mask: linear-gradient(to bottom,
+                    rgba(0, 0, 0, 0) 0%,
+                    rgba(0, 0, 0, 0) 80%,
+                    rgba(0, 0, 0, 1) 95%,
+                    rgba(0, 0, 0, 1) 100%);
             pointer-events: none;
         }
 
@@ -1142,11 +1155,9 @@
             overflow: hidden;
             text-align: center;
             position: relative;
-            transform: translate3d(
-                calc(var(--pointer-from-left) * -6px + 3px),
-                calc(var(--pointer-from-top) * -6px + 3px),
-                0.1px
-            ) !important;
+            transform: translate3d(calc(var(--pointer-from-left) * -6px + 3px),
+                    calc(var(--pointer-from-top) * -6px + 3px),
+                    0.1px) !important;
             z-index: 5;
         }
 
@@ -1237,7 +1248,7 @@
         /* 熱門商品 */
         .popular-products {
             padding: 120px 0;
-            background:url('img/bg2.jpg') center/cover;
+            background: url('img/bg2.jpg') center/cover;
             position: relative;
         }
 
@@ -1428,18 +1439,28 @@
             text-align: center;
             color: rgba(255, 255, 255, 0.6);
         }
+
         .footer-bottom a {
             color: rgba(255, 255, 255, 0.6);
             text-decoration: none;
             transition: color 0.3s ease;
         }
+
         .footer-bottom a:hover {
             color: #00d4ff;
         }
+
         /* 動畫效果 */
         @keyframes gradientShift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
+
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
         }
 
 
@@ -1560,7 +1581,7 @@
                 right: -100%;
                 width: 100%;
                 height: 100vh;
-                background:#1fa224;
+                background: #1fa224;
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
@@ -1599,17 +1620,18 @@
             .nav-menu a::before {
                 display: none;
             }
+
             .logo-img {
                 height: 40px;
             }
-            
+
             /* 手機版調整元素順序 */
             .hero-content {
                 display: flex;
                 flex-direction: column;
                 margin-top: 0;
             }
-            
+
             .search-section {
                 order: -1;
                 margin-top: 0;
@@ -1617,10 +1639,12 @@
                 width: 100%;
                 max-width: 400px;
             }
+
             .search-input {
                 padding: 15px 20px;
                 width: 80vw;
             }
+
             .hero-title {
                 order: 0;
                 font-size: 2.2rem;
@@ -1786,14 +1810,15 @@
             -moz-user-select: none;
             -webkit-user-select: none;
         }
+
         @media (max-width: 768px) {
             .curved-loop-text {
                 font-size: 7rem;
             }
         }
-
     </style>
 </head>
+
 <body>
     <!-- 導航欄 -->
     <nav class="navbar" id="navbar">
@@ -1801,7 +1826,7 @@
             <a href="#" class="logo">
                 <img src="img/toplogo.png" alt="T&E GLOBAL" class="logo-img">
             </a>
-            
+
             <ul class="nav-menu">
                 <li><a href="#features">全方位健康養生</a></li>
                 <li><a href="#products">服務據點</a></li>
@@ -1837,7 +1862,7 @@
                 <a href="#features" class="cta-primary">關於我們</a>
                 <a href="#products" class="cta-secondary">立即購買</a>
             </div>
-            
+
             <div class="search-section search-section-animated">
                 <div class="search-container">
                     <input type="text" placeholder="輸入查找商品" class="search-input">
@@ -1860,7 +1885,8 @@
             <div class="mission-content">
                 <div class="mission-text fade-in-up">
                     <h3>盛德信環球集團</h3>
-                    <p>與靜宜大學「國際加齡產業研究發展中心」合作，推動產學聯盟，將學術技術轉化為健康商品，加速產品商品化與國際化，促進國內生技產業技術提升。集結博士級研發團隊，專注原料開發、配方設計、品管與專利登記，致力打造健康加齡生活與創新生技品牌，邁向全球健康事業版圖。</p>
+                    <p>與靜宜大學「國際加齡產業研究發展中心」合作，推動產學聯盟，將學術技術轉化為健康商品，加速產品商品化與國際化，促進國內生技產業技術提升。集結博士級研發團隊，專注原料開發、配方設計、品管與專利登記，致力打造健康加齡生活與創新生技品牌，邁向全球健康事業版圖。
+                    </p>
                     <a href="#" class="mission-btn">了解更多</a>
                 </div>
                 <div class="mission-image fade-in-up delay-1">
@@ -1874,28 +1900,38 @@
     <section class="curved-loop-section" id="curvedLoop">
         <div class="curved-loop-container" id="curvedLoopContainer">
             <svg class="curved-loop-svg" viewBox="0 0 1440 500" xmlns="http://www.w3.org/2000/svg">
-                <text id="measureText" style="visibility: hidden; opacity: 0; pointer-events: none;">T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL</text>
+                <text id="measureText" style="visibility: hidden; opacity: 0; pointer-events: none;">T&amp;E GLOBAL
+                    T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E
+                    GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL
+                    T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E
+                    GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL
+                    T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E
+                    GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL</text>
                 <defs>
                     <path id="curvePath" d="M-100,100 Q500,400 1540,100" fill="none" stroke="transparent" />
                 </defs>
                 <text class="curved-loop-text">
-                    <textPath id="textPath" href="#curvePath" startOffset="0px">T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL</textPath>
+                    <textPath id="textPath" href="#curvePath" startOffset="0px">T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E
+                        GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL
+                        T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL
+                        T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL
+                        T&amp;E GLOBAL T&amp;E GLOBAL T&amp;E GLOBAL</textPath>
                 </text>
             </svg>
         </div>
     </section>
 
-     <!-- 全球 -->
+    <!-- 全球 -->
     <section class="global-reach" id="global">
         <div class="container">
             <div class="global-header fade-in">
                 <h2 class="section-title">國際化佈局</h2>
                 <p class="section-subtitle">放眼世界，為全球客戶提供優質服務</p>
                 <div class="global-divider"></div>
-                
+
             </div>
-            
-            
+
+
             <div class="global-content">
                 <div class="global-visual fade-in-left">
                     <div class="world-map">
@@ -1925,10 +1961,11 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="global-text fade-in-right">
                     <h3>面向全球</h3>
-                    <p>我們在亞洲地區建立了完善的服務網絡，從台灣總部到東南亞各國，都有我們的專業團隊為客戶提供即時、優質的服務。透過國際化的佈局，我們能夠更好地理解不同市場的需求，為客戶量身定制最適合的解決方案。</p>
+                    <p>我們在亞洲地區建立了完善的服務網絡，從台灣總部到東南亞各國，都有我們的專業團隊為客戶提供即時、優質的服務。透過國際化的佈局，我們能夠更好地理解不同市場的需求，為客戶量身定制最適合的解決方案。
+                    </p>
                 </div>
             </div>
         </div>
@@ -1942,7 +1979,7 @@
                 <p class="section2-subtitle">採用最先進的技術和材料，為客戶提供最優質的產品和服務</p>
                 <div class="products-divider"></div>
             </div>
-            
+
             <div class="products-features">
                 <a href="#popular" class="product-feature fade-in-up">
                     <div class="product-visual">
@@ -1963,7 +2000,7 @@
                         </div>
                     </div>
                 </a>
-                
+
                 <a href="#global" class="product-feature fade-in-up delay-1">
                     <div class="product-visual">
                         <img src="img/ai1.jpg" alt="專業服務" class="product-image">
@@ -1983,7 +2020,7 @@
                         </div>
                     </div>
                 </a>
-                
+
                 <a href="#features" class="product-feature fade-in-up delay-2">
                     <div class="product-visual">
                         <img src="img/science.jpg" alt="科學報導" class="product-image">
@@ -2017,12 +2054,7 @@
                             <div class="pc-shine"></div>
                             <div class="pc-glare"></div>
                             <div class="pc-content pc-avatar-content">
-                                <img
-                                    class="avatar"
-                                    src="img/ceo2.png"
-                                    alt="王文龍總裁 "
-                                    loading="lazy"
-                                />
+                                <img class="avatar" src="img/ceo2.png" alt="王文龍總裁 " loading="lazy" />
                             </div>
                             <div class="pc-content">
                                 <div class="pc-details">
@@ -2035,7 +2067,8 @@
                 <div class="ceo-text fade-in-slide">
                     <h3>創辦人理念</h3>
                     <h4>以信以德豐盛人生</h4>
-                    <p>我堅持創業的核心理念有二：以「為無助的人找到無限的希望」為初衷，期望成為「人類健康的守護者」。正信念產生正能量，也才能匯聚志同道合的夥伴，一齊踏上實踐理念的道路。同仁們與我，真誠期望給人們帶來健康，自許「盛德信」是充滿誠信與愛心，銷售過程絕不誇大，絕不作假，信用第一，要發揮愛、關懷與生命力，幫助那些需要幫助的人。</p>
+                    <p>我堅持創業的核心理念有二：以「為無助的人找到無限的希望」為初衷，期望成為「人類健康的守護者」。正信念產生正能量，也才能匯聚志同道合的夥伴，一齊踏上實踐理念的道路。同仁們與我，真誠期望給人們帶來健康，自許「盛德信」是充滿誠信與愛心，銷售過程絕不誇大，絕不作假，信用第一，要發揮愛、關懷與生命力，幫助那些需要幫助的人。
+                    </p>
                     <div class="ceo-quote">
                         「盛德信」的名字，望文生義，正是我立志以信以德豐盛人生的願望
                     </div>
@@ -2094,25 +2127,25 @@
                     <h4>王銘富博士</h4>
                     <p>研究專長:老年營養；保健營養學；營養生理學；臨床生化學；臨床營養、藥理學</p>
                 </div>
-                
+
                 <div class="team-member fade-in-up">
                     <img src="img/2.png" alt="謝明哲博士">
                     <h4>謝明哲博士</h4>
                     <p>研究專長：營養學、營養生化、脂質與維生素代謝</p>
                 </div>
-                
+
                 <div class="team-member fade-in-up">
                     <img src="img/3.png" alt="蔡英傑博士">
                     <h4>蔡英傑博士</h4>
                     <p>研究專長:生物化學、微生物學、漢方芳療</p>
                 </div>
-                
+
                 <div class="team-member fade-in-up">
                     <img src="img/4.png" alt="周明宇博士">
                     <h4>周明宇博士</h4>
                     <p>研究專長:經營管理、整合行銷、休閒產業管理、文化創意、活動策劃與執行及電腦資訊等國內外專業證照55張</p>
                 </div>
-                
+
                 <div class="team-member fade-in-up">
                     <img src="img/5.png" alt="細田和昭博士">
                     <h4>細田和昭博士</h4>
@@ -2130,7 +2163,8 @@
                     <div style="margin-top: 20px;">
                         <img src="img/qr.png" alt="QR Code" style="width: 80px; height: 80px; margin-right: 20px;">
                         <div style="display: inline-block; vertical-align: top;">
-                            <img src="img/google.png" alt="Google Play" style="width: 120px; height: 32px; margin-bottom: 10px; display: block;">
+                            <img src="img/google.png" alt="Google Play"
+                                style="width: 120px; height: 32px; margin-bottom: 10px; display: block;">
                             <img src="img/apple.png" alt="App Store" style="width: 120px; height: 32px;">
                         </div>
                         <div style="margin-top: 20px;">
@@ -2140,7 +2174,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="footer-section">
                     <h3>服務據點</h3>
                     <p>台北總公司</p>
@@ -2152,13 +2186,13 @@
                     <p>新加坡分公司</p>
                     <p>馬來西亞分公司</p>
                 </div>
-                
+
                 <div class="footer-section">
                     <h3>會員專區</h3>
                     <p><a href="#">客服中心</a></p>
                     <p><a href="#">相關連結</a></p>
                 </div>
-                
+
                 <div class="footer-section">
                     <h3>全方位健康養生</h3>
                     <p><a href="#">寵愛系列</a></p>
@@ -2167,9 +2201,10 @@
 
                 </div>
             </div>
-            
+
             <div class="footer-bottom">
-                <p>盛德信股份有限公司©2025 ALL Right Reserved | <a href="#">隱私權政策</a> | <a href="#">使用條款</a> | <a href="#">產品責任保險</a></p>
+                <p>盛德信股份有限公司©2025 ALL Right Reserved | <a href="#">隱私權政策</a> | <a href="#">使用條款</a> | <a
+                        href="#">產品責任保險</a></p>
             </div>
         </div>
     </footer>
@@ -2187,11 +2222,11 @@
                     entry.target.classList.add('visible');
                 } else {
                     // 主視覺區域的動畫不重複觸發，其他重複觸發
-                    const isHeroElement = entry.target.classList.contains('hero-title-animated') || 
-                                        entry.target.classList.contains('hero-subtitle-animated') || 
-                                        entry.target.classList.contains('hero-cta-animated') ||
-                                        entry.target.classList.contains('search-section-animated');
-                    
+                    const isHeroElement = entry.target.classList.contains('hero-title-animated') ||
+                        entry.target.classList.contains('hero-subtitle-animated') ||
+                        entry.target.classList.contains('hero-cta-animated') ||
+                        entry.target.classList.contains('search-section-animated');
+
                     if (!isHeroElement) {
                         entry.target.classList.remove('visible');
                     }
@@ -2235,7 +2270,7 @@
         function toggleMobileNav() {
             hamburger.classList.toggle('active');
             navMenu.classList.toggle('active');
-            
+
             if (navMenu.classList.contains('active')) {
                 document.body.style.overflow = 'hidden';
             } else {
@@ -2243,14 +2278,14 @@
             }
         }
 
-        hamburger.addEventListener('click', function(e) {
+        hamburger.addEventListener('click', function (e) {
             e.stopPropagation();
             toggleMobileNav();
         });
 
         // 點擊選單項目時關閉選單
         document.querySelectorAll('.nav-menu a').forEach(link => {
-            link.addEventListener('click', function() {
+            link.addEventListener('click', function () {
                 if (navMenu.classList.contains('active')) {
                     toggleMobileNav();
                 }
@@ -2258,7 +2293,7 @@
         });
 
         // 點擊選單外部區域時關閉選單
-        navMenu.addEventListener('click', function(e) {
+        navMenu.addEventListener('click', function (e) {
             if (e.target === navMenu && navMenu.classList.contains('active')) {
                 toggleMobileNav();
             }
@@ -2279,28 +2314,28 @@
             languageBtn.classList.remove('active');
         }
 
-        languageBtn.addEventListener('click', function(e) {
+        languageBtn.addEventListener('click', function (e) {
             e.stopPropagation();
             toggleLanguageDropdown();
         });
 
         // 點擊選單項目時更新按鈕文字並關閉選單
         document.querySelectorAll('.language-dropdown a').forEach(link => {
-            link.addEventListener('click', function(e) {
+            link.addEventListener('click', function (e) {
                 e.preventDefault();
                 const selectedLanguage = this.textContent;
                 languageBtn.textContent = selectedLanguage;
-                
+
                 // 更新active狀態
                 document.querySelectorAll('.language-dropdown a').forEach(a => a.classList.remove('active'));
                 this.classList.add('active');
-                
+
                 closeLanguageDropdown();
             });
         });
 
         // 點擊外部區域時關閉下拉選單
-        document.addEventListener('click', function(e) {
+        document.addEventListener('click', function (e) {
             if (!languageBtn.contains(e.target) && !languageDropdown.contains(e.target)) {
                 closeLanguageDropdown();
             }
@@ -2310,7 +2345,7 @@
         const searchInput = document.querySelector('.search-input');
         const searchButton = document.querySelector('.search-button');
 
-        searchButton.addEventListener('click', function() {
+        searchButton.addEventListener('click', function () {
             const searchTerm = searchInput.value.trim();
             if (searchTerm) {
                 // 添加實際搜索邏輯
@@ -2353,7 +2388,7 @@
             }
 
             setupStyles() {
-                this.wrapRef.style.setProperty('--behind-gradient', 
+                this.wrapRef.style.setProperty('--behind-gradient',
                     'radial-gradient(farthest-side circle at var(--pointer-x) var(--pointer-y),hsla(266,100%,90%,var(--card-opacity)) 4%,hsla(266,50%,80%,calc(var(--card-opacity)*0.75)) 10%,hsla(266,25%,70%,calc(var(--card-opacity)*0.5)) 50%,hsla(266,0%,60%,0) 100%),radial-gradient(35% 52% at 55% 20%,#00ffaac4 0%,#073aff00 100%),radial-gradient(100% 100% at 50% 50%,#00c1ffff 1%,#073aff00 76%),conic-gradient(from 124deg at 50% 50%,#c137ffff 0%,#07c6ffff 40%,#07c6ffff 60%,#c137ffff 100%)'
                 );
                 this.wrapRef.style.setProperty('--inner-gradient', 'linear-gradient(145deg,#60496e8c 0%,#71C4FF44 100%)');
@@ -2414,9 +2449,9 @@
 
                 const rect = this.cardRef.getBoundingClientRect();
                 this.updateCardTransform(
-                    event.clientX - rect.left, 
-                    event.clientY - rect.top, 
-                    this.cardRef, 
+                    event.clientX - rect.left,
+                    event.clientY - rect.top,
+                    this.cardRef,
                     this.wrapRef
                 );
             }
@@ -2463,9 +2498,9 @@
 
                 // 重置卡片到中心位置
                 this.updateCardTransform(
-                    this.wrapRef.clientWidth / 2, 
-                    this.wrapRef.clientHeight / 2, 
-                    this.cardRef, 
+                    this.wrapRef.clientWidth / 2,
+                    this.wrapRef.clientHeight / 2,
+                    this.cardRef,
                     this.wrapRef
                 );
             }
@@ -2474,7 +2509,7 @@
         // 初始化 Profile Card
         document.addEventListener('DOMContentLoaded', () => {
             new ProfileCard();
-            
+
             // 初始化 Curved Loop
             initCurvedLoop();
         });
@@ -2484,7 +2519,7 @@
             const container = document.getElementById('curvedLoopContainer');
             const measureText = document.getElementById('measureText');
             const textPath = document.getElementById('textPath');
-            
+
             if (!container || !measureText || !textPath) return;
 
             // 獲取文字寬度
@@ -2499,12 +2534,12 @@
             // 更新位置函數
             function updatePosition() {
                 offset -= speed;
-                
+
                 // 循環處理
                 if (offset <= -textLength) {
                     offset += textLength;
                 }
-                
+
                 // 更新 DOM
                 textPath.setAttribute('startOffset', offset + 'px');
                 animationFrame = requestAnimationFrame(updatePosition);
@@ -2524,4 +2559,5 @@
         }
     </script>
 </body>
+
 </html>
