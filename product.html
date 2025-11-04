@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>研發團隊</title>
+    <title>全方位健康養生 - T&E Global 盛德信環球集團</title>
     <style>
         * {
             margin: 0;
@@ -17,6 +16,7 @@
             line-height: 1.6;
             color: #333;
             overflow-x: hidden;
+            background-color: #ffffff;
         }
 
         .navbar {
@@ -69,6 +69,10 @@
             list-style: none;
             gap: 40px;
             align-items: center;
+        }
+
+        .nav-menu li {
+            list-style: none;
         }
 
         .nav-menu a {
@@ -214,56 +218,52 @@
             transform: rotate(-45deg);
         }
 
-        /* Hero Section */
-        .hero-section {
-            height: 80vh;
+        .product-container {
+            height: 100vh;
             position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
-            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #2a2a4e 100%);
-            padding-top: 100px;
         }
 
-        .hero-section::before {
+        /* 背景圖片 */
+        .product-container::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('img/science2.jpg') top/cover;
-            opacity: 0.4;
+            background: url('img/leaf.jpg') center/cover no-repeat;
             z-index: 1;
         }
 
-        .hero-content {
-            position: relative;
+        /* 深色遮罩層，增強對比 */
+        .product-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
             z-index: 2;
-            text-align: center;
-            color: white;
-            max-width: 1000px;
-            padding: 0 40px;
         }
 
-        .hero-title {
-            font-size: 4rem;
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 30px;
-            background: linear-gradient(135deg, #00d4ff, #4ade80);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: fadeInUp 1s ease;
-        }
-
-        .hero-subtitle {
-            font-size: 1.3rem;
-            opacity: 0.9;
-            font-weight: 300;
-            animation: fadeInUp 1.2s ease;
+        /* 主內容面板 */
+        .product-panel {
+            position: relative;
+            z-index: 3;
+            width: 90%;
+            max-width: 550px;
+            background: rgba(30, 30, 30, 0.75);
+            border-radius: 20px;
+            padding: 30px 28px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            animation: fadeInUp 1s ease-out;
+            margin-top: 70px;
         }
 
         @keyframes fadeInUp {
@@ -277,367 +277,183 @@
             }
         }
 
-        .container {
-            max-width: 1400px;
-            width: 100%;
-            margin: 0 auto;
-            padding: 0 40px;
-        }
-
-        /* 统一 Section 样式 */
-        .section {
-            padding: 100px 0;
-        }
-
-        .section-white {
-            background: #faf9f7;
-        }
-
-        .section-gray {
-            background: #f5f4f2;
-        }
-
-        /* Introduction Section */
-        .intro-section {
-            padding: 100px 0;
-            background: #f5f4f2;
-        }
-
-        .intro-content {
-            max-width: 900px;
-            margin: 0 auto;
+        /* 標題區域 */
+        .product-panel h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: white;
             text-align: center;
+            margin-bottom: 10px;
+            letter-spacing: 1.5px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
         }
 
-        /* 现代化左右布局 */
-        .modern-split-section {
-            padding: 100px 0;
+        .product-panel .subtitle {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 300;
+            letter-spacing: 0.5px;
+            text-align: center;
+            margin-bottom: 28px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
         }
 
-        .modern-split-section.section-white {
-            background: #faf9f7;
-        }
-
-        .modern-split-section.section-gray {
-            background: #f5f4f2;
-        }
-
-        .modern-split-content {
+        /* 類別連結區域 */
+        .category-list {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-            max-width: 1300px;
-            margin: 0 auto;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+            margin-top: 24px;
         }
 
-        .modern-split-section.reverse .split-text {
-            order: 1;
-        }
-
-        .modern-split-section.reverse .split-video {
-            order: 2;
-        }
-
-        .split-video {
+        .category-item {
             position: relative;
-        }
-
-        .video-wrapper {
-            position: relative;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-            background: #000;
-            aspect-ratio: 16 / 9;
-        }
-
-        .video-wrapper video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        .split-text {
             display: flex;
             flex-direction: column;
-            justify-content: center;
-        }
-
-        .modern-text {
-            font-size: 1.2rem;
-            line-height: 2;
-            color: #555;
-            text-align: justify;
-            margin: 0;
-            padding: 40px;
-            background: #faf9f7;
-            border-radius: 20px;
-            border: 1px solid #e5e7eb;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-            position: relative;
+            align-items: center;
+            text-decoration: none;
             overflow: hidden;
+            border-radius: 12px;
+            padding: 20px 16px;
+            text-align: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .modern-text::before {
+        .category-item::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background-image: url('img/logo.png');
-            background-size: contain;
-            background-position: center center;
-            background-repeat: no-repeat;
-            opacity: 0.15;
-            z-index: 0;
-            pointer-events: none;
-        }
-
-        .section-gray .modern-text {
-            background: #faf9f7;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 30px;
-            color: #1e3c72;
-            text-align: center;
-        }
-
-        .intro-text {
-            font-size: 1.2rem;
-            color: #555;
-            line-height: 1.8;
-            margin-bottom: 40px;
-            text-align: left;
-        }
-
-        .divider {
-            width: 100px;
-            height: 4px;
-            background: linear-gradient(90deg, #00d4ff, #4ade80);
-            margin: 40px auto;
-            border-radius: 2px;
-        }
-
-        /* Team Section */
-        .team-section {
-            padding: 100px 0;
-            background: #faf9f7;
-        }
-
-        .team-list {
-            max-width: 1200px;
-            margin: 60px auto 0;
-        }
-
-        .team-member {
-            display: grid;
-            grid-template-columns: 250px 1fr;
-            gap: 60px;
-            padding: 40px 0;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-            align-items: center;
-        }
-
-        .team-member:last-child {
-            border-bottom: none;
-        }
-
-        .team-member:nth-child(even) {
-            grid-template-columns: 1fr 250px;
-        }
-
-        .team-member:nth-child(even) .team-image {
-            order: 2;
-        }
-
-        .team-member:nth-child(even) .team-info {
-            order: 1;
-            text-align: right;
-        }
-
-        .team-image {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .team-image img {
-            width: 240px;
-            height: 240px;
-            object-fit: cover;
-            object-position: top;
-        }
-
-        .team-info {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .team-info h3 {
-            font-size: 2rem;
-            color: #1e3c72;
-            margin-bottom: 15px;
-            font-weight: 700;
-        }
-
-        .team-info .education {
-            font-size: 1.2rem;
-            color: #00d4ff;
-            font-weight: 600;
-            margin-bottom: 20px;
-            line-height: 1.6;
-            padding: 12px 20px;
-            background: rgba(0, 212, 255, 0.08);
-            border-radius: 10px;
-            display: inline-block;
-            border-left: 4px solid #00d4ff;
-        }
-
-        .team-member:nth-child(even) .team-info .education {
-            border-left: none;
-            border-right: 4px solid #00d4ff;
-        }
-
-        .team-info .expertise {
-            font-size: 1.1rem;
-            color: #555;
-            line-height: 1.8;
-        }
-
-        /* Video Placeholder */
-        .video-placeholder {
-            width: 100%;
-            height: 400px;
-            background: #000;
-            border-radius: 20px;
-            margin: 40px 0;
-            overflow: hidden;
-        }
-
-        .video-placeholder video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 20px;
-        }
-
-        /* Content Section */
-        .content-section {
-            padding: 100px 0;
-            background: #f5f4f2;
-        }
-
-        .content-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-            margin-top: 60px;
-        }
-
-        .content-text h3 {
-            font-size: 2rem;
-            color: #1e3c72;
-            margin-bottom: 20px;
-            font-weight: 700;
-        }
-
-        .content-text p {
-            font-size: 1.2rem;
-            color: #555;
-            line-height: 1.8;
-            margin-bottom: 20px;
-        }
-
-        .content-image {
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-        }
-
-        .content-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        /* Feature Section */
-        .feature-section {
-            padding: 100px 0;
-            background: #faf9f7;
-        }
-
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
-            margin-top: 60px;
-        }
-
-        .feature-card {
-            background: #f5f4f2;
-            padding: 40px 30px;
-            border-radius: 15px;
-            border: 1px solid #e5e7eb;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
             transition: all 0.3s ease;
         }
 
-        .feature-card:hover {
+        .category-item:hover::before {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .category-item:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
 
-
-        .feature-card h4 {
-            font-size: 1.4rem;
-            color: #1e3c72;
-            margin-bottom: 20px;
-            font-weight: 700;
+        .category-item .title,
+        .category-item .english {
+            position: relative;
+            z-index: 1;
         }
 
-        .feature-card p {
-            color: #666;
-            line-height: 1.8;
-            font-size: 1.1rem;
-        }
-
-        /* Quote Section */
-        .quote-section {
-            padding: 100px 0;
-            background: linear-gradient(135deg, #1a1a2e 0%, #2a2a4e 100%);
+        .category-item .title {
+            font-size: 1.25rem;
+            font-weight: 600;
             color: white;
+            margin-bottom: 6px;
+            letter-spacing: 1px;
+        }
+
+        .category-item .english {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.7);
+            font-weight: 300;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        /* 查看所有商品按鈕 */
+        .view-all-products {
+            margin-top: 24px;
             text-align: center;
         }
 
-        .quote-text {
-            font-size: 1.4rem;
-            font-style: italic;
-            color: #4ade80;
-            max-width: 800px;
-            margin: 0 auto;
-            line-height: 1.8;
+        .view-all-btn {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            padding: 16px 40px;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(74, 222, 128, 0.2));
+            border: 2px solid rgba(0, 212, 255, 0.4);
+            backdrop-filter: blur(10px);
         }
 
-
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
+        .view-all-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
         }
 
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
+        .view-all-btn:hover::before {
+            left: 100%;
         }
 
-        /* Mobile Responsive */
+        .view-all-btn:hover {
+            transform: translateY(-3px);
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.3), rgba(74, 222, 128, 0.3));
+            border-color: rgba(0, 212, 255, 0.6);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+        }
+
+        .view-all-btn .title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: white;
+            margin-right: 10px;
+            letter-spacing: 1.2px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .view-all-btn .english {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 400;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            position: relative;
+            z-index: 1;
+        }
+
+        .view-all-btn .arrow {
+            margin-left: 10px;
+            font-size: 1.1rem;
+            color: white;
+            transition: transform 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .view-all-btn:hover .arrow {
+            transform: translateX(5px);
+        }
+
+        /* 底部標語 */
+        .product-panel .footer {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.85);
+            font-weight: 500;
+            letter-spacing: 1.2px;
+            text-align: center;
+            margin-top: 28px;
+            padding-top: 20px;
+            border-top: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* 響應式設計 */
         @media (max-width: 768px) {
             .hamburger {
                 display: flex;
@@ -694,113 +510,84 @@
             .logo-img {
                 height: 40px;
             }
-            .hero-section {
-                height: 70vh;
-            }
-            .hero-title {
-                font-size: 2.5rem;
-            }
 
-            .hero-subtitle {
-                font-size: 1.1rem;
+            .product-container {
+                min-height: 80vh;
+                padding: 20px 0;
             }
 
-            .section-title {
-                font-size: 2rem;
+            .product-panel {
+                width: 95%;
+                padding: 18px 14px;
+                border-radius: 15px;
+                margin-top: 65px;
             }
 
-            .team-member {
-                grid-template-columns: 1fr !important;
-                gap: 30px;
-                padding: 30px 0;
-                text-align: center;
+            .product-panel h1 {
+                font-size: 1.4rem;
+                letter-spacing: 0.8px;
+                margin-bottom: 6px;
             }
 
-            .team-member:nth-child(even) {
-                grid-template-columns: 1fr !important;
+            .product-panel .subtitle {
+                font-size: 0.75rem;
+                margin-bottom: 16px;
+                padding-bottom: 12px;
             }
 
-            .team-member:nth-child(even) .team-info {
-                text-align: center !important;
-                order: 2 !important;
+            .category-list {
+                gap: 12px;
+                margin-top: 18px;
             }
 
-            .team-member:nth-child(even) .team-image {
-                order: 1 !important;
+            .category-item {
+                padding: 14px 10px;
             }
 
-            .team-image img {
-                width: 180px;
-                height: 180px;
-                object-position: top;
+            .category-item .title {
+                font-size: 1.05rem;
+                margin-bottom: 4px;
             }
 
-            .team-info h3 {
-                font-size: 1.5rem;
+            .category-item .english {
+                font-size: 0.7rem;
             }
 
-            .team-info .education {
-                font-size: 1.1rem;
-                border-left: none !important;
-                border-right: none !important;
-                border-top: 3px solid #00d4ff;
-                border-bottom: 3px solid #00d4ff;
+            .view-all-products {
+                margin-top: 16px;
             }
 
-            .content-grid {
-                grid-template-columns: 1fr;
+            .view-all-btn {
+                padding: 14px 24px;
+                flex-direction: column;
+                gap: 6px;
             }
 
-            .feature-grid {
-                grid-template-columns: 1fr;
+            .view-all-btn .title {
+                font-size: 1.05rem;
+                margin-right: 0;
+                margin-bottom: 3px;
             }
 
-
-            .container {
-                padding: 0 20px;
+            .view-all-btn .english {
+                font-size: 0.75rem;
             }
 
-            .video-placeholder {
-                height: 250px;
+            .view-all-btn .arrow {
+                margin-left: 0;
+                margin-top: 3px;
+                font-size: 1rem;
             }
 
-            .video-placeholder video {
-                object-fit: contain;
-            }
-
-            /* 现代化左右布局 - 移动端 */
-            .modern-split-section {
-                padding: 60px 0;
-            }
-
-            .modern-split-content {
-                grid-template-columns: 1fr !important;
-                gap: 30px;
-            }
-
-            .modern-split-section.reverse .split-text,
-            .modern-split-section.reverse .split-video {
-                order: 0 !important;
-            }
-
-            .split-video {
-                order: 1;
-            }
-
-            .split-text {
-                order: 2;
-            }
-
-            .modern-text {
-                font-size: 1.1rem;
-                line-height: 1.9;
-                padding: 30px 20px;
-                text-align: left;
+            .product-panel .footer {
+                font-size: 0.7rem;
+                letter-spacing: 0.8px;
+                margin-top: 16px;
+                padding-top: 12px;
             }
         }
     </style>
 </head>
-
 <body>
     <!-- 導航欄 -->
     <nav class="navbar" id="navbar">
@@ -836,198 +623,43 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="hero-content">
-            <h1 class="hero-title">T&E GLOBAL 科研團隊介紹</h1>
-            <p class="hero-subtitle">全球先進科研中心研發團隊</p>
-        </div>
-    </section>
+    <div class="product-container">
+        <div class="product-panel">
+            <h1>全方位健康養生</h1>
+            <p class="subtitle">內療 外療 氛圍營造</p>
 
-    <!-- Introduction Section -->
-    <section class="intro-section modern-split-section section-gray">
-        <div class="container">
-            <div class="modern-split-content">
-                <div class="split-video fade-in">
-                    <div class="video-wrapper">
-                        <video controls playsinline loop>
-                            <source src="video/20200811_company.mp4" type="video/mp4">
-                        </video>
-                    </div>
-                </div>
-                <div class="split-text fade-in">
-                    <p class="modern-text">
-                        T&E Global盛德信環球集團為協助民眾擁有健康的加齡生活，與靜宜大學「國際加齡產業研究發展中心」共同合作，將學界研發技術轉化為產業界成功商品，以產學聯盟合作，以繼續擴張雙方合作領域，積極推動商品學術產業化；並且加速健康產品商品化，協助產業擴展國際市場，讓國人兼具健康與保健養生觀念，促進國內健康生技產業之技術提升，進而讓生技產業持續往國際化拓展，朝向「健康連鎖事業平台、拓展全球事業版圖」持續前進與事業夥伴共同創業，並集結多名博士級研發菁英，以負責原料開發、配方設計、產品研發、品管、品保及專利登記，實力堅強，驅動T&E Global科研團隊最強創新動能。
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Team Section -->
-    <section class="team-section">
-        <div class="container">
-            <h2 class="section-title">T&E GLOBAL 全球先進科研中心研發團隊</h2>
-            <div class="divider"></div>
-            <div class="team-list">
-                <div class="team-member fade-in">
-                    <div class="team-image">
-                        <img src="img/1.png" alt="王銘富博士">
-                    </div>
-                    <div class="team-info">
-                        <h3>王銘富博士</h3>
-                        <div class="education">日本國立德島大學醫學部 營養學碩士/保健學 博士</div>
-                        <p class="expertise">研究專長:老年營養；保健營養學；營養生理學；臨床生化學；臨床營養、藥理學</p>
-                    </div>
-                </div>
-
-                <div class="team-member fade-in">
-                    <div class="team-image">
-                        <img src="img/2.png" alt="謝明哲博士">
-                    </div>
-                    <div class="team-info">
-                        <h3>謝明哲博士</h3>
-                        <div class="education">台灣大學農業化學研究所 博士</div>
-                        <p class="expertise">研究專長：營養學、營養生化、脂質與維生素代謝</p>
-                    </div>
-                </div>
-
-                <div class="team-member fade-in">
-                    <div class="team-image">
-                        <img src="img/3.png" alt="蔡英傑博士">
-                    </div>
-                    <div class="team-info">
-                        <h3>蔡英傑博士</h3>
-                        <div class="education">日本東京大學微生物學 博士</div>
-                        <p class="expertise">研究專長:生物化學、微生物學、漢方芳療</p>
-                    </div>
-                </div>
-
-                <div class="team-member fade-in">
-                    <div class="team-image">
-                        <img src="img/4.png" alt="周明宇博士">
-                    </div>
-                    <div class="team-info">
-                        <h3>周明宇博士</h3>
-                        <div class="education">靜宜大學 食品營養學系 博士、中國科學院(北京) 管理學院 博士</div>
-                        <p class="expertise">研究專長:經營管理、整合行銷、休閒產業管理、文化創意、活動策劃與執行及電腦資訊等國內外專業證照55張</p>
-                    </div>
-                </div>
-
-                <div class="team-member fade-in">
-                    <div class="team-image">
-                        <img src="img/5.png" alt="細田和昭博士">
-                    </div>
-                    <div class="team-info">
-                        <h3>細田和昭博士</h3>
-                        <div class="education">日本 國立徳島大學醫學部營養學科 博士</div>
-                        <p class="expertise">研究專長:營養學、臨床營養學、營養生理學、藥理學、生化學</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Quote Section -->
-    <section class="quote-section">
-        <div class="container">
-            <p class="quote-text fade-in">健康，是人生的基礎。<br>從健康出發，努力事業工作並擁有財富，活出幸福人生！</p>
-        </div>
-    </section>
-
-    <!-- Research Center Section -->
-    <section class="content-section modern-split-section reverse section-white">
-        <div class="container">
-            <h2 class="section-title">T&E GLOBAL 全球先進科研中心簡介</h2>
-            <div class="divider"></div>
-            <div class="modern-split-content">
-                <div class="split-text fade-in">
-                    <p class="modern-text">
-                        把台灣最好的生技產品，透過T&E GLOBAL盛德信平台，從台灣分享到全世界！人人都想要健康，都在追求健康，但卻常常走錯方向，換來各種遺憾。有些人平常身體好端端，只在例行檢查發現微恙，進了醫院，卻發生不能活著出來的悲劇。
-                        老化不是病，一切似病非病的病，追根究柢，問題根結點出在營養不均衡。當營養達到均衡，細胞就會健康，當細胞得到健康，無須名醫聖手，也無須昂貴藥方，就能讓身體健健康康、長長久久。
-                        T&E GOLBAL盛德信環球集團，以傳習健康之道，走上守護健康正確方向為目標，在歷經十八年來，追隨各位專家學者的勤奮腳步，更在學習中蛻變成長，在成長之中承擔更多使命。
-                    </p>
-                </div>
-                <div class="split-video fade-in">
-                    <div class="video-wrapper">
-                        <video controls playsinline loop>
-                            <source src="video/20200811_company.mp4" type="video/mp4">
-                        </video>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Philosophy Section -->
-    <section class="intro-section section-gray">
-        <div class="container">
-            <div class="intro-content">
-                <h2 class="section-title">中醫為體，西學為用</h2>
-                <div class="divider"></div>
-                <p class="fade-in" style="font-size: 1.2rem; font-weight: 600; color: #1e3c72; margin-bottom: 30px; text-align: center;">
-                    WHO已於2019年將中醫納入ICD全球醫學綱要之中。
-                </p>
-                <p class="intro-text fade-in">
-                    T&E GOLBAL盛德信環球集團，所提倡理念「藥食同源，天然養身，源自天然，調理保健、中醫為體、西學為用」，藉由業界中醫權威博士、藥師、營養師團隊所共同合作，針對所有由內而外產生的健康問題研發、設計的產品，以完善的科學草本漢方，天然溫和不傷身體，從細胞根本改善體質，全面調理，啟動自身自癒力！
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Product Process Section -->
-    <section class="content-section section-white">
-        <div class="container">
-            <h2 class="section-title">T&E GOLBAL 頂尖產品製程介紹</h2>
-            <div class="divider"></div>
-            <div class="intro-content">
-                <div class="video-placeholder fade-in">
-                    <video controls playsinline loop>
-                        <source src="video/20200811_company.mp4" type="video/mp4">
-                    </video>
-                </div>
+            <div class="category-list">
+                <a href="#" class="category-item">
+                    <span class="title">概念</span>
+                    <span class="english">Concept</span>
+                </a>
+                <a href="#" class="category-item">
+                    <span class="title">清潔</span>
+                    <span class="english">Lamour</span>
+                </a>
+                <a href="#" class="category-item">
+                    <span class="title">補給</span>
+                    <span class="english">iSmartTide</span>
+                </a>
+                <a href="#" class="category-item">
+                    <span class="title">調節</span>
+                    <span class="english">Cona</span>
+                </a>
             </div>
 
-            <div class="feature-grid">
-                <div class="feature-card fade-in">
-                    <h4>T&E GLOBAL 科研中心產品特色</h4>
-                    <p>專業採購、來源可溯、專責藥材團隊契約採購、藥材供應商評鑑及產地考察、專業研究所支援藥材基礎研究、先進品管設備嚴格安全把關。</p>
-                </div>
-
-                <div class="feature-card fade-in">
-                    <h4>T&E GLOBAL 科研中心產品優點</h4>
-                    <p>秉持嚴格的品質管控，基原鑑定、一般理化試驗、農藥殘留、重金屬檢測、黃麴毒素、微生物試驗、二氧化硫、定量試驗、鑑別試驗、安全性成份檢驗。</p>
-                </div>
-
-                <div class="feature-card fade-in">
-                    <h4>T&E GLOBAL 科研中心產品效益</h4>
-                    <p>長期累積的製程優勢，研發最適化設備與先進儀器投資及選用、嚴謹之製程品質管控、最佳製程條件及生產、製程標準化以確效監控。</p>
-                </div>
+            <div class="view-all-products">
+                <a href="#" class="view-all-btn">
+                    <span class="title">查看所有商品</span>
+                    <span class="english">View All Products</span>
+                    <span class="arrow">→</span>
+                </a>
             </div>
-        </div>
-    </section>
 
+            <p class="footer">盛德信股份有限公司©2025 ALL Right Reserved</p>
+        </div>
+    </div>
 
     <script>
-        // 滾動動畫觀察器
-        const observerOptions = {
-            threshold: 0.15,
-            rootMargin: '0px 0px -100px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        // 觀察所有動畫元素
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
-
         // 導航欄滾動效果
         window.addEventListener('scroll', () => {
             const navbar = document.getElementById('navbar');
@@ -1116,5 +748,4 @@
         });
     </script>
 </body>
-
 </html>
