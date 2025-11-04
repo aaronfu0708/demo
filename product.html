@@ -365,6 +365,82 @@
             text-transform: uppercase;
         }
 
+        /* 查看所有商品按鈕 */
+        .view-all-products {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .view-all-btn {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            padding: 20px 50px;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(74, 222, 128, 0.2));
+            border: 2px solid rgba(0, 212, 255, 0.4);
+            backdrop-filter: blur(10px);
+        }
+
+        .view-all-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .view-all-btn:hover::before {
+            left: 100%;
+        }
+
+        .view-all-btn:hover {
+            transform: translateY(-3px);
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.3), rgba(74, 222, 128, 0.3));
+            border-color: rgba(0, 212, 255, 0.6);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+        }
+
+        .view-all-btn .title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: white;
+            margin-right: 12px;
+            letter-spacing: 1.5px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .view-all-btn .english {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 400;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            position: relative;
+            z-index: 1;
+        }
+
+        .view-all-btn .arrow {
+            margin-left: 12px;
+            font-size: 1.2rem;
+            color: white;
+            transition: transform 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .view-all-btn:hover .arrow {
+            transform: translateX(5px);
+        }
+
         /* 底部標語 */
         .product-panel .footer {
             font-size: 0.95rem;
@@ -474,6 +550,31 @@
                 font-size: 0.75rem;
             }
 
+            .view-all-products {
+                margin-top: 20px;
+            }
+
+            .view-all-btn {
+                padding: 16px 30px;
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .view-all-btn .title {
+                font-size: 1.2rem;
+                margin-right: 0;
+                margin-bottom: 4px;
+            }
+
+            .view-all-btn .english {
+                font-size: 0.85rem;
+            }
+
+            .view-all-btn .arrow {
+                margin-left: 0;
+                margin-top: 4px;
+            }
+
             .product-panel .footer {
                 font-size: 0.8rem;
                 letter-spacing: 1px;
@@ -539,6 +640,14 @@
                 <a href="#" class="category-item">
                     <span class="title">調節</span>
                     <span class="english">Cona</span>
+                </a>
+            </div>
+
+            <div class="view-all-products">
+                <a href="#" class="view-all-btn">
+                    <span class="title">查看所有商品</span>
+                    <span class="english">View All Products</span>
+                    <span class="arrow">→</span>
                 </a>
             </div>
 
