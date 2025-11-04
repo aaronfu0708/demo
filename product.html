@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>全方位健康養生 - T&E Global 盛德信環球集團</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Microsoft JhengHei', 'PingFang TC', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+            background-color: #ffffff;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 0;
+            z-index: 1000;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background: rgba(15, 15, 35, 0.2);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .navbar.scrolled {
+            background: rgba(0, 93, 145, 0.9);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-img {
+            height: 60px;
+            width: auto;
+            object-fit: contain;
+            filter: brightness(1.2);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .nav-menu li {
+            list-style: none;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            position: relative;
+            transition: all 0.3s ease;
+            padding: 10px 0;
+        }
+
+        .nav-menu a::before {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(90deg, #00d4ff, #4ade80);
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::before {
+            width: 100%;
+        }
+
+        .nav-menu a:hover {
+            color: #00d4ff;
+            transform: translateY(-2px);
+        }
+
+        /* 語言選擇器 */
+        .language-selector {
+            position: relative;
+            display: inline-block;
+        }
+
+        .language-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+        }
+
+        .language-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .language-btn::after {
+            content: '▼';
+            font-size: 0.6rem;
+        }
+
+        .language-btn.active::after {
+            transform: rotate(180deg);
+        }
+
+        .language-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-10px);
+            background: rgba(20, 20, 20, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            min-width: 130px;
+            opacity: 0;
+            text-align: center;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .language-dropdown.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .language-dropdown a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .language-dropdown a:hover {
+            background: rgba(0, 212, 255, 0.1);
+            color: #00d4ff;
+        }
+
+        .language-dropdown a.active {
+            color: #00d4ff;
+        }
+
+        /* 漢堡選單 */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 1001;
+            background: none;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger-line {
+            height: 2px;
+            background: white;
+            margin: 3px 0;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .hamburger-line-long {
+            width: 25px;
+        }
+
+        .hamburger-line-short {
+            width: 18px;
+            margin-left: auto;
+        }
+
+        .hamburger.active .hamburger-line-long {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .hamburger.active .hamburger-line-short {
+            transform: rotate(-45deg);
+        }
+
+        .product-container {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        /* 背景圖片 */
+        .product-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('img/leaf.jpg') center/cover no-repeat;
+            z-index: 1;
+        }
+
+        /* 深色遮罩層，增強對比 */
+        .product-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 2;
+        }
+
+        /* 主內容面板 */
+        .product-panel {
+            position: relative;
+            z-index: 3;
+            width: 90%;
+            max-width: 600px;
+            background: rgba(30, 30, 30, 0.75);
+            border-radius: 20px;
+            padding: 40px 35px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            animation: fadeInUp 1s ease-out;
+            margin-top: 80px;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 標題區域 */
+        .product-panel h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: white;
+            text-align: center;
+            margin-bottom: 12px;
+            letter-spacing: 2px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .product-panel .subtitle {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 300;
+            letter-spacing: 0.5px;
+            text-align: center;
+            margin-bottom: 35px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* 類別連結區域 */
+        .category-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+            margin-top: 30px;
+        }
+
+        .category-item {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            overflow: hidden;
+            border-radius: 12px;
+            padding: 25px 20px;
+            text-align: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .category-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .category-item:hover::before {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .category-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .category-item .title,
+        .category-item .english {
+            position: relative;
+            z-index: 1;
+        }
+
+        .category-item .title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+
+        .category-item .english {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.7);
+            font-weight: 300;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        /* 底部標語 */
+        .product-panel .footer {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.85);
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-align: center;
+            margin-top: 35px;
+            padding-top: 25px;
+            border-top: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* 響應式設計 */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-container {
+                padding: 0 20px;
+            }
+
+            /* 手機版導航菜單 */
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 100%;
+                height: 100vh;
+                background: url('img/leaf.jpg') center/cover no-repeat;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                z-index: 1000;
+            }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .nav-menu a {
+                color: white;
+                text-decoration: none;
+                font-size: 1.5rem;
+                font-weight: 600;
+                transition: all 0.3s ease;
+                position: relative;
+                display: block;
+                padding: 15px 40px;
+                border-radius: 60px;
+                background: rgba(255, 255, 255, 0.05);
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .nav-menu a:hover {
+                color: #535353;
+                transform: translateY(-5px) scale(1.05);
+                background: rgb(241, 253, 255);
+            }
+
+            .nav-menu a::before {
+                display: none;
+            }
+
+            .logo-img {
+                height: 40px;
+            }
+
+            .product-container {
+                min-height: 80vh;
+                padding: 20px 0;
+            }
+
+            .product-panel {
+                width: 95%;
+                padding: 20px 15px;
+                border-radius: 15px;
+                margin-top: 70px;
+            }
+
+            .product-panel h1 {
+                font-size: 1.6rem;
+                letter-spacing: 1px;
+                margin-bottom: 8px;
+            }
+
+            .product-panel .subtitle {
+                font-size: 0.85rem;
+                margin-bottom: 20px;
+                padding-bottom: 15px;
+            }
+
+            .category-list {
+                grid-template-columns: 1fr;
+                gap: 12px;
+                margin-top: 20px;
+            }
+
+            .category-item {
+                padding: 18px 12px;
+            }
+
+            .category-item .title {
+                font-size: 1.2rem;
+                margin-bottom: 5px;
+            }
+
+            .category-item .english {
+                font-size: 0.75rem;
+            }
+
+            .product-panel .footer {
+                font-size: 0.8rem;
+                letter-spacing: 1px;
+                margin-top: 20px;
+                padding-top: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 導航欄 -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="img/toplogo.png" alt="T&E GLOBAL" class="logo-img">
+            </a>
+
+            <ul class="nav-menu">
+                <li><a href="product.html">全方位健康養生</a></li>
+                <li><a href="#">服務據點</a></li>
+                <li><a href="company.html">關於我們</a></li>
+                <li><a href="science.html">研發團隊</a></li>
+                <li><a href="https://m.trustethic.com">會員專區</a></li>
+            </ul>
+
+            <div class="language-selector">
+                <button class="language-btn" id="languageBtn">
+                    繁體中文
+                </button>
+                <div class="language-dropdown" id="languageDropdown">
+                    <a href="#" class="active">繁體中文</a>
+                    <a href="#">English</a>
+                    <a href="#">简体中文</a>
+                    <a href="#">Tiếng Việt</a>
+                </div>
+            </div>
+
+            <div class="hamburger" id="hamburger">
+                <span class="hamburger-line hamburger-line-long"></span>
+                <span class="hamburger-line hamburger-line-short"></span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="product-container">
+        <div class="product-panel">
+            <h1>全方位健康養生</h1>
+            <p class="subtitle">內療 外療 氛圍營造</p>
+
+            <div class="category-list">
+                <a href="#" class="category-item">
+                    <span class="title">概念</span>
+                    <span class="english">Concept</span>
+                </a>
+                <a href="#" class="category-item">
+                    <span class="title">清潔</span>
+                    <span class="english">Lamour</span>
+                </a>
+                <a href="#" class="category-item">
+                    <span class="title">補給</span>
+                    <span class="english">iSmartTide</span>
+                </a>
+                <a href="#" class="category-item">
+                    <span class="title">調節</span>
+                    <span class="english">Cona</span>
+                </a>
+            </div>
+
+            <p class="footer">盛德信股份有限公司©2025 ALL Right Reserved</p>
+        </div>
+    </div>
+
+    <script>
+        // 導航欄滾動效果
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // 漢堡選單功能
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        function toggleMobileNav() {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            
+            if (navMenu.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        hamburger.addEventListener('click', function(e) {
+            e.stopPropagation();
+            toggleMobileNav();
+        });
+
+        // 點擊選單項目時關閉選單
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', function() {
+                if (navMenu.classList.contains('active')) {
+                    toggleMobileNav();
+                }
+            });
+        });
+
+        // 點擊選單外部區域時關閉選單
+        navMenu.addEventListener('click', function(e) {
+            if (e.target === navMenu && navMenu.classList.contains('active')) {
+                toggleMobileNav();
+            }
+        });
+
+        // 語系選擇器功能
+        const languageBtn = document.getElementById('languageBtn');
+        const languageDropdown = document.getElementById('languageDropdown');
+
+        function toggleLanguageDropdown() {
+            languageDropdown.classList.toggle('active');
+            languageBtn.classList.toggle('active');
+        }
+
+        function closeLanguageDropdown() {
+            languageDropdown.classList.remove('active');
+            languageBtn.classList.remove('active');
+        }
+
+        languageBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            toggleLanguageDropdown();
+        });
+
+        // 點擊選單項目時更新按鈕文字並關閉選單
+        document.querySelectorAll('.language-dropdown a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const selectedLanguage = this.textContent;
+                languageBtn.textContent = selectedLanguage;
+                
+                // 更新active狀態
+                document.querySelectorAll('.language-dropdown a').forEach(a => a.classList.remove('active'));
+                this.classList.add('active');
+                
+                closeLanguageDropdown();
+            });
+        });
+
+        // 點擊外部區域時關閉下拉選單
+        document.addEventListener('click', function(e) {
+            if (!languageBtn.contains(e.target) && !languageDropdown.contains(e.target)) {
+                closeLanguageDropdown();
+            }
+        });
+    </script>
+</body>
+</html>
