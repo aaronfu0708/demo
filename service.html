@@ -267,7 +267,7 @@
         }
 
         .quick-nav-btn {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.8);
             border: 1px solid rgba(255, 255, 255, 0.3);
             color: #374151;
             padding: 12px 24px;
@@ -293,6 +293,18 @@
         .quick-nav-btn:active {
             transform: translateY(0);
             background: rgba(255, 255, 255, 0.9);
+        }
+
+        /* 動畫效果 */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1.2s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* Branch Section */
@@ -642,9 +654,9 @@
 
     <!-- 快速導航 -->
     <section class="quick-nav-section">
-        <div class="quick-nav-container">
-            <h2 class="quick-nav-title">全球分公司</h2>
-            <div class="quick-nav-buttons">
+        <div class="quick-nav-container fade-in">
+            <h2 class="quick-nav-title fade-in">全球分公司</h2>
+            <div class="quick-nav-buttons fade-in">
                 <a href="#taipei" class="quick-nav-btn">台北總公司</a>
                 <a href="#taichung" class="quick-nav-btn">台中分公司</a>
                 <a href="#kaohsiung" class="quick-nav-btn">高雄分公司</a>
@@ -1093,6 +1105,25 @@
             if (!languageBtn.contains(e.target) && !languageDropdown.contains(e.target)) {
                 closeLanguageDropdown();
             }
+        });
+
+        // 滾動動畫觀察器
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // 觀察所有動畫元素
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
         });
 
     </script>
