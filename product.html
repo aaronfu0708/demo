@@ -218,17 +218,19 @@
             transform: rotate(-45deg);
         }
 
-        .product-container {
-            height: 100vh;
+        /* 產品展示區域 */
+        .product-hero {
+            min-height: 100vh;
             position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
+            padding: 120px 20px 80px;
+            background: linear-gradient(135deg, #0a1929 0%, #1a365d 50%, #0f2027 100%);
             overflow: hidden;
         }
 
-        /* 背景圖片 */
-        .product-container::before {
+        .product-hero::before {
             content: '';
             position: absolute;
             top: 0;
@@ -240,7 +242,7 @@
         }
 
         /* 深色遮罩層，增強對比 */
-        .product-container::after {
+        .product-hero::after {
             content: '';
             position: absolute;
             top: 0;
@@ -251,25 +253,101 @@
             z-index: 2;
         }
 
-        /* 主內容面板 */
-        .product-panel {
+        .product-content {
             position: relative;
             z-index: 3;
-            width: 90%;
-            max-width: 550px;
-            background: rgba(30, 30, 30, 0.75);
-            border-radius: 20px;
-            padding: 25px 20px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-            animation: fadeInUp 1s ease-out;
-            margin-top: 100px;
+            max-width: 1400px;
+            width: 100%;
+            animation: slideUp 0.8s ease-out;
         }
 
-        @keyframes fadeInUp {
+        @keyframes slideUp {
+            from {
+                transform: translateY(40px);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .product-header {
+            text-align: center;
+            margin-bottom: 60px;
+            animation: fadeIn 0.6s ease-out 0.2s both;
+        }
+
+        .product-header h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(135deg, #ffffff 0%, #a0e7ff 50%, #4ade80 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .product-header .subtitle {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.85);
+            font-weight: 300;
+            letter-spacing: 3px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .product-card {
+            position: relative;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 40px 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
+            animation: fadeInCard 0.6s ease-out both;
+        }
+
+        .product-card:nth-child(1) {
+            animation-delay: 0.3s;
+        }
+
+        .product-card:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+
+        .product-card:nth-child(3) {
+            animation-delay: 0.5s;
+        }
+
+        .product-card:nth-child(4) {
+            animation-delay: 0.6s;
+        }
+
+        @keyframes fadeInCard {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
             }
             to {
                 opacity: 1;
@@ -277,106 +355,116 @@
             }
         }
 
-        /* 標題區域 */
-        .product-panel h1 {
-            font-size: 2rem;
-            font-weight: 700;
-            color: white;
-            text-align: center;
-            letter-spacing: 1.5px;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        .product-card-icon,
+        .product-card-title,
+        .product-card-description {
+            animation: fadeIn 0.6s ease-out both;
         }
 
-        .product-panel .subtitle {
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.9);
-            font-weight: 300;
-            letter-spacing: 0.5px;
-            text-align: center;
-            padding-bottom: 16px;
-            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+        .product-card:nth-child(1) .product-card-icon,
+        .product-card:nth-child(1) .product-card-title,
+        .product-card:nth-child(1) .product-card-description {
+            animation-delay: 0.3s;
         }
 
-        /* 類別連結區域 */
-        .category-list {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 14px;
-            margin-top: 24px;
+        .product-card:nth-child(2) .product-card-icon,
+        .product-card:nth-child(2) .product-card-title,
+        .product-card:nth-child(2) .product-card-description {
+            animation-delay: 0.4s;
         }
 
-        .category-item {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-decoration: none;
-            overflow: hidden;
-            border-radius: 12px;
-            padding: 8px 6px;
-            text-align: center;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        .product-card:nth-child(3) .product-card-icon,
+        .product-card:nth-child(3) .product-card-title,
+        .product-card:nth-child(3) .product-card-description {
+            animation-delay: 0.5s;
         }
 
-        .category-item::before {
+        .product-card:nth-child(4) .product-card-icon,
+        .product-card:nth-child(4) .product-card-title,
+        .product-card:nth-child(4) .product-card-description {
+            animation-delay: 0.6s;
+        }
+
+        .product-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 12px;
-            transition: all 0.3s ease;
-        }
-
-        .category-item:hover::before {
-            background: rgba(255, 255, 255, 0.15);
-            border-color: rgba(255, 255, 255, 0.4);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-        }
-
-        .category-item:hover {
-            transform: translateY(-5px);
-        }
-
-        .category-item .icon,
-        .category-item .title {
-            position: relative;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(74, 222, 128, 0.1) 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
             z-index: 1;
         }
 
-        .category-item .icon {
-            width: 120px;
-            height: 120px;
+        .product-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: rgba(0, 212, 255, 0.5);
+            box-shadow: 0 20px 60px rgba(0, 212, 255, 0.2);
+        }
+
+        .product-card:hover::before {
+            opacity: 1;
+        }
+
+        .product-card-icon {
+            position: relative;
+            z-index: 2;
+            width: 140px;
+            height: 140px;
+            margin: 0 auto 25px;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: transform 0.3s ease;
+            transition: all 0.4s ease;
         }
 
-        .category-item .icon img {
+        .product-card:hover .product-card-icon {
+            transform: scale(1.1) rotate(5deg);
+           
+        }
+
+        .product-card-icon img {
             width: 100%;
             height: 100%;
             object-fit: contain;
-            transition: transform 0.3s ease;
+            filter: drop-shadow(0 4px 15px rgba(0, 0, 0, 0.3));
+            transition: all 0.4s ease;
         }
 
-        .category-item:hover .icon img {
+        .product-card:hover .product-card-icon img {
             transform: scale(1.15);
+            filter: drop-shadow(0 8px 25px rgba(0, 212, 255, 0.4));
         }
 
-        .category-item .title {
-            font-size: 1rem;
-            font-weight: 500;
+        .product-card-title {
+            position: relative;
+            z-index: 2;
+            font-size: 1.5rem;
+            font-weight: 600;
             color: white;
+            text-align: center;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
         }
 
-        /* 查看所有商品按鈕 */
-        .view-all-products {
-            margin-top: 24px;
+        .product-card-description {
+            position: relative;
+            z-index: 2;
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.7);
             text-align: center;
+            line-height: 1.6;
+        }
+
+        .view-all-products {
+            text-align: center;
+            margin-top: 40px;
+            margin-bottom: 50px;
+            position: relative;
+            z-index: 3;
+            animation: fadeIn 0.6s ease-out 0.25s both;
         }
 
         .view-all-btn {
@@ -385,13 +473,14 @@
             align-items: center;
             justify-content: center;
             text-decoration: none;
-            padding: 16px 40px;
-            border-radius: 12px;
+            padding: 18px 50px;
+            border-radius: 50px;
             overflow: hidden;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(74, 222, 128, 0.2));
             border: 2px solid rgba(0, 212, 255, 0.4);
             backdrop-filter: blur(10px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
         }
 
         .view-all-btn::before {
@@ -401,8 +490,8 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s ease;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.6s ease;
         }
 
         .view-all-btn:hover::before {
@@ -410,55 +499,46 @@
         }
 
         .view-all-btn:hover {
-            transform: translateY(-3px);
+            transform: translateY(-5px) scale(1.05);
             background: linear-gradient(135deg, rgba(0, 212, 255, 0.3), rgba(74, 222, 128, 0.3));
-            border-color: rgba(0, 212, 255, 0.6);
-            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+            border-color: rgba(0, 212, 255, 0.7);
+            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.4);
         }
 
         .view-all-btn .title {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             font-weight: 600;
             color: white;
-            margin-right: 10px;
-            letter-spacing: 1.2px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .view-all-btn .english {
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.9);
-            font-weight: 400;
-            letter-spacing: 0.8px;
-            text-transform: uppercase;
+            margin-right: 12px;
+            letter-spacing: 2px;
             position: relative;
             z-index: 1;
         }
 
         .view-all-btn .arrow {
-            margin-left: 10px;
-            font-size: 1.1rem;
+            margin-left: 8px;
+            font-size: 1.3rem;
             color: white;
-            transition: transform 0.3s ease;
+            transition: transform 0.4s ease;
             position: relative;
             z-index: 1;
         }
 
         .view-all-btn:hover .arrow {
-            transform: translateX(5px);
+            transform: translateX(8px);
         }
 
-        /* 底部標語 */
-        .product-panel .footer {
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.85);
-            font-weight: 500;
-            letter-spacing: 1.2px;
+        .product-footer {
             text-align: center;
-            margin-top: 28px;
-            padding-top: 20px;
-            border-top: 2px solid rgba(255, 255, 255, 0.2);
+            margin-top: 60px;
+            position: relative;
+            z-index: 3;
+        }
+
+        .product-footer-text {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+            letter-spacing: 1.5px;
         }
 
         /* 響應式設計 */
@@ -519,49 +599,54 @@
                 height: 40px;
             }
 
-            .product-container {
-                min-height: 80vh;
-                padding: 20px 0;
+            .product-hero {
+                padding: 100px 15px 60px;
+                min-height: auto;
             }
 
-            .product-panel {
-                width: 95%;
-                padding:20px 10px 12px 10px;
-                margin-top: 65px;
+            .product-header {
+                margin-top: 30px;
+                margin-bottom: 40px;
             }
 
-            .product-panel h1 {
-                font-size: 1.4rem;
-                letter-spacing: 0.8px;
-                margin-bottom: 6px;
+            .product-header h1 {
+                font-size: 2rem;
+                margin-bottom: 15px;
+                letter-spacing: 1px;
             }
 
-            .product-panel .subtitle {
-                font-size: 0.75rem;
-                margin-bottom: 16px;
-                padding-bottom: 12px;
+            .product-header .subtitle {
+                font-size: 1rem;
+                letter-spacing: 2px;
             }
 
-            .category-list {
-                gap: 12px;
-                margin-top: 18px;
+            .product-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
             }
 
-            .category-item {
-                padding: 8px 6px;
+            .product-card {
+                padding: 15px 10px;
             }
 
-            .category-item .icon {
-                width: 90px;
-                height: 90px;
+            .product-card-icon {
+                width: 100px;
+                height: 100px;
+                margin: 0 auto 5px;
             }
 
-            .category-item .title {
-                font-size: 0.9rem;
+            .product-card-title {
+                font-size: 1.2rem;
+                margin-bottom: 12px;
+            }
+
+            .product-card-description {
+                font-size: 0.85rem;
             }
 
             .view-all-products {
-                margin-top: 16px;
+                margin-top: 40px;
+                margin-bottom: 30px;
             }
 
             .view-all-btn {
@@ -571,20 +656,20 @@
             .view-all-btn .title {
                 font-size: 1.1rem;
                 margin-right: 10px;
+                letter-spacing: 1.5px;
             }
-
-
 
             .view-all-btn .arrow {
-                margin-left: 10px;
                 font-size: 1.1rem;
+                margin-left: 6px;
             }
 
-            .product-panel .footer {
-                font-size: 0.7rem;
-                letter-spacing: 0.8px;
-                margin-top: 16px;
-                padding-top: 12px;
+            .product-footer {
+                margin-top: 40px;
+            }
+
+            .product-footer-text {
+                font-size: 0.75rem;
             }
         }
     </style>
@@ -624,28 +709,12 @@
         </div>
     </nav>
 
-    <div class="product-container">
-        <div class="product-panel">
-            <h1>全方位健康養生</h1>
-            <p class="subtitle">內療 外療 氛圍營造</p>
-
-            <div class="category-list">
-                <a href="#" class="category-item">
-                    <span class="icon"><img src="img/ss1.png" alt="概念"></span>
-                    <span class="title">概念</span>
-                </a>
-                <a href="#" class="category-item">
-                    <span class="icon"><img src="img/submenu_C-all.png" alt="清潔"></span>
-                    <span class="title">清潔</span>
-                </a>
-                <a href="#" class="category-item">
-                    <span class="icon"><img src="img/submenu.png" alt="補給"></span>
-                    <span class="title">補給</span>
-                </a>
-                <a href="#" class="category-item">
-                    <span class="icon"><img src="img/nursing.png" alt="調節"></span>
-                    <span class="title">調節</span>
-                </a>
+    <!-- 產品展示區域 -->
+    <section class="product-hero">
+        <div class="product-content">
+            <div class="product-header">
+                <h1>全方位健康養生</h1>
+                <p class="subtitle">內療 · 外療 · 氛圍營造</p>
             </div>
 
             <div class="view-all-products">
@@ -655,9 +724,45 @@
                 </a>
             </div>
 
-            <p class="footer">盛德信股份有限公司©2025 ALL Right Reserved</p>
+            <div class="product-grid">
+                <a href="#" class="product-card">
+                    <div class="product-card-icon">
+                        <img src="img/ss1.png" alt="概念">
+                    </div>
+                    <h3 class="product-card-title">概念</h3>
+                    <p class="product-card-description">健康養生核心理念</p>
+                </a>
+
+                <a href="#" class="product-card">
+                    <div class="product-card-icon">
+                        <img src="img/submenu_C-all.png" alt="清潔">
+                    </div>
+                    <h3 class="product-card-title">清潔</h3>
+                    <p class="product-card-description">呵護您的健康</p>
+                </a>
+
+                <a href="#" class="product-card">
+                    <div class="product-card-icon">
+                        <img src="img/submenu.png" alt="補給">
+                    </div>
+                    <h3 class="product-card-title">補給</h3>
+                    <p class="product-card-description">優質營養補充</p>
+                </a>
+
+                <a href="#" class="product-card">
+                    <div class="product-card-icon">
+                        <img src="img/nursing.png" alt="調節">
+                    </div>
+                    <h3 class="product-card-title">調節</h3>
+                    <p class="product-card-description">平衡身心靈</p>
+                </a>
+            </div>
+
+            <div class="product-footer">
+                <p class="product-footer-text">盛德信股份有限公司©2025 ALL Right Reserved</p>
+            </div>
         </div>
-    </div>
+    </section>
 
     <script>
         // 導航欄滾動效果
