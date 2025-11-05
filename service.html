@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>服務據點</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Microsoft JhengHei', 'PingFang TC', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+            background-color: #ffffff;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 0;
+            z-index: 1000;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background: rgba(15, 15, 35, 0.2);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .navbar.scrolled {
+            background: rgba(0, 93, 145, 0.9);
+        }
+
+        .nav-container {
+            max-width: 1700px;
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-img {
+            height: 60px;
+            width: auto;
+            object-fit: contain;
+            filter: brightness(1.2);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            position: relative;
+            transition: all 0.3s ease;
+            padding: 10px 0;
+        }
+
+        .nav-menu a::before {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(90deg, #00d4ff, #4ade80);
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::before {
+            width: 100%;
+        }
+
+        .nav-menu a:hover {
+            color: #00d4ff;
+            transform: translateY(-2px);
+        }
+
+        .language-selector {
+            position: relative;
+            display: inline-block;
+        }
+
+        .language-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+        }
+
+        .language-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .language-btn::after {
+            content: '▼';
+            font-size: 0.6rem;
+        }
+
+        .language-btn.active::after {
+            transform: rotate(180deg);
+        }
+
+        .language-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-10px);
+            background: rgba(20, 20, 20, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            min-width: 130px;
+            opacity: 0;
+            text-align: center;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .language-dropdown.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .language-dropdown a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .language-dropdown a:hover {
+            background: rgba(0, 212, 255, 0.1);
+            color: #00d4ff;
+        }
+
+        .language-dropdown a.active {
+            color: #00d4ff;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 1001;
+            background: none;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger-line {
+            height: 2px;
+            background: white;
+            margin: 3px 0;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .hamburger-line-long {
+            width: 25px;
+        }
+
+        .hamburger-line-short {
+            width: 18px;
+            margin-left: auto;
+        }
+
+        .hamburger.active .hamburger-line-long {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .hamburger.active .hamburger-line-short {
+            transform: rotate(-45deg);
+        }
+
+
+        /* Quick Navigation */
+        .quick-nav-section {
+            position: relative;
+            height: 65vh;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 0;
+            background-image: url('img/service.jpg');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: scroll;
+            overflow: hidden;
+        }
+
+        .quick-nav-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(15, 32, 61, 0.6);
+            z-index: 1;
+        }
+
+        .quick-nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .quick-nav-title {
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: 500;
+            margin-bottom: 30px;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+        }
+
+        .quick-nav-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .quick-nav-btn {
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #374151;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 400;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            white-space: nowrap;
+            display: inline-block;
+            backdrop-filter: blur(10px);
+        }
+
+        .quick-nav-btn:hover {
+            background: rgba(255, 255, 255, 1);
+            border-color: rgba(255, 255, 255, 0.5);
+            color: #0f203d;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .quick-nav-btn:active {
+            transform: translateY(0);
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Branch Section */
+        .branches-section {
+            padding: 100px 40px;
+            background: #f0f9f4;
+        }
+
+        .branches-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+
+
+        .branch-card {
+            background: #fafdfb;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            margin-bottom: 60px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .branch-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .branch-header {
+            background: #ffffff;
+            padding: 50px 50px 40px;
+            border-bottom: 1px solid #e5e7eb;
+            text-align: center;
+        }
+
+        .branch-title {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #0f203d;
+            margin: 0 auto;
+            letter-spacing: 0.5px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+
+        .branch-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #7cb342, #4ade80);
+            border-radius: 2px;
+        }
+
+        .branch-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: auto 1fr;
+            gap: 0;
+        }
+
+        .branch-image-wrapper {
+            grid-row: 1;
+            position: relative;
+            background: #f0f0f0;
+            height: 600px;
+            max-height: 700px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .branch-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .branch-image-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #e0e0e0 0%, #f5f5f5 100%);
+            color: #999;
+            font-size: 1.2rem;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .branch-info {
+            grid-row: 2;
+            padding: 50px;
+        }
+
+        .branch-contact {
+            margin-bottom: 40px;
+        }
+
+        .branch-contact h3 {
+            font-size: 1.8rem;
+            color: #0f203d;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #7cb342;
+        }
+
+        .contact-item {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .contact-item strong {
+            color: #0f203d;
+            min-width: 80px;
+            font-weight: 600;
+        }
+
+        .contact-item span {
+            color: #555;
+            flex: 1;
+        }
+
+        .branch-details {
+            margin-top: 40px;
+        }
+
+        .branch-details h4 {
+            font-size: 1.5rem;
+            color: #0f203d;
+            margin: 30px 0 15px;
+            font-weight: 600;
+        }
+
+        .branch-details h4:first-child {
+            margin-top: 0;
+        }
+
+        .branch-details ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .branch-details li {
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .branch-details li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #7cb342;
+            font-weight: bold;
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+
+        .branch-details p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .map-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #7cb342;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .map-link:hover {
+            color: #0f203d;
+            text-decoration: underline;
+        }
+
+
+        /* 響應式設計 */
+        @media (max-width: 1024px) {
+            .branch-content {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto 1fr;
+            }
+
+            .branch-image-wrapper {
+                height: 500px;
+                max-height: 600px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-container {
+                padding: 0 20px;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 100%;
+                height: 100vh;
+                background: url('img/leaf.jpg') center/cover no-repeat;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                z-index: 1000;
+            }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .nav-menu a {
+                color: white;
+                text-decoration: none;
+                font-size: 1.5rem;
+                font-weight: 600;
+                transition: all 0.3s ease;
+                position: relative;
+                display: block;
+                padding: 15px 40px;
+                border-radius: 60px;
+                background: rgba(255, 255, 255, 0.05);
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .nav-menu a:hover {
+                color: #535353;
+                transform: translateY(-5px) scale(1.05);
+                background: rgb(241, 253, 255);
+            }
+
+            .nav-menu a::before {
+                display: none;
+            }
+
+            .logo-img {
+                height: 40px;
+            }
+
+            .quick-nav-section {
+                min-height: 300px;
+                padding: 40px 20px;
+                margin-top: 0;
+                background-attachment: scroll;
+                align-items: flex-end;
+                padding-bottom: 70px;
+            }
+
+
+            .quick-nav-title {
+                font-size: 1.5rem;
+                margin-bottom: 25px;
+            }
+
+            .quick-nav-buttons {
+                gap: 8px;
+            }
+
+            .quick-nav-btn {
+                padding: 10px 18px;
+                font-size: 0.85rem;
+            }
+
+
+
+            .branches-section {
+                padding: 60px 20px;
+            }
+
+            .branch-title {
+                font-size: 2rem;
+            }
+
+            .branch-info {
+                padding: 30px 20px;
+            }
+
+            .branch-header {
+                padding: 40px 20px 30px;
+            }
+
+            .branch-image-wrapper {
+                height: 200px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <!-- 導航欄 -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="img/toplogo.png" alt="T&E GLOBAL" class="logo-img">
+            </a>
+            
+            <ul class="nav-menu">
+                <li><a href="product.html">全方位健康養生</a></li>
+                <li><a href="service.html">服務據點</a></li>
+                <li><a href="company.html">關於我們</a></li>
+                <li><a href="science.html">研發團隊</a></li>
+                <li><a href="https://m.trustethic.com">會員專區</a></li>
+            </ul>
+
+            <div class="language-selector">
+                <button class="language-btn" id="languageBtn">
+                    繁體中文
+                </button>
+                <div class="language-dropdown" id="languageDropdown">
+                    <a href="#" class="active">繁體中文</a>
+                    <a href="#">English</a>
+                    <a href="#">简体中文</a>
+                    <a href="#">Tiếng Việt</a>
+                </div>
+            </div>
+
+            <div class="hamburger" id="hamburger">
+                <span class="hamburger-line hamburger-line-long"></span>
+                <span class="hamburger-line hamburger-line-short"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 快速導航 -->
+    <section class="quick-nav-section">
+        <div class="quick-nav-container">
+            <h2 class="quick-nav-title">全球分公司</h2>
+            <div class="quick-nav-buttons">
+                <a href="#taipei" class="quick-nav-btn">台北總公司</a>
+                <a href="#taichung" class="quick-nav-btn">台中分公司</a>
+                <a href="#kaohsiung" class="quick-nav-btn">高雄分公司</a>
+                <a href="#vietnam" class="quick-nav-btn">越南分公司</a>
+                <a href="#china" class="quick-nav-btn">中國分公司</a>
+                <a href="#hongkong" class="quick-nav-btn">香港分公司</a>
+                <a href="#malaysia" class="quick-nav-btn">馬來西亞分公司</a>
+                <a href="#singapore" class="quick-nav-btn">新加坡分公司</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 分公司列表 -->
+    <section class="branches-section">
+        <div class="branches-container">
+
+            <!-- 台北總公司 -->
+            <div id="taipei" class="branch-card">
+                <div class="branch-header">
+                    <h2 class="branch-title">台北總公司</h2>
+                </div>
+                <div class="branch-content">
+                    <div class="branch-image-wrapper">
+                        <img src="serviceimg/headquarter.jpg" alt="台北總公司" class="branch-image">
+                    </div>
+                    <div class="branch-info">
+                        <div class="branch-contact">
+                            <h3>聯絡我們</h3>
+                            <div class="contact-item">
+                                <strong>地址：</strong>
+                                <span>104451台北市中山區敬業一路97號5樓</span>
+                            </div>
+                            <div class="contact-item">
+                                <strong>電話：</strong>
+                                <span>02-2550-9191</span>
+                            </div>
+                            <a href="#" class="map-link">查看地圖</a>
+                        </div>
+
+                        <div class="branch-details">
+                            <h4>地理環境</h4>
+                            <ul>
+                                <li><strong>環境概述：</strong>公司大樓座落於台北市中山區心臟地帶，附近飯店、餐廳、商家、遊樂園林立，四通八達的交通樞紐;捷運劍南路站步行約5分鐘跟捷運大直站步行約10分鐘可達，台北松山機場在附近，順利接軌國際，北、中、南部通行無阻。</li>
+                                <li><strong>商圈簡介：</strong>步行可達大直美麗華、ATT 4 Recharge百貨公司、實踐大學等。</li>
+                                <li><strong>大眾交通：</strong>近台北捷運、松山機場、故宮博物院。</li>
+                                <li><strong>停車指引：</strong>公司一樓平面有機車停車格，鄰近Times、普客二四停車場。</li>
+                                <li><strong>金融設施：</strong>高雄銀行、中國信託大直分行、滙豐銀行大直分行、渣打銀行大直分行。</li>
+                            </ul>
+
+                            <h4>大樓介紹</h4>
+                            <ul>
+                                <li><strong>主要特色：</strong>大樓內多屬知名企業辦公室；人員出入單純，辦公環境優良，洽公交通便利。</li>
+                                <li><strong>公司位置：</strong>大樓備有多部商務電梯，公司位在5樓。</li>
+                                <li><strong>安全設施：</strong>24小時警衛管理，全時多視角影音監護系統。</li>
+                            </ul>
+
+                            <h4>環境介紹</h4>
+                            <p>電梯出入口即可看到氣派大方的公司形象牆，搭配沉穩低調的原木裝潢及開闊面寬的接待櫃台，隨處佈置綠色盆栽美化環境，處處使您感受到盛德信的真誠相待、以客為尊。</p>
+                            <ul>
+                                <li>公司提供免費Wi-Fi，方便您隨時收發最新資訊。</li>
+                                <li>明亮寬闊的洽談空間，實用玻璃圓桌方便商談；專業公用電腦，方便查詢業績及組織狀況，以利夥伴作業。</li>
+                                <li>交誼吧檯：各式茶包、飲水設備、微波、烤箱、各類餐飲用具與桌椅一應具全。</li>
+                                <li>公佈欄即時公佈公司各項公文公告、資訊布達、課程招生訊息、活動宣傳等…。</li>
+                                <li>專業會場可容納百人使用，若外接投影設備，可擴充至外會場，即可舉辦中型說明會。會場配置高級吸頂、懸吊喇叭設備，讓會場使用更加多元化！</li>
+                                <li>專業音控室，12軌mixer輸出搭配連接使用，配有桌上型電腦、筆電，還可外接自備電腦、音源等設備。</li>
+                                <li>配置多間小會議室。配備白板，提供您小型會議所需。</li>
+                                <li>設有寬廣大面積的接待櫃台，提供公司各項活動DM、公告辦法、當月行事曆及產品使用指南等相關訊息表單；並設有產品諮詢服務區，結合原來的臨櫃業務服務，為您提供更多元完整的即時服務！</li>
+                                <li>備有專業SHARP彩色雷射專業多功能事務機，定期專人維護，保證每張都是高品質輸出。</li>
+                            </ul>
+
+                            <h4>交通方式</h4>
+                            <p><strong>大眾交通工具</strong></p>
+                            <ul>
+                                <li>搭乘捷運：搭捷運文湖線至劍南路站(BR15)出口2，再步行約10分鐘即可抵達。</li>
+                            </ul>
+                            <p><strong>自行開車</strong></p>
+                            <ul>
+                                <li>國道1號：國道1堤頂交流道23A下朝濱江街前進，經過大直橋朝明水路前進約10分鐘即可抵達。</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 台中分公司 -->
+            <div id="taichung" class="branch-card">
+                <div class="branch-header">
+                    <h2 class="branch-title">台中分公司</h2>
+                </div>
+                <div class="branch-content">
+                    <div class="branch-image-wrapper">
+                        <img src="serviceimg/taichung.jpg" alt="台中分公司" class="branch-image">
+                    </div>
+                    <div class="branch-info">
+                        <div class="branch-contact">
+                            <h3>聯絡我們</h3>
+                            <div class="contact-item">
+                                <strong>地址：</strong>
+                                <span>40758台中市文心路二段201號13F-1</span>
+                            </div>
+                            <div class="contact-item">
+                                <strong>電話：</strong>
+                                <span>04-2259-9659</span>
+                            </div>
+                            <a href="#" class="map-link">查看地圖</a>
+                        </div>
+
+                        <div class="branch-details">
+                            <h4>地理環境</h4>
+                            <ul>
+                                <li>公司大樓座落於台中精華地段七期，鄰近台中市政府、BRT、捷運，高鐵站直達公車，交通方便。</li>
+                                <li>公司大樓有100個停車位，汽車每15元／30分鐘。</li>
+                                <li>公司大樓旁市政公園室內停車場，約可容納899個汽車停車位以及400個機車停車位；汽車10元／30分鐘，未滿30分鐘者，以30分鐘計算；機車每日計次收費，每次20元。</li>
+                            </ul>
+
+                            <h4>大樓介紹</h4>
+                            <ul>
+                                <li>大樓備有視訊會議室、大型會議室及階梯教室供租用。</li>
+                                <li>門禁系統：停車場、大廳、電梯設備皆採數位晶片刷卡系統，分層管制樓層人員進出，安全性高。</li>
+                                <li>電梯系統：4部可納17人客梯，1部貨梯。</li>
+                                <li>共用化妝室：化妝室整體環境明亮、整潔，通風性佳，清潔人員定時整理。</li>
+                            </ul>
+
+                            <h4>環境介紹</h4>
+                            <ul>
+                                <li>提供免費100M Wi-Fi。</li>
+                                <li>明亮的開放洽談空間，8組實用玻璃圓桌搭配舒適軟墊方便書寫，在充滿綠色植物及柔和音樂的環境，彷彿置身森林，讓到來的賓客享受輕鬆自在的感覺。</li>
+                                <li>備有公用電腦，方便查詢業績及組織狀況，方便夥伴作業。</li>
+                                <li>茶水間：以系統櫃混搭大理石完成的獨立空間，色調及空間氛圍也是延續"家"的感覺。賀眾牌微電腦節能型飲水機，冰、溫、熱水隨時提供；公司內部使用義大利Delonghi-迪朗奇全自動咖啡機，一指取得香氣濃郁別具風味的咖啡。</li>
+                                <li>可容納至150人專業說明會場，配備投影、音效及歡唱設備，專業演講及一般聚會皆可借用，會場作業多元化。</li>
+                                <li>可容納8人小會議室。備有HDMI、VGA線、網路線，可以連接到大螢幕，配備白板，提供您小型會議所需之空間。高質感二葉松木製會議桌，搭配時尚座椅，讓您於小組會議時，輕鬆舒適。</li>
+                                <li>備有專業SHARP彩色雷射專業多功能事務機，定期專人維護，保證每張都是高品質輸出。</li>
+                            </ul>
+
+                            <h4>交通方式</h4>
+                            <p><strong>大眾交通工具</strong></p>
+                            <ul>
+                                <li><strong>（一）搭乘高鐵：</strong>到達『高鐵臺中站(16月台)(站牌名稱)』，搭乘151路公車到達『臺中市政府(站牌名稱)』，共經過4站。</li>
+                                <li><strong>（二）搭乘火車：</strong>於台中火車站下車出發，轉搭BRT或公車，搭乘300、301、302、303、304、305、306、307、308、323路公車到達『臺中市政府(站牌名稱)』，往順天經貿大樓方向步行約8分鐘。</li>
+                                <li><strong>（三）搭乘客運：</strong>於朝馬轉運站下車，步行約25分鐘；或於秋紅谷搭乘152公車，於市警局下車，即到順天經貿大樓。</li>
+                            </ul>
+                            <p><strong>自行開車</strong></p>
+                            <ul>
+                                <li><strong>（一）行駛國道1號：</strong>下【臺中交流道(臺中、沙鹿)】往臺中方向→行駛臺灣大道3段(路經黎明路、河南路、惠來路、惠中路)→右轉至文心路→盛德信台中分公司(順天經貿大樓)將在您右側，車輛可停至市政公園地下收費停車場或順天經貿地下收費停車場。</li>
+                                <li><strong>（二）南下國道3號：</strong>於【中港系統交流道】接【國道4號(神岡、清水)】往神岡方向→於【臺中系統交流道】接【國道1號(后里、臺中)】往臺中方向→下【臺中交流道(臺中、沙鹿)】往臺中方向→行駛臺灣大道3段(路經黎明路、河南路、惠來路、惠中路)→右轉至文心路二段→盛德信台中分公司(順天經貿大樓)將在您右側，車輛可停至市政公園地下收費停車場或順天經貿地下收費停車場。</li>
+                                <li><strong>（三）南下中彰快速道路(74線)：</strong>下【西屯路交流道】後→左轉西屯路→右轉黎明路三段→左轉臺灣大道3段(路經河南路、惠來路、惠中路)→右轉至文心路二段→盛德信台中分公司(順天經貿大樓)將在您右側，車輛可停至市政公園地下收費停車場或順天經貿地下收費停車場。</li>
+                                <li><strong>（四）北上中彰快速道路(74線)：</strong>下【市政路交流道】後→右轉市政路→左轉文心路→行駛至文心路二段與市政北五路交叉口→盛德信台中分公司(順天經貿大樓)將在您左側，車輛可停至市政公園地下收費停車場或順天經貿地下收費停車場。</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 高雄分公司 -->
+            <div id="kaohsiung" class="branch-card">
+                <div class="branch-header">
+                    <h2 class="branch-title">高雄分公司</h2>
+                </div>
+                <div class="branch-content">
+                    <div class="branch-image-wrapper">
+                        <img src="serviceimg/kaohsiung.jpg" alt="高雄分公司" class="branch-image">
+                    </div>
+                    <div class="branch-info">
+                        <div class="branch-contact">
+                            <h3>聯絡我們</h3>
+                            <div class="contact-item">
+                                <strong>地址：</strong>
+                                <span>80661高雄市復興四路12號 A-18 2樓</span>
+                            </div>
+                            <div class="contact-item">
+                                <strong>電話：</strong>
+                                <span>07-970-2323</span>
+                            </div>
+                            <a href="#" class="map-link">查看地圖</a>
+                        </div>
+
+                        <div class="branch-details">
+                            <h4>地理環境</h4>
+                            <ul>
+                                <li>盛德信高雄分公司座落於高雄軟體園區，位處高雄港東側，緊鄰高雄展覽館、高雄圖書總館以及三多商圈。</li>
+                                <li>地處高雄市中心區域，加上高鐡及捷運鍊結，並與台灣首條輕軌–高雄輕軌相接，軟體園區門口即輕軌站，大幅提升交通便立性。</li>
+                            </ul>
+
+                            <h4>大樓介紹</h4>
+                            <ul>
+                                <li>藝術造景園區、飯店式水井門廳，層次立體石材造景，打造獨特美感。</li>
+                                <li>會議空間：獨立空間，適合商務會議，位於各樓層，可容納約10-100人。</li>
+                                <li>多功能藝術展演中心：藝文活動，創意講座，設計展出，人文交流，營造美感雅致心體驗。</li>
+                                <li>園區內有各式美食咖啡餐廳，用餐方便及生活機能佳。</li>
+                                <li>化妝室：化妝室整體環境明亮、整潔，且通風性佳，清潔人員定時整理清潔。</li>
+                            </ul>
+
+                            <h4>環境介紹</h4>
+                            <ul>
+                                <li>一進到盛德信公司，感受到氣勢明亮寬敞的大廳，柔和燈光及輕鬆音樂的交互作用下，讓到來的賓客可以享受家的感覺。</li>
+                                <li>公司提供免費Wi-Fi，方便您隨時收發最新資訊。</li>
+                                <li>8組玻璃圓桌搭配舒適座椅以利洽談，輕鬆自在的氛圍，彷彿置身世外桃源。</li>
+                                <li>公司備有專業公用電腦，方便經銷商查詢業績及組織狀況。</li>
+                                <li>專業說明會場可容納70人次使用，並配備投影音響設備，不論是專業會議簡報及歡樂聚會皆可以借用，會場使用更加多元化。</li>
+                                <li>兩間小型會議室，配備白板，提供小組會議所需之空間。高質感原木會議桌，搭配設計感皮椅，提供更為舒適的洽談會議空間。</li>
+                                <li>休息室提供獨立的個人休憩空間，舒適的沙發椅，讓您小憩片刻、補充能量，養足精神活力。</li>
+                                <li>以『家』為設計概念的茶水間，係以系統櫃搭配大理石完成的獨立空間，整個色調及空間氛圍延續"家"的感覺，廚櫃以典雅灰白色門板及人造石檯面處理，內鑲有喜特麗微晶面板電陶爐，並備有飲水機、Delonghi迪朗奇全自動咖啡機、微波爐、電冰箱及各式茶包、咖啡用品一應俱全。</li>
+                                <li>專業SHARP彩色雷射專業多功能事務機。</li>
+                            </ul>
+
+                            <h4>交通方式</h4>
+                            <p><strong>大眾交通工具</strong></p>
+                            <ul>
+                                <li><strong>（一）搭乘高鐵：</strong>搭乘高鐵至左營高鐵站(R16)出站/火車至高雄車站(R11)→轉搭捷運南下至獅甲站(R7)2號出口→轉搭接駁公車紅16→至高雄軟體園區。</li>
+                                <li><strong>（二）搭乘捷運：</strong>搭捷運至凱旋站(R6)，並轉搭輕軌至軟體園區(C7)。</li>
+                            </ul>
+                            <p><strong>自行開車</strong></p>
+                            <ul>
+                                <li><strong>（一）南下國道1號：</strong>國道1號南下→國道1號末端出口→往市區方向右轉→接中山四路→中山三路→上凱旋路橋→復興三路左轉→至高雄軟體園區。</li>
+                                <li><strong>（二）北上台88快速道路：</strong>台88快速道路北上→接國道1號→下三多路出口→左轉三多一路→三多二路→復興三路左轉→至高雄軟體園區。</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 越南分公司 -->
+            <div id="vietnam" class="branch-card">
+                <div class="branch-header">
+                    <h2 class="branch-title">越南分公司</h2>
+                </div>
+                <div class="branch-content">
+                    <div class="branch-image-wrapper">
+                        <img src="serviceimg/headquarter2.jpg" alt="越南分公司" class="branch-image">
+                    </div>
+                    <div class="branch-info">
+                        <div class="branch-contact">
+                            <h3>聯絡我們</h3>
+                            <div class="contact-item">
+                                <strong>地址：</strong>
+                                <span>5th Floor, IC Building, No. 82 Duy Tan Street, Dich Vong Hau Ward, Cau Giay District, Hanoi City, Vietnam</span>
+                            </div>
+                            <a href="#" class="map-link">查看地圖</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 中國分公司 -->
+            <div id="china" class="branch-card">
+                <div class="branch-header">
+                    <h2 class="branch-title">中國分公司</h2>
+                </div>
+                <div class="branch-content">
+                    <div class="branch-image-wrapper">
+                        <img src="serviceimg/china.jpg" alt="中國分公司" class="branch-image">
+                    </div>
+                    <div class="branch-info">
+                        <div class="branch-contact">
+                            <h3>聯絡我們</h3>
+                            <div class="contact-item">
+                                <strong>地址：</strong>
+                                <span>廣州市白雲區永泰學山塘街81號學山文化創意谷A2棟213</span>
+                            </div>
+                            <a href="#" class="map-link">查看地圖</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 香港分公司 -->
+            <div id="hongkong" class="branch-card">
+                <div class="branch-header">
+                    <h2 class="branch-title">香港分公司</h2>
+                </div>
+                <div class="branch-content">
+                    <div class="branch-image-wrapper">
+                        <img src="serviceimg/hongkong.jpg" alt="香港分公司" class="branch-image">
+                    </div>
+                    <div class="branch-info">
+                        <div class="branch-contact">
+                            <h3>聯絡我們</h3>
+                            <div class="contact-item">
+                                <strong>地址：</strong>
+                                <span>香港九龍灣臨興街21號7樓12室</span>
+                            </div>
+                            <div class="contact-item">
+                                <strong>電話：</strong>
+                                <span>+852-3575-9222</span>
+                            </div>
+                            <a href="#" class="map-link">查看地圖</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 馬來西亞分公司 -->
+            <div id="malaysia" class="branch-card">
+                <div class="branch-header">
+                    <h2 class="branch-title">馬來西亞分公司</h2>
+                </div>
+                <div class="branch-content">
+                    <div class="branch-image-wrapper">
+                        <img src="serviceimg/malaysia.jpg" alt="馬來西亞分公司" class="branch-image">
+                    </div>
+                    <div class="branch-info">
+                        <div class="branch-contact">
+                            <h3>聯絡我們</h3>
+                            <div class="contact-item">
+                                <strong>地址：</strong>
+                                <span>B-1-15, Block B, 8 Avenue, Jalan Sungai Jernih 8/1, Seksyen 8, 46050 Petaling Jaya, Selangor, Malaysia</span>
+                            </div>
+                            <div class="contact-item">
+                                <strong>電話：</strong>
+                                <span>+60-3-7931-3533</span>
+                            </div>
+                            <a href="#" class="map-link">查看地圖</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 新加坡分公司 -->
+            <div id="singapore" class="branch-card">
+                <div class="branch-header">
+                    <h2 class="branch-title">新加坡分公司</h2>
+                </div>
+                <div class="branch-content">
+                    <div class="branch-image-wrapper">
+                        <img src="serviceimg/singapore.jpg" alt="新加坡分公司" class="branch-image">
+                    </div>
+                    <div class="branch-info">
+                        <div class="branch-contact">
+                            <h3>聯絡我們</h3>
+                            <div class="contact-item">
+                                <strong>地址：</strong>
+                                <span>Blk4033 Ang Mo Kio Industrial Park 1, #01-72 Singapore 569640</span>
+                            </div>
+                            <div class="contact-item">
+                                <strong>電話：</strong>
+                                <span>+65-6556-1810</span>
+                            </div>
+                            <a href="#" class="map-link">查看地圖</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // 導航欄滾動效果
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // 平滑滾動
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const target = document.querySelector(targetId);
+                if (target) {
+                    const offset = 100; // 導航欄高度偏移
+                    const targetPosition = target.offsetTop - offset;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // 漢堡選單功能
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        function toggleMobileNav() {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            
+            if (navMenu.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        hamburger.addEventListener('click', function(e) {
+            e.stopPropagation();
+            toggleMobileNav();
+        });
+
+        // 點擊選單項目時關閉選單
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', function() {
+                if (navMenu.classList.contains('active')) {
+                    toggleMobileNav();
+                }
+            });
+        });
+
+        // 點擊選單外部區域時關閉選單
+        navMenu.addEventListener('click', function(e) {
+            if (e.target === navMenu && navMenu.classList.contains('active')) {
+                toggleMobileNav();
+            }
+        });
+
+        // 語系選擇器功能
+        const languageBtn = document.getElementById('languageBtn');
+        const languageDropdown = document.getElementById('languageDropdown');
+
+        function toggleLanguageDropdown() {
+            languageDropdown.classList.toggle('active');
+            languageBtn.classList.toggle('active');
+        }
+
+        function closeLanguageDropdown() {
+            languageDropdown.classList.remove('active');
+            languageBtn.classList.remove('active');
+        }
+
+        languageBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            toggleLanguageDropdown();
+        });
+
+        // 點擊選單項目時更新按鈕文字並關閉選單
+        document.querySelectorAll('.language-dropdown a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const selectedLanguage = this.textContent;
+                languageBtn.textContent = selectedLanguage;
+                
+                // 更新active狀態
+                document.querySelectorAll('.language-dropdown a').forEach(a => a.classList.remove('active'));
+                this.classList.add('active');
+                
+                closeLanguageDropdown();
+            });
+        });
+
+        // 點擊外部區域時關閉下拉選單
+        document.addEventListener('click', function(e) {
+            if (!languageBtn.contains(e.target) && !languageDropdown.contains(e.target)) {
+                closeLanguageDropdown();
+            }
+        });
+
+    </script>
+</body>
+</html>
+
