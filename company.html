@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,7 +17,26 @@
             line-height: 1.6;
             color: #333;
             overflow-x: hidden;
-            background-color: #ffffff;
+            background-image: url('img/about.jpg');
+            background-position: top;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 0;
+            pointer-events: none;
         }
 
         .navbar {
@@ -32,8 +52,9 @@
         }
 
         .navbar.scrolled {
-         background: rgba(0, 93, 145, 0.9); 
+            background: rgba(0, 93, 145, 0.9);
         }
+
         .nav-container {
             max-width: 1700px;
             width: 100%;
@@ -41,7 +62,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 40px;;
+            padding: 0 40px;
+            ;
         }
 
         .logo {
@@ -304,23 +326,8 @@
 
         .section-dark {
             position: relative;
-            background-image: url('img/about.jpg');
-            background-position: top;
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            color: white;
-        }
-
-        .section-dark::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 1;
+            background: transparent;
+            color: #333;
         }
 
         .section-dark .section-container {
@@ -375,7 +382,7 @@
         }
 
         .section-dark .content-block h3 {
-            color: white;
+            color: #0f203d;
         }
 
         .content-block h4 {
@@ -496,6 +503,7 @@
             color: #555;
             line-height: 1.7;
         }
+
         /* 彎曲背景形狀 */
         .curve-bg {
             position: absolute;
@@ -550,6 +558,7 @@
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -557,7 +566,7 @@
         }
 
 
-        
+
 
         .fade-in {
             opacity: 0;
@@ -638,9 +647,11 @@
                 width: 130px;
                 height: 40px;
             }
+
             .hero-section {
                 height: 50vh;
             }
+
             .hero-title {
                 font-size: 2.5rem;
             }
@@ -653,13 +664,18 @@
                 font-size: 2rem;
             }
 
+            body {
+                background: url('img/about2.jpg');
+            }
+
             .section {
                 padding: 60px 20px;
             }
+
             .section-dark {
-                background: #132d59;
-                background-image: none;
+                background: transparent;
             }
+
             .video-container {
                 grid-template-columns: 1fr;
             }
@@ -679,6 +695,7 @@
         }
     </style>
 </head>
+
 <body>
     <!-- 導航欄 -->
     <nav class="navbar" id="navbar">
@@ -686,7 +703,7 @@
             <a href="index.html" class="logo" aria-label="T&amp;E GLOBAL">
                 <span class="logo-icon" role="img" aria-hidden="true"></span>
             </a>
-            
+
             <ul class="nav-menu">
                 <li><a href="product.html">全方位健康養生</a></li>
                 <li><a href="service.html">服務據點</a></li>
@@ -721,7 +738,7 @@
         </video>
         <div class="curve-divider">
             <svg viewBox="0 0 1440 150" preserveAspectRatio="none">
-                <path d="M0,150 Q360,50 720,100 T1440,100 L1440,150 Z" fill="#f5f7fa"/>
+                <path d="M0,150 Q360,50 720,100 T1440,100 L1440,150 Z" fill="#f5f7fa" />
             </svg>
         </div>
     </section>
@@ -732,7 +749,7 @@
         <div class="section-container">
             <h2 class="section-title">品牌故事</h2>
             <p class="section-subtitle">夢想的實踐者</p>
-            
+
             <div class="content-block">
                 <p class="highlight-text">一個信念 為守護全人類健康而研發世界級的產品</p>
                 <p class="highlight-text">一個夢想 為幫助所有事業夥伴安居樂業擁抱希望</p>
@@ -747,31 +764,31 @@
 
             <div class="content-block">
                 <p>T&E Global盛德信環球集團，創立於2003年，是來自台灣、跨足全亞洲的環球商業集團。總部設立於台灣台北，旗下子公司分別設立於台中、高雄、香港、馬來西亞、及新加坡。
-                集團整合了全球頂尖的國際級生技研發團隊、歐盟最高規格藥廠、雲端全方位事業工具、多媒體行銷計畫、寰宇物流串聯，以及完整的企業家育成輔導服務，以"愛、關懷、生命力"的集團哲學創建全球零時差、無遠弗屆的國際健康事業版圖。
-                十多年來已幫助了無數人找到健康、實現夢想、攀登人生的頂峰!</p>
+                    集團整合了全球頂尖的國際級生技研發團隊、歐盟最高規格藥廠、雲端全方位事業工具、多媒體行銷計畫、寰宇物流串聯，以及完整的企業家育成輔導服務，以"愛、關懷、生命力"的集團哲學創建全球零時差、無遠弗屆的國際健康事業版圖。
+                    十多年來已幫助了無數人找到健康、實現夢想、攀登人生的頂峰!</p>
             </div>
 
             <div class="content-block">
                 <p>T&E Global提供您全球最優勢的事業獎勵計畫，邀請全世界的創業家與青年們加入盛德信環球集團的國際健康連鎖加盟事業平台。
-                學習、分享、互助、累積晉升、高額獎勵、快速倍增的事業與理想中的被動收入!</p>
+                    學習、分享、互助、累積晉升、高額獎勵、快速倍增的事業與理想中的被動收入!</p>
             </div>
 
             <div class="content-block">
                 <p>2020年盛德信更提出了超前佈署十年的『新連鎖加盟6.0』制高點全球戰略!打造OAO跨界創業生態圈，虛實整合、線上線下完美串聯。
-                並於北中南成立三大營運中心:「新連鎖加盟戰略研究中心」、「全球多媒體運營中心」、「全球先進科學研究中心」。培育全球創業的種子菁英。結合廣大社會資源，全面挺進大中華市場以及東盟各國。
-                無論您身在世界的哪一個地方，只要透過盛德信集團的雲端事業工具及多元行銷計畫，即可輕鬆開始您的創業之旅。</p>
+                    並於北中南成立三大營運中心:「新連鎖加盟戰略研究中心」、「全球多媒體運營中心」、「全球先進科學研究中心」。培育全球創業的種子菁英。結合廣大社會資源，全面挺進大中華市場以及東盟各國。
+                    無論您身在世界的哪一個地方，只要透過盛德信集團的雲端事業工具及多元行銷計畫，即可輕鬆開始您的創業之旅。</p>
                 <p><strong>現在就加入T&E Global盛德信環球集團，以愛與良善，豐盛您的健康人生!</strong></p>
             </div>
         </div>
         <svg class="curve-bg curve-bg-bottom" viewBox="0 0 1440 200" preserveAspectRatio="none">
-            <path d="M0,0 Q360,100 720,50 T1440,150 L1440,200 Z" fill="#0f203d" opacity="0.05"/>
+            <path d="M0,0 Q360,100 720,50 T1440,150 L1440,200 Z" fill="#0f203d" opacity="0.05" />
         </svg>
     </section>
 
     <!-- 影片Section -->
     <section class="video-section">
         <svg class="curve-bg curve-bg-top" viewBox="0 0 1440 200" preserveAspectRatio="none">
-            <path d="M0,200 Q360,50 720,100 T1440,80 L1440,200 Z" fill="#f5f7fa" opacity="0.1"/>
+            <path d="M0,200 Q360,50 720,100 T1440,80 L1440,200 Z" fill="#f5f7fa" opacity="0.1" />
         </svg>
         <div class="video-container">
             <div class="video-item">
@@ -789,26 +806,27 @@
 
         <div class="section-container">
             <h2 class="section-title">關於創辦人</h2>
-            
+
             <div class="content-block">
-                <img src="img/ceo2.png" alt="創辦人照片" style="width: 320px; max-width: 45%; height: auto; display: block; float: right; margin: 0 0 16px 24px;">
+                <img src="img/ceo2.png" alt="創辦人照片"
+                    style="width: 320px; max-width: 45%; height: auto; display: block; float: right; margin: 0 0 16px 24px;">
             </div>
 
             <div class="content-block">
                 <h4>人生的分水嶺</h4>
                 <p>屬於五年級中段班的我，一路的成長、求學到立業，堪稱順利。近年，隨著「人生勝利組」這句話的流行，我偶爾不能免俗地想，是否有資格歸為那一國？勝利的人生，有誰不欣羨呢。然而我更相信，人生的勝負，最重要的毋寧來自是否擁有正能量的觀念，也就是說，我是否更應該思考人生的分水嶺發生在哪時候？我選擇哪一條人生道路？
-                創辦盛德信之前的20年，適逢台灣經濟起飛的黃金年代，我在頗為知名的外商與高科技公司，任職專業經理人，我非常喜歡那種勤奮、認真的工作環境，而且幸運地，父母健朗，讓我沒有後顧之憂，專心事業。我那時心中慶幸，我的未來將是一條向上成長的曲線。然而30歲開始，高血壓、糖尿病、心臟病竟然接續找上我的母親，短短兩年後，她老人家不得不踏上洗腎的艱苦路。
-                我父母那一代人，前半生物質匱乏，日子過得辛苦卻樂觀，但後半生得益於社會富裕，有著優質且便利的醫療體系可以倚靠，身為么子的我自然肩負起陪伴母親就醫的責任。慢性病的治療是漫長的，很容易讓人沮喪，心情伴隨病況的起伏，加上望治心切，也就特別容易遭到有心之人利用。
-                我清楚記得那一天，2002年5月12日，母親節，我向母親住院的內湖國泰醫院請假四個小時，帶她外出到附近的餐廳，與全家人享受一下歡樂時光。餐畢，當我們攙扶著母親離開，一對中年夫妻主動上來與我們攀談，懇切地說他們母親也是同樣多種疾病纏身，不能行走，遍訪名醫但都沒有什麼好轉，幸好得到一位好心朋友的介紹，有一種保健食品，效果非常好，接著給我一張印著新學友機構的名片，要我若覺需要隨時與他聯絡。同病相憐吧，回到醫院後，我反覆看著那名片，竟然內心生出希望，不斷膨脹，認為這莫非是貴人相助，我相信這真的是可以讓母親擺脫病痛的一個機會。當然，在我轉帳三萬元到他指定的帳戶，兩天後收到一包看起來非常可疑的藥丸，我才如夢大醒般，認清是受騙了。雖然痛恨對方利用病患親人的脆弱心理，但我也相當懊惱自己怎會那當下如此失去理智。
-                但是禍福相倚，這樣的受騙經驗，卻是我人生的一個重要的分水嶺。</p>
+                    創辦盛德信之前的20年，適逢台灣經濟起飛的黃金年代，我在頗為知名的外商與高科技公司，任職專業經理人，我非常喜歡那種勤奮、認真的工作環境，而且幸運地，父母健朗，讓我沒有後顧之憂，專心事業。我那時心中慶幸，我的未來將是一條向上成長的曲線。然而30歲開始，高血壓、糖尿病、心臟病竟然接續找上我的母親，短短兩年後，她老人家不得不踏上洗腎的艱苦路。
+                    我父母那一代人，前半生物質匱乏，日子過得辛苦卻樂觀，但後半生得益於社會富裕，有著優質且便利的醫療體系可以倚靠，身為么子的我自然肩負起陪伴母親就醫的責任。慢性病的治療是漫長的，很容易讓人沮喪，心情伴隨病況的起伏，加上望治心切，也就特別容易遭到有心之人利用。
+                    我清楚記得那一天，2002年5月12日，母親節，我向母親住院的內湖國泰醫院請假四個小時，帶她外出到附近的餐廳，與全家人享受一下歡樂時光。餐畢，當我們攙扶著母親離開，一對中年夫妻主動上來與我們攀談，懇切地說他們母親也是同樣多種疾病纏身，不能行走，遍訪名醫但都沒有什麼好轉，幸好得到一位好心朋友的介紹，有一種保健食品，效果非常好，接著給我一張印著新學友機構的名片，要我若覺需要隨時與他聯絡。同病相憐吧，回到醫院後，我反覆看著那名片，竟然內心生出希望，不斷膨脹，認為這莫非是貴人相助，我相信這真的是可以讓母親擺脫病痛的一個機會。當然，在我轉帳三萬元到他指定的帳戶，兩天後收到一包看起來非常可疑的藥丸，我才如夢大醒般，認清是受騙了。雖然痛恨對方利用病患親人的脆弱心理，但我也相當懊惱自己怎會那當下如此失去理智。
+                    但是禍福相倚，這樣的受騙經驗，卻是我人生的一個重要的分水嶺。</p>
             </div>
 
             <div class="content-block">
                 <h4>做人類健康守護者的初衷</h4>
                 <p>陪伴母親頻繁進出醫院的那幾年，看著那些分門別類的醫療大樓、好像菜市場的人潮，各種疾病給人們的苦痛，我總是感觸很多，生、老、病、死，確實是自然的循環，是生命的必然過程。我也因此偶然得知，西方醫學的象徵符號，是一條蛇纏繞著一根木杖，什麼涵義呢？原來木杖代表著人體的脊椎骨，也代表著進化與靈性的昇進；而每年都會蛻皮的蛇，象徵著恢復、更新與重生的過程。多麼美好的象徵，包含深沉的思想。俗語說：「人吃五穀雜糧，哪有不生病的？」蛇杖的醫學符號，很大的意義，不就是人的一生的象徵？從幼年而童年、少年，壯年、中年、老年，隨著時間演進，一路上不可能不變化、不挫折、沒傷害，更不可能不更新、不轉化、不重生。
-                這就是為什麼我認為2002年，為了母親而受騙買到假藥，是我人生的一個重要的分水嶺。
-                2003年7月的一個平常的日子，我與一位熟識的主管在一次餐敘，深刻地談論廿一世紀因為人壽的增長與醫藥的發達，將是生技與健康產業蓬勃發展的盛世。那一席話，有如一顆神奇的種子放進我的心中。
-                時隔不到五個月，2003年的年底，或許因為我的心思與意志的集中，因緣巧合，喚起了我創業的決心。之前那幾年照顧生病的母親、陪伴她求醫的歷程，更是引燃我創業雄心的柴火。</p>
+                    這就是為什麼我認為2002年，為了母親而受騙買到假藥，是我人生的一個重要的分水嶺。
+                    2003年7月的一個平常的日子，我與一位熟識的主管在一次餐敘，深刻地談論廿一世紀因為人壽的增長與醫藥的發達，將是生技與健康產業蓬勃發展的盛世。那一席話，有如一顆神奇的種子放進我的心中。
+                    時隔不到五個月，2003年的年底，或許因為我的心思與意志的集中，因緣巧合，喚起了我創業的決心。之前那幾年照顧生病的母親、陪伴她求醫的歷程，更是引燃我創業雄心的柴火。</p>
             </div>
             <!-- <div class="video-item">
                 <video controls>
@@ -820,29 +838,32 @@
             <div class="content-block">
                 <h4>以信以德豐盛人生</h4>
                 <p>2003年12月2日，盛德信正式開業。雖然對於那時候的我，生技健康產業是一個完全陌生的領域，幸運地是我多年累積的人脈，許多傑出的專業人士給予我全力的協助，媒合優秀的研發團隊，開發優良產品，終於水到渠成。
-                我堅持創業的核心理念有二：以「為無助的人找到無限的希望」為初衷，期望成為「人類健康的守護者」。
-                正信念產生正能量，也才能匯聚志同道合的夥伴，一齊踏上實踐理念的道路。同仁們與我，真誠期望給人們帶來健康，自許「盛德信」是充滿誠信與愛心，銷售過程絕不誇大，絕不作假，信用第一，要發揮愛、關懷與生命力，幫助那些需要幫助的人。
-                「盛德信」的名字，望文生義，正是我立志以信以德豐盛人生的願望。</p>
+                    我堅持創業的核心理念有二：以「為無助的人找到無限的希望」為初衷，期望成為「人類健康的守護者」。
+                    正信念產生正能量，也才能匯聚志同道合的夥伴，一齊踏上實踐理念的道路。同仁們與我，真誠期望給人們帶來健康，自許「盛德信」是充滿誠信與愛心，銷售過程絕不誇大，絕不作假，信用第一，要發揮愛、關懷與生命力，幫助那些需要幫助的人。
+                    「盛德信」的名字，望文生義，正是我立志以信以德豐盛人生的願望。</p>
             </div>
 
             <div class="content-block">
                 <h4>好產品才是王道的成長歷程</h4>
                 <p>從踏入社會工作，晉升到專業經理人，再到自己創業，商業體系的運作，我獲得最堅實的體認是，「好產品才是王道」，這是永遠的真理。這也是「盛德信」能在短短的幾年時間，在市場上建立好口碑，獲得廣大的支持與肯定的主要關鍵。
-                我創業的第四年，2007年6月18日，創下單日營業額突破一百萬的紀錄。老實說，喜悅只是一時的，隨之而來的我反而內心感到沈重，因為業界「以量制價」的現象造就讓我非常困惑，也就是說，愈是財力雄厚的，愈是能夠以折扣為名，購買到便宜的產品。這種令人不舒服的、如同叢林法則的現象違背了我創業的初衷，讓我對「盛德信」的愛護者感到不捨與煎熬。
-                之後不久，一對兄弟來拜訪我，問我對直銷通路是否有興趣？向來對直銷非常排斥的我，心想怎麼可能，當下拒絕。然而這對兄弟又對我說，如果有一套不需漲價、又可以符合「公平正義」的銷售制度，你是否有興趣？</p>
+                    我創業的第四年，2007年6月18日，創下單日營業額突破一百萬的紀錄。老實說，喜悅只是一時的，隨之而來的我反而內心感到沈重，因為業界「以量制價」的現象造就讓我非常困惑，也就是說，愈是財力雄厚的，愈是能夠以折扣為名，購買到便宜的產品。這種令人不舒服的、如同叢林法則的現象違背了我創業的初衷，讓我對「盛德信」的愛護者感到不捨與煎熬。
+                    之後不久，一對兄弟來拜訪我，問我對直銷通路是否有興趣？向來對直銷非常排斥的我，心想怎麼可能，當下拒絕。然而這對兄弟又對我說，如果有一套不需漲價、又可以符合「公平正義」的銷售制度，你是否有興趣？</p>
             </div>
 
             <div class="content-block">
                 <h4>2007年6月22日為公平正義盛德信轉型直銷</h4>
                 <p>「公平正義」！這大大地打動了我。經過通盤了解，我決定以此為銷售原則，就這樣，我與「盛德信」來到另一個分水嶺，正式開啟了我的直銷人生。我深深期許自己，打造一間不一樣的直銷公司，用大家看得到、感受得到的實在作為，來端正人們對直銷的看法。我更期望「盛德信」有朝一日成為華人社會的「安麗」，讓我的同仁與事業夥伴們在此安身立命，長長久久，並將「盛德信」最引以為傲的「誠信、善良」事業以及優質產品傳遍全世界。
-                從直銷素人而成為「盛德信」的創辦人與經營者，是一條曲折的路，更是一條成長的路，我一直充滿信心與戰鬥力，帶領同仁與事業夥伴，一路走來，每一天都是經驗的累積，得到無數的指正、教訓與幫助，我們無一不感謝，將這些轉化為公司持續進步的動力。</p>
+                    從直銷素人而成為「盛德信」的創辦人與經營者，是一條曲折的路，更是一條成長的路，我一直充滿信心與戰鬥力，帶領同仁與事業夥伴，一路走來，每一天都是經驗的累積，得到無數的指正、教訓與幫助，我們無一不感謝，將這些轉化為公司持續進步的動力。
+                </p>
             </div>
 
             <div class="content-block">
                 <h4>向「健康連鎖事業平台、拓展全球事業版圖」持續前進</h4>
                 <p>「學如逆水行舟，不進則退。」事業經營也是如此。我屢屢申明，好產品才是王道，為了研發出更優質的產品，也為將來「盛德信」的生產基地準備，我們在2018年4月，毅然成立了研發小組與科學委員會，更有幸邀請到賴鎮源中醫博士擔任研發團隊的執行長，為我們的產品嚴格把關，同時為因應時代的趨勢，盛德信將加速數位化功能的提昇，並加強國際化的腳步，提升國際品牌知名度，拓展全球事業版圖。
-                2019年6月，第二代康愛Plus系列上市，很快得到大家的肯定，一致認為功效超越第一代。「盛德信」研發團隊運用卓越的萃取技術，致力讓產品升級，發揮更大的功效，讓更多人得到健康的提昇，「不做Me Too，只做Me Best！」，這是我們研發團隊開發新產品的堅持與原則。
-                從2003年到今天，回顧來時路，也瞻望未來，「盛德信」一步一腳印，兢兢業業地發展，自助人助，有了今天的規模，從作為「人類健康的守護者」出發，我下一個目標是將盛德信打造成為「健康連鎖事業平台」，期許將理念相同的人結合在一起，共同創業，一起為世人的健康努力。</p>
+                    2019年6月，第二代康愛Plus系列上市，很快得到大家的肯定，一致認為功效超越第一代。「盛德信」研發團隊運用卓越的萃取技術，致力讓產品升級，發揮更大的功效，讓更多人得到健康的提昇，「不做Me
+                    Too，只做Me Best！」，這是我們研發團隊開發新產品的堅持與原則。
+                    從2003年到今天，回顧來時路，也瞻望未來，「盛德信」一步一腳印，兢兢業業地發展，自助人助，有了今天的規模，從作為「人類健康的守護者」出發，我下一個目標是將盛德信打造成為「健康連鎖事業平台」，期許將理念相同的人結合在一起，共同創業，一起為世人的健康努力。
+                </p>
                 <p><strong>讓我們一起邁向成功！一起擁抱健康，享受人生！</strong></p>
             </div>
 
@@ -853,19 +874,19 @@
             </div>
         </div>
         <svg class="curve-bg curve-bg-bottom" viewBox="0 0 1440 200" preserveAspectRatio="none">
-            <path d="M0,0 Q360,100 720,50 T1440,150 L1440,200 Z" fill="#0f203d" opacity="0.05"/>
+            <path d="M0,0 Q360,100 720,50 T1440,150 L1440,200 Z" fill="#0f203d" opacity="0.05" />
         </svg>
     </section>
 
     <!-- 公司沿革 Section -->
     <section id="history" class="section section-dark">
         <svg class="curve-bg curve-bg-top" viewBox="0 0 1440 200" preserveAspectRatio="none">
-            <path d="M0,200 Q360,50 720,100 T1440,80 L1440,200 Z" fill="#f5f7fa" opacity="0.05"/>
+            <path d="M0,200 Q360,50 720,100 T1440,80 L1440,200 Z" fill="#f5f7fa" opacity="0.05" />
         </svg>
         <div class="section-container">
             <h2 class="section-title">公司沿革</h2>
             <p class="section-subtitle">行善致富的事業價值開端</p>
-            
+
             <div class="timeline">
                 <div class="timeline-item fade-in">
                     <div class="timeline-content">
@@ -873,154 +894,154 @@
                         <div class="timeline-text">成立越南分公司</div>
                     </div>
                 </div>
-    
+
                 <div class="timeline-item fade-in">
                     <div class="timeline-content">
                         <div class="timeline-year">2024年09月</div>
                         <div class="timeline-text">美國股票上市 OTC：(ANKM)</div>
                     </div>
                 </div>
-    
+
                 <div class="timeline-item fade-in">
                     <div class="timeline-content">
                         <div class="timeline-year">2021年03月</div>
                         <div class="timeline-text">台北總公司辦公室，喬遷至大直辦公室<br>T&E Global盛德信環球集團與靜宜大學產學合作簽約儀式</div>
                     </div>
                 </div>
-    
+
                 <div class="timeline-item fade-in">
                     <div class="timeline-content">
                         <div class="timeline-year">2020年09月</div>
                         <div class="timeline-text">成立三大營運中心<br>台北 新連鎖加盟戰略研究中心<br>台中 全球多媒體運營中心<br>高雄 全球先進科研中心</div>
                     </div>
                 </div>
-    
+
                 <div class="timeline-item fade-in">
                     <div class="timeline-content">
                         <div class="timeline-year">2020年07月</div>
                         <div class="timeline-text">成立中國分公司</div>
                     </div>
                 </div>
-    
+
                 <div class="timeline-item fade-in">
                     <div class="timeline-content">
                         <div class="timeline-year">2020年04月</div>
                         <div class="timeline-text">成立盛德信環球集團</div>
                     </div>
                 </div>
-    
+
                 <div class="timeline-item fade-in">
                     <div class="timeline-content">
                         <div class="timeline-year">2018年04月</div>
                         <div class="timeline-text">成立盛德信科學研究中心</div>
                     </div>
                 </div>
-    
+
                 <div class="timeline-item fade-in">
                     <div class="timeline-content">
                         <div class="timeline-year">2016年03月</div>
                         <div class="timeline-text">成立新加坡分公司</div>
                     </div>
                 </div>
-    
+
                 <div class="timeline-item fade-in">
                     <div class="timeline-content">
                         <div class="timeline-year">2015年05月</div>
                         <div class="timeline-text">「中華民國多層次傳銷商業同業公會」理事單位</div>
                     </div>
                 </div>
-    
+
                 <div class="timeline-item fade-in">
                     <div class="timeline-content">
                         <div class="timeline-year">2015年04月</div>
                         <div class="timeline-text">「財團法人多層次傳銷保護基金會」成為正式會員</div>
                     </div>
                 </div>
-    
+
                 <div class="timeline-item fade-in">
                     <div class="timeline-content">
                         <div class="timeline-year">2014年12月</div>
                         <div class="timeline-text">自購位於「高雄軟體科技園區」辦公室落成啟用</div>
                     </div>
                 </div>
-    
+
                 <div class="timeline-item fade-in">
                     <div class="timeline-content">
                         <div class="timeline-year">2014年05月</div>
                         <div class="timeline-text">「中華民國多層次傳銷商業同業公會」監事單位</div>
                     </div>
                 </div>
-    
+
                 <div class="timeline-item fade-in">
                     <div class="timeline-content">
                         <div class="timeline-year">2013年01月</div>
                         <div class="timeline-text">成立馬來西亞分公司</div>
                     </div>
                 </div>
-    
+
                 <div class="timeline-item fade-in">
                     <div class="timeline-content">
                         <div class="timeline-year">2012年05月</div>
                         <div class="timeline-text">成立香港分公司</div>
                     </div>
                 </div>
-    
+
                 <div class="timeline-item fade-in">
                     <div class="timeline-content">
                         <div class="timeline-year">2011年08月</div>
                         <div class="timeline-text">盛德信台北總公司擴大營運規模，遷址至台北市承德路</div>
                     </div>
                 </div>
-    
+
                 <div class="timeline-item fade-in">
                     <div class="timeline-content">
                         <div class="timeline-year">2011年03月</div>
                         <div class="timeline-text">工商時報報導盛德信公司「獲獎頻頻、誠信經營，盛德信打造優質直銷文化」</div>
                     </div>
                 </div>
-    
+
                 <div class="timeline-item fade-in">
                     <div class="timeline-content">
                         <div class="timeline-year">2009年08月</div>
                         <div class="timeline-text">日本NATURE雜誌報導盛德信公司產品與經營理念</div>
                     </div>
                 </div>
-    
+
                 <div class="timeline-item fade-in">
                     <div class="timeline-content">
                         <div class="timeline-year">2008年11月</div>
                         <div class="timeline-text">成立高雄分公司</div>
                     </div>
                 </div>
-    
+
                 <div class="timeline-item fade-in">
                     <div class="timeline-content">
                         <div class="timeline-year">2008年08月</div>
                         <div class="timeline-text">直銷人雜誌評選為2007年度直銷龍虎榜『潛力股』</div>
                     </div>
                 </div>
-    
+
                 <div class="timeline-item fade-in">
                     <div class="timeline-content">
                         <div class="timeline-year">2008年06月</div>
                         <div class="timeline-text">成立台中分公司</div>
                     </div>
                 </div>
-    
+
                 <div class="timeline-item fade-in">
                     <div class="timeline-content">
                         <div class="timeline-year">2007年03月</div>
                         <div class="timeline-text">由傳統通路轉型為專業的直銷公司</div>
                     </div>
                 </div>
-    
+
                 <div class="timeline-item fade-in">
                     <div class="timeline-content">
                         <div class="timeline-year">2005年04月</div>
                         <div class="timeline-text">更名為「盛德信股份有限公司」</div>
                     </div>
                 </div>
-    
+
                 <div class="timeline-item fade-in">
                     <div class="timeline-content">
                         <div class="timeline-year">2003年12月</div>
@@ -1030,7 +1051,7 @@
             </div>
         </div>
         <svg class="curve-bg curve-bg-bottom" viewBox="0 0 1440 200" preserveAspectRatio="none">
-            <path d="M0,0 Q360,150 720,100 T1440,120 L1440,200 Z" fill="#f5f7fa" opacity="0.05"/>
+            <path d="M0,0 Q360,150 720,100 T1440,120 L1440,200 Z" fill="#f5f7fa" opacity="0.05" />
         </svg>
     </section>
 
@@ -1051,8 +1072,8 @@
 
             document.querySelectorAll('.fade-in').forEach(function (el) { observer.observe(el); });
         })();
-                // 導航欄滾動效果
-                window.addEventListener('scroll', () => {
+        // 導航欄滾動效果
+        window.addEventListener('scroll', () => {
             const navbar = document.getElementById('navbar');
             if (window.scrollY > 50) {
                 navbar.classList.add('scrolled');
@@ -1082,7 +1103,7 @@
         function toggleMobileNav() {
             hamburger.classList.toggle('active');
             navMenu.classList.toggle('active');
-            
+
             if (navMenu.classList.contains('active')) {
                 document.body.style.overflow = 'hidden';
             } else {
@@ -1090,14 +1111,14 @@
             }
         }
 
-        hamburger.addEventListener('click', function(e) {
+        hamburger.addEventListener('click', function (e) {
             e.stopPropagation();
             toggleMobileNav();
         });
 
         // 點擊選單項目時關閉選單
         document.querySelectorAll('.nav-menu a').forEach(link => {
-            link.addEventListener('click', function() {
+            link.addEventListener('click', function () {
                 if (navMenu.classList.contains('active')) {
                     toggleMobileNav();
                 }
@@ -1105,7 +1126,7 @@
         });
 
         // 點擊選單外部區域時關閉選單
-        navMenu.addEventListener('click', function(e) {
+        navMenu.addEventListener('click', function (e) {
             if (e.target === navMenu && navMenu.classList.contains('active')) {
                 toggleMobileNav();
             }
@@ -1126,32 +1147,33 @@
             languageBtn.classList.remove('active');
         }
 
-        languageBtn.addEventListener('click', function(e) {
+        languageBtn.addEventListener('click', function (e) {
             e.stopPropagation();
             toggleLanguageDropdown();
         });
 
         // 點擊選單項目時更新按鈕文字並關閉選單
         document.querySelectorAll('.language-dropdown a').forEach(link => {
-            link.addEventListener('click', function(e) {
+            link.addEventListener('click', function (e) {
                 e.preventDefault();
                 const selectedLanguage = this.textContent;
                 languageBtn.textContent = selectedLanguage;
-                
+
                 // 更新active狀態
                 document.querySelectorAll('.language-dropdown a').forEach(a => a.classList.remove('active'));
                 this.classList.add('active');
-                
+
                 closeLanguageDropdown();
             });
         });
 
         // 點擊外部區域時關閉下拉選單
-        document.addEventListener('click', function(e) {
+        document.addEventListener('click', function (e) {
             if (!languageBtn.contains(e.target) && !languageDropdown.contains(e.target)) {
                 closeLanguageDropdown();
             }
         });
     </script>
 </body>
+
 </html>
