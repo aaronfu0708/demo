@@ -64,6 +64,17 @@
             filter: brightness(1.2);
         }
 
+        .logo-icon {
+            display: inline-block;
+            width: 200px;
+            height: 60px;
+            background-image: url('img/toplogo.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            filter: brightness(1.2);
+        }
+
         .nav-menu {
             display: flex;
             list-style: none;
@@ -577,6 +588,11 @@
                 height: 40px;
             }
 
+            .logo-icon {
+                width: 130px;
+                height: 40px;
+            }
+
             .quick-nav-section {
                 min-height: 300px;
                 padding: 40px 20px;
@@ -630,8 +646,8 @@
     <!-- 導航欄 -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
-            <a href="index.html" class="logo">
-                <img src="img/toplogo.png" alt="T&E GLOBAL" class="logo-img" translate="no">
+            <a href="index.html" class="logo" aria-label="T&amp;E GLOBAL">
+                <span class="logo-icon" role="img" aria-hidden="true"></span>
             </a>
             
             <ul class="nav-menu">
