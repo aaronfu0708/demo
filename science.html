@@ -439,6 +439,28 @@
         .team-section {
             padding: 100px 0;
             background: #faf9f7;
+            position: relative;
+        }
+
+        .team-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('img/logo.png');
+            background-size: 100%;
+            background-position: center center;
+            background-repeat: no-repeat;
+            opacity: 0.15;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .team-section .container {
+            position: relative;
+            z-index: 1;
         }
 
         .team-list {
@@ -725,6 +747,10 @@
 
             .section-title {
                 font-size: 2rem;
+            }
+
+            .team-section::before {
+                display: none;
             }
 
             .team-member {
