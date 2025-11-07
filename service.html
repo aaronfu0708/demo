@@ -467,24 +467,46 @@
             flex: 1;
         }
 
+        .map-link:hover {
+            color: #0f203d;
+            text-decoration: underline;
+        }
+
         .branch-details {
-            margin-top: 40px;
+            margin-top: 50px;
         }
 
         .branch-details h4 {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             color: #0f203d;
-            margin: 30px 0 15px;
+            margin: 40px 0 20px;
             font-weight: 600;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #e8f5e9;
+            position: relative;
+            display: inline-block;
+            width: 100%;
         }
 
         .branch-details h4:first-child {
             margin-top: 0;
         }
 
+        .branch-details h4::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, #7cb342, #4ade80);
+            border-radius: 2px;
+        }
+
         .branch-details ul {
             list-style: none;
             padding-left: 0;
+            margin-top: 20px;
         }
 
         .branch-details li {
@@ -509,11 +531,6 @@
             color: #555;
             line-height: 1.8;
             margin-bottom: 15px;
-        }
-
-        .map-link:hover {
-            color: #0f203d;
-            text-decoration: underline;
         }
 
 
