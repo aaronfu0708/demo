@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>健康塑形能量衣</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fffbfd;
+            overflow-x: hidden;
+        }
+
+        /* Scroll Animation Styles */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in-up.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in-left.animate {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .fade-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in-right.animate {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .fade-in {
+            opacity: 0;
+            transition: opacity 1s ease-out;
+        }
+
+        .fade-in.animate {
+            opacity: 1;
+        }
+
+        .scale-in {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .scale-in.animate {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            position: relative;
+            min-height: 85vh;
+            background-image: url('shirtimg/shirtbg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 80px 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-container {
+            max-width: 1600px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-image-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-image {
+            width: 100%;
+            max-width: 500px;
+            height: 500px;
+            object-fit: contain;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text-overlay {
+            text-align: left;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .hero-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 120px;
+            font-weight: 700;
+            color: #d4a574;
+            margin-bottom: 20px;
+            line-height: 1.1;
+            text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.1);
+            letter-spacing: 2px;
+        }
+
+        .hero-subtitle {
+            font-size: 25px;
+            letter-spacing: 4px;
+            color: #8b5a6b;
+            text-transform: uppercase;
+            font-weight: 500;
+            margin-bottom: 30px;
+        }
+
+        .hero-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .hero-feature-tag {
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 22px;
+            background: rgba(212, 165, 116, 0.1);
+            border: 1px solid rgba(212, 165, 116, 0.3);
+            border-radius: 20px;
+            color: #8b5a6b;
+            font-size: 16px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+
+        .hero-feature-tag::before {
+            content: '✓';
+            margin-right: 8px;
+            color: #d4a574;
+            font-weight: 700;
+        }
+
+        /* Welcome Section */
+        .welcome-section {
+            background-image: url('shirtimg/shirt2bg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 120px 60px;
+            position: relative;
+        }
+
+        .welcome-content {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 100px;
+            align-items: center;
+        }
+
+        .welcome-image {
+            width: 100%;
+            height: 550px;
+            object-fit: contain;
+        }
+
+        .welcome-text-content h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 64px;
+            color: #d4a574;
+            margin-bottom: 35px;
+            line-height: 1.2;
+        }
+
+        .welcome-text-content p {
+            font-size: 18px;
+            color: #414040;
+            line-height: 1.9;
+            margin-bottom: 20px;
+        }
+
+        .welcome-text-content .intro-text {
+            font-size: 18px;
+            color: #414040;
+            line-height: 1.9;
+            margin-bottom: 25px;
+            font-weight: 500;
+        }
+
+        .welcome-features-list {
+            list-style: none;
+            padding: 0;
+            margin: 25px 0;
+        }
+
+        .welcome-features-list li {
+            font-size: 17px;
+            color: #414040;
+            line-height: 2;
+            margin-bottom: 12px;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .welcome-features-list li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #d4a574;
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 1.5;
+        }
+
+        .welcome-text-content .conclusion-text {
+            font-size: 18px;
+            color: #414040;
+            line-height: 1.9;
+            margin-top: 25px;
+            margin-bottom: 0;
+        }
+
+        
+        .bestsellers-section {
+            background: linear-gradient(135deg, #8b5a6b 0%, #6b4a5b 50%, #7a5a6b 100%);
+            padding: 0;
+            position: relative;
+            min-height: 700px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .bestsellers-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.3;
+            z-index: 1;
+        }
+
+        .bestsellers-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            padding: 120px 40px;
+        }
+
+        .bestsellers-label {
+            font-size: 18px;
+            letter-spacing: 4px;
+            color: rgba(255, 255, 255, 0.85);
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            font-weight: 500;
+        }
+
+        .bestsellers-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 120px;
+            color: #ffffff;
+            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+            line-height: 1.1;
+        }
+
+
+        /* Target Audience Section */
+        .audience-section {
+            background: #fffbfd;
+            padding: 120px 60px;
+        }
+
+        .audience-content {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .audience-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 64px;
+            color: #d4a574;
+            text-align: center;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .audience-subtitle {
+            font-size: 16px;
+            color: #666;
+            text-align: center;
+            margin-bottom: 60px;
+            line-height: 1.8;
+        }
+
+        .audience-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+
+        .audience-item {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .audience-item h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #8b5a6b;
+            margin-bottom: 15px;
+        }
+
+        .audience-item p {
+            font-size: 15px;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .hero-title {
+                font-size: 120px;
+            }
+            
+            .hero-subtitle {
+                font-size: 24px;
+            }
+            
+            .hero-feature-tag {
+                font-size: 16px;
+            }
+
+            .bestsellers-title {
+                font-size: 90px;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .hero-container {
+                gap: 40px;
+            }
+
+            .hero-image {
+                max-width: 400px;
+                height: 400px;
+            }
+
+            .hero-title {
+                font-size: 100px;
+            }
+            
+            .hero-subtitle {
+                font-size: 22px;
+            }
+            
+            .hero-feature-tag {
+                font-size: 15px;
+            }
+
+            .welcome-content {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+
+            .bestsellers-title {
+                font-size: 75px;
+            }
+
+            /*
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            */
+
+            .audience-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 30px 15px;
+                min-height: 60vh;
+            }
+
+            .hero-container {
+                gap: 15px;
+            }
+
+            .hero-image {
+                max-width: 250px;
+                height: 250px;
+            }
+
+            .hero-title {
+                font-size: 36px;
+                margin-bottom: 10px;
+                letter-spacing: 1px;
+            }
+
+            .hero-subtitle {
+                font-size: 11px;
+                letter-spacing: 2px;
+                margin-bottom: 20px;
+            }
+
+            .hero-features {
+                gap: 10px;
+                margin-top: 20px;
+            }
+
+            .hero-feature-tag {
+                font-size: 12px;
+                padding: 6px 14px;
+            }
+
+            .welcome-section {
+                padding: 60px 20px;
+            }
+
+            .welcome-content {
+                gap: 30px;
+            }
+
+            .welcome-image {
+                height: 300px;
+            }
+
+            .welcome-text-content h2 {
+                font-size: 36px;
+                margin-bottom: 20px;
+            }
+
+            .welcome-text-content p {
+                font-size: 14px;
+                margin-bottom: 15px;
+            }
+
+            .welcome-text-content .intro-text {
+                font-size: 14px;
+                margin-bottom: 20px;
+            }
+
+            .welcome-features-list {
+                margin: 20px 0;
+            }
+
+            .welcome-features-list li {
+                font-size: 13px;
+                margin-bottom: 10px;
+                padding-left: 25px;
+            }
+
+            .welcome-features-list li::before {
+                font-size: 20px;
+            }
+
+            .welcome-text-content .conclusion-text {
+                font-size: 14px;
+                margin-top: 20px;
+            }
+
+            .bestsellers-section {
+                min-height: 400px;
+            }
+
+            .bestsellers-content {
+                padding: 60px 20px;
+            }
+
+            .bestsellers-label {
+                font-size: 12px;
+                letter-spacing: 2px;
+                margin-bottom: 15px;
+            }
+
+            .bestsellers-title {
+                font-size: 48px;
+            }
+
+
+            .audience-section {
+                padding: 60px 20px;
+            }
+
+            .audience-title {
+                font-size: 36px;
+                margin-bottom: 15px;
+            }
+
+            .audience-subtitle {
+                font-size: 14px;
+                margin-bottom: 40px;
+            }
+
+            .audience-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .audience-item {
+                padding: 20px;
+            }
+
+            .audience-item h3 {
+                font-size: 18px;
+                margin-bottom: 12px;
+            }
+
+            .audience-item p {
+                font-size: 14px;
+                line-height: 1.7;
+            }
+        }
+
+        /* 返回按钮样式 */
+        .back-button {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 165, 116, 0.3);
+            border-radius: 50px;
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: #8b5a6b;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 1);
+            transform: translateX(-5px);
+            border-color: rgba(212, 165, 116, 0.6);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .back-button::before {
+            content: '←';
+            font-size: 1.2rem;
+            color: #d4a574;
+        }
+
+        @media (max-width: 768px) {
+            .back-button {
+                top: 20px;
+                left: 20px;
+                padding: 10px 20px;
+                font-size: 0.85rem;
+            }
+        }
+    
+    </style>
+</head>
+<body>
+    <!-- 返回按钮 -->
+    <a href="product.html" class="back-button">返回商品列表</a>
+
+    <section class="hero-section">
+        <div class="hero-container">
+            <div class="hero-image-wrapper fade-in-left">
+                <img src="shirtimg/shirt5.png" alt="健康塑形能量衣" class="hero-image">
+            </div>
+            <div class="hero-text-overlay fade-in-right">
+                <h1 class="hero-title">健康塑形</h1>
+                <p class="hero-subtitle">全新健康能量衣系列</p>
+                <div class="hero-features">
+                    <span class="hero-feature-tag">遠紅外線技術</span>
+                    <span class="hero-feature-tag">醫療級科技</span>
+                    <span class="hero-feature-tag">無縫設計</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="welcome-section">
+        <div class="welcome-content">
+            <div class="welcome-text-content fade-in-left">
+                <h2>健康塑形能量衣</h2>
+                <p class="intro-text">讓美麗與健康並行，重塑自信與活力。這不僅是塑形衣，更是一款結合醫療級科技的健康能量衣！</p>
+                <ul class="welcome-features-list">
+                    <li>透過遠紅外線技術，促進血液循環</li>
+                    <li>提升代謝，調節免疫系統</li>
+                    <li>讓你每一刻都在重拾活力</li>
+                </ul>
+                <p class="conclusion-text">不論是強力塑形、矯正體態，還是改善女性困擾，這款健康能量衣都能助你輕鬆擁有夢幻好身材。適合日常穿著，運動後穿戴更能加速身體恢復，成為你健康美麗的最佳夥伴。</p>
+            </div>
+            <div class="fade-in-right">
+                <img src="shirtimg/shirt7.png" alt="健康塑形能量衣" class="welcome-image">
+            </div>
+        </div>
+    </section>
+
+
+    <section class="bestsellers-section">
+        <img src="shirtimg/shirt.jpg" alt="背景" class="bestsellers-bg">
+        <div class="bestsellers-content fade-in">
+            <p class="bestsellers-label">最受歡迎新品</p>
+            <h2 class="bestsellers-title">強力推薦</h2>
+        </div>
+    </section>
+
+
+
+    <section class="audience-section">
+        <div class="audience-content">
+            <h2 class="audience-title fade-in-up">適用族群推薦</h2>
+            <p class="audience-subtitle fade-in-up">這款健康能量衣因其強大的塑形、調節代謝及改善健康功能，適合多種不同需求的族群，無論是追求體態完美的你，還是注重身體健康的每一位，都是最佳選擇！</p>
+            <div class="audience-grid">
+                <div class="audience-item fade-in-up">
+                    <h3>1. 愛美的女性族群</h3>
+                    <p>想要改善體態、強化塑形、提升線條感的女性，無論是需要修飾腹部、腿部還是塑造優美的曲線，健康塑形能量衣都能有效矯正不良體態，讓你輕鬆擁有迷人的身形。</p>
+                </div>
+                <div class="audience-item fade-in-up">
+                    <h3>2. 繁忙的職場人士</h3>
+                    <p>長時間坐辦公室或面對繁重工作壓力的白領們，這款健康能量衣能幫助你放鬆緊繃的肌肉、消除疲勞，讓身體恢復活力，保持精力充沛，無論是在工作還是下班後，穿著舒適，輕鬆應對每一天。</p>
+                </div>
+                <div class="audience-item fade-in-up">
+                    <h3>3. 運動愛好者與健身族群</h3>
+                    <p>無論你是健身新手還是運動達人，這款能量衣都能有效促進新陳代謝，提升脂肪燃燒效果，對運動後的肌肉修復與放鬆也有幫助，提升運動表現，讓運動後的恢復更迅速。</p>
+                </div>
+                <div class="audience-item fade-in-up">
+                    <h3>4. 產後媽媽</h3>
+                    <p>對於剛生完寶寶的媽媽們，健康塑形能量衣不僅有助於塑形和恢復體態，還能提供額外的支撐力，幫助矯正產後的體態問題，輕鬆打造健康美麗的身形，讓媽媽們更有自信。</p>
+                </div>
+                <div class="audience-item fade-in-up">
+                    <h3>5. 注重健康管理的長者</h3>
+                    <p>年長者可以透過穿著健康能量衣來促進血液循環、提升免疫力，有效改善整體健康狀況，減少因為循環不良或體力不支而引發的健康問題，保持活力，增進生活質量。</p>
+                </div>
+                <div class="audience-item fade-in-up">
+                    <h3>6. 燙傷或肌膚敏感的使用者</h3>
+                    <p>健康塑形能量衣內層選用專為燙傷患者設計的特殊布料，親膚柔軟，適合肌膚敏感的朋友，特別是在長時間穿著的情況下，提供舒適不刺激的穿著體驗。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        (() => {
+            const elements = document.querySelectorAll('.fade-in-up, .fade-in-left, .fade-in-right, .fade-in, .scale-in');
+            if (!elements.length) return;
+
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+            elements.forEach(el => observer.observe(el));
+        })();
+    </script>
+</body>
+</html>
