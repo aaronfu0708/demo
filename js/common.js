@@ -109,6 +109,14 @@ if (languageBtn) {
 if (languageDropdown) {
     document.querySelectorAll('.language-dropdown a').forEach(link => {
         link.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            // 如果链接指向实际的 HTML 文件（不是 #），允许正常跳转
+            if (href && href !== '#' && (href.includes('.html') || href.includes('vn.html'))) {
+                // 允许正常跳转，不阻止默认行为
+                return;
+            }
+            
+            // 其他语言选项（# 链接）阻止默认行为，只更新按钮文字
             e.preventDefault();
             const selectedLanguage = this.textContent;
             if (languageBtn) {
