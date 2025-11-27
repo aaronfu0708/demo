@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="vi-VN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T&E GLOBAL Loa Năm Chiếc Phi Thường</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Microsoft JhengHei', 'PingFang TC', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #ffffff;
+            background: #0a0e1a;
+            overflow-x: hidden;
+        }
+
+        .main-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Hero 區域 */
+        .hero-section {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 0;
+            background-image: url('soundimg/bg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 14, 26, 0.4);
+            z-index: 1;
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            width: 100%;
+            height: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+            padding: 0 60px;
+        }
+
+        .hero-text {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-image {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+
+        .hero-subtitle {
+            font-size: 1rem;
+            color: #d4af37;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.3s forwards;
+            will-change: opacity, transform;
+        }
+
+        .hero-title {
+            font-size: 4.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, #ffffff 0%, #d4af37 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.5s forwards;
+            will-change: opacity, transform;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 40px;
+            line-height: 1.8;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.7s forwards;
+            will-change: opacity, transform;
+        }
+
+        .speaker-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .speaker-image {
+            position: relative;
+            z-index: 2;
+            width: 80%;
+            height: auto;
+            filter: drop-shadow(0 20px 60px rgba(212, 175, 55, 0.3));
+            animation: float 6s ease-in-out infinite;
+            will-change: transform;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 滾動觸發動畫 */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+            will-change: opacity, transform;
+        }
+
+        .scroll-animate.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .hero-text.scroll-animate,
+        .hero-image.scroll-animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .hero-text.scroll-animate:not(.animated),
+        .hero-image.scroll-animate:not(.animated) {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .scroll-animate-delay-1 {
+            transition-delay: 0.1s;
+        }
+
+        .scroll-animate-delay-2 {
+            transition-delay: 0.2s;
+        }
+
+        .scroll-animate-delay-3 {
+            transition-delay: 0.3s;
+        }
+
+        /* 產品特色區域 */
+        .features-section {
+            padding: 120px 40px;
+            position: relative;
+            background-image: url('soundimg/flower.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            overflow: hidden;
+        }
+
+        .features-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 14, 26, 0.8);
+            z-index: 0;
+        }
+
+        .features-section > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-subtitle {
+            font-size: 0.9rem;
+            color: #d4af37;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        .section-description {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .section-description-large {
+            font-size: 1.3rem;
+            line-height: 2;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .section-description-large .highlight {
+            color: #d4af37;
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
+
+        .features-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 20px;
+            padding: 40px;
+            transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            will-change: transform;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(212, 175, 55, 0.5);
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.2);
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .feature-icon svg {
+            width: 100%;
+            height: 100%;
+            stroke: #d4af37;
+            fill: none;
+            stroke-width: 0.8;
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #d4af37;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-description {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.8;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* 展示區域 */
+        .services-section {
+            padding: 120px 40px;
+            position: relative;
+            background-image: url('soundimg/bg4.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            overflow: hidden;
+        }
+
+        .services-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(18, 28, 59, 0.5);
+            z-index: 0;
+        }
+
+        .services-section > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .services-grid {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .service-item {
+            display: flex;
+            flex-direction: column;
+            background: rgba(255, 255, 255, 0.02);
+            border: 5px solid rgba(212, 175, 55, 0.2);
+            border-radius: 200px;
+            overflow: hidden;
+            aspect-ratio: 0.7;
+            will-change: transform;
+        }
+
+        .service-item:nth-child(1),
+        .service-item:nth-child(3) {
+            transform: translateY(-60px);
+        }
+
+        .service-item:nth-child(2) {
+            transform: translateY(60px);
+        }
+
+        .service-panel {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 30px;
+            position: relative;
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            flex: 1;
+        }
+
+        .service-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #d4af37;
+            margin-bottom: 20px;
+            font-family: serif;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+
+        .service-text {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.8;
+        }
+
+        .service-image {
+            width: 100%;
+            aspect-ratio: 1;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            flex: 1;
+        }
+
+        .service-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+            background: rgba(10, 14, 26, 0.2);
+            z-index: 1;
+        }
+
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: relative;
+            z-index: 0;
+            transition: transform 0.5s ease;
+        }
+
+
+        .services-footer {
+            text-align: center;
+            margin-top: 180px;
+        }
+
+        /* 響應式設計 */
+        @media (max-width: 1024px) {
+            .hero-section {
+                height: 100vh;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                padding: 0 40px;
+                justify-items: start;
+            }
+
+            .hero-text {
+                text-align: left;
+            }
+
+            .hero-image {
+                height: auto;
+            }
+
+            .hero-title {
+                font-size: 3.5rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .service-item:nth-child(1),
+            .service-item:nth-child(2),
+            .service-item:nth-child(3) {
+                transform: translateY(0);
+            }
+
+            .services-footer {
+                margin-top: 100px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-section {
+                height: 100vh;
+                background-image: url('soundimg/bg2.jpg');
+            }
+
+            .hero-content {
+                padding: 0 30px;
+                gap: 30px;
+                padding-top:100px
+            }
+
+            .hero-subtitle {
+                font-size: 0.9rem;
+                letter-spacing: 3px;
+                margin-bottom: 15px;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+                margin-bottom: 20px;
+            }
+
+            .hero-description {
+                font-size: 1rem;
+                margin-bottom: 30px;
+            }
+
+            .speaker-container {
+                max-width: 400px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .features-section,
+            .services-section {
+                padding: 80px 20px;
+            }
+
+            .feature-card {
+                padding: 30px 20px;
+            }
+
+            .service-panel {
+                padding: 20px;
+                min-height: 250px;
+            }
+
+            .service-title {
+                font-size: 1.5rem;
+            }
+
+            .section-description-large {
+                font-size: 1.1rem;
+            }
+
+            .services-footer {
+                margin-top: 60px;
+            }
+        }
+
+        /* 返回按钮样式 */
+        .back-button {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: white;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(-5px);
+            border-color: rgba(212, 175, 55, 0.5);
+        }
+
+        .back-button::before {
+            content: '←';
+            font-size: 1.2rem;
+        }
+
+        @media (max-width: 768px) {
+            .back-button {
+                top: 20px;
+                left: 20px;
+                padding: 10px 20px;
+                font-size: 0.85rem;
+            }
+        }
+   
+    </style>
+</head>
+
+<body>
+    <!-- 返回按钮 -->
+    <a href="product.html" class="back-button">Quay Lại Danh Sách Sản Phẩm</a>
+    <!-- 主內容 -->
+    <div class="main-content">
+        <!-- Hero 區域 -->
+        <section class="hero-section" id="home">
+            <div class="hero-content">
+                <div class="hero-text scroll-animate">
+                    <div class="hero-subtitle">Đột Phá Mới Của Khoa Học Tần Số | Khám Phá Khả Năng Vô Hạn Của Năng Lượng Âm Thanh</div>
+                    <h1 class="hero-title">T&E GLOBAL<br>Loa Năm Chiếc Phi Thường</h1>
+                    <p class="hero-description">
+                        Trong thời đại theo đuổi sự cân bằng tự nhiên và hài hòa thân tâm này, T&E GLOBAL tự hào giới thiệu bộ âm thanh năng lượng cao cấp.
+                        Kết hợp công nghệ cộng hưởng tần số âm thanh và trí tuệ năng lượng phương Đông, dẫn dắt mọi người mở ra hành trình trải nghiệm giác quan và khám phá ý thức hoàn toàn mới.
+                    </p>
+                </div>
+                <div class="hero-image scroll-animate scroll-animate-delay-1">
+                    <div class="speaker-container">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 產品特色區域 -->
+        <section class="features-section" id="features">
+            <div class="section-header scroll-animate">
+                <div class="section-subtitle">Core Features</div>
+                <h2 class="section-title">- Đặc Điểm Cốt Lõi -</h2>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card scroll-animate scroll-animate-delay-1">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- 生命之花圖案 -->
+                            <g stroke="#d4af37" stroke-width="0.5" fill="none">
+                                <!-- 中心圓 -->
+                                <circle cx="12" cy="12" r="2.5" />
+                                <!-- 第一層圓 -->
+                                <circle cx="12" cy="7" r="2.5" />
+                                <circle cx="12" cy="17" r="2.5" />
+                                <circle cx="7" cy="12" r="2.5" />
+                                <circle cx="17" cy="12" r="2.5" />
+                                <circle cx="9.5" cy="9.5" r="2.5" />
+                                <circle cx="14.5" cy="9.5" r="2.5" />
+                                <circle cx="9.5" cy="14.5" r="2.5" />
+                                <circle cx="14.5" cy="14.5" r="2.5" />
+                            </g>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Điều Chỉnh Dòng Chảy Năng Lượng</h3>
+                    <p class="feature-description">
+                        Cảm nhận nhịp điệu tự tại của thân tâm. Thông qua điều chỉnh tần số chính xác, giúp hệ thống năng lượng cơ thể đạt trạng thái cân bằng,
+                        để năng lượng tự nhiên chảy trong cơ thể, loại bỏ tắc nghẽn và khó chịu, tạo ra trạng thái hoàn hảo hài hòa thân tâm.
+                    </p>
+                </div>
+                <div class="feature-card scroll-animate scroll-animate-delay-2">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2C8 2 5 5 5 9C5 13 8 16 12 16C16 16 19 13 19 9C19 5 16 2 12 2Z" stroke="#d4af37" stroke-width="1"/>
+                            <path d="M8 10C8 10 9 12 12 12C15 12 16 10 16 10" stroke="#d4af37" stroke-width="1" stroke-linecap="round"/>
+                            <path d="M9 18C9 18 10 20 12 20C14 20 15 18 15 18" stroke="#d4af37" stroke-width="1" stroke-linecap="round"/>
+                            <path d="M6 12C6 12 7 14 9 14" stroke="#d4af37" stroke-width="0.8" stroke-linecap="round"/>
+                            <path d="M18 12C18 12 17 14 15 14" stroke="#d4af37" stroke-width="0.8" stroke-linecap="round"/>
+                            <path d="M12 8V10M12 14V16" stroke="#d4af37" stroke-width="0.8" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Đánh Thức Khả Năng Nhận Thức Và Tập Trung</h3>
+                    <p class="feature-description">
+                        Nâng cao cảm giác ổn định bên trong. Sử dụng tần số cụ thể kích thích sóng não, tăng cường khả năng tập trung và nhận thức,
+                        giúp bạn vào trạng thái thiền định sâu, nâng cao hiệu quả công việc và khả năng học tập, khiến suy nghĩ rõ ràng ổn định hơn.
+                    </p>
+                </div>
+                <div class="feature-card scroll-animate scroll-animate-delay-3">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="12" cy="12" r="8" stroke="#d4af37" stroke-width="1"/>
+                            <circle cx="12" cy="12" r="4" stroke="#d4af37" stroke-width="0.8"/>
+                            <circle cx="12" cy="12" r="1.5" fill="#d4af37"/>
+                            <path d="M12 4V6M12 18V20M20 12H18M6 12H4" stroke="#d4af37" stroke-width="0.8" stroke-linecap="round"/>
+                            <path d="M16.97 7.03L15.56 8.44M8.44 15.56L7.03 16.97M16.97 16.97L15.56 15.56M8.44 8.44L7.03 7.03" stroke="#d4af37" stroke-width="0.8" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Mở Ra Tầng Cao Hơn</h3>
+                    <p class="feature-description">
+                        Cảm hứng và sáng tạo. Thông qua cộng hưởng tần số hài hòa, kích thích tư duy sáng tạo não phải,
+                        mở ra khả năng vô hạn của tiềm thức, để năng lượng tự nhiên chảy như suối.
+                    </p>
+                </div>
+                <div class="feature-card scroll-animate scroll-animate-delay-1">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2C10 2 8 4 8 6V12C8 14 10 16 12 16C14 16 16 14 16 12V6C16 4 14 2 12 2Z" stroke="#d4af37" stroke-width="1"/>
+                            <path d="M12 16V22" stroke="#d4af37" stroke-width="1" stroke-linecap="round"/>
+                            <path d="M8 22H16" stroke="#d4af37" stroke-width="1" stroke-linecap="round"/>
+                            <path d="M6 8C6 8 7 10 9 10" stroke="#d4af37" stroke-width="0.8" stroke-linecap="round"/>
+                            <path d="M18 8C18 8 17 10 15 10" stroke="#d4af37" stroke-width="0.8" stroke-linecap="round"/>
+                            <path d="M4 12C4 12 5 14 7 14" stroke="#d4af37" stroke-width="0.8" stroke-linecap="round"/>
+                            <path d="M20 12C20 12 19 14 17 14" stroke="#d4af37" stroke-width="0.8" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Điều Phối Cộng Hưởng Âm Thanh Và Tần Số</h3>
+                    <p class="feature-description">
+                        Tạo không khí hài hòa tự nhiên,
+                        tạo ra môi trường tần số hoàn hảo, để không gian tràn đầy năng lượng tích cực, dù là làm việc, nghỉ ngơi hay thiền định, đều có thể cảm nhận được sự bình yên và hài hòa sâu sắc.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 展示區域 -->
+        <section class="services-section" id="services">
+            <div class="services-grid">
+                <div class="service-item scroll-animate scroll-animate-delay-1">
+                    <div class="service-panel">
+                        <h3 class="service-title">Y Học Âm Nhạc</h3>
+                        <p class="service-text">
+                            Đầu Tiên Trên Thế Giới
+                            Cải Thiện Tuần Hoàn Mao Mạch 10 Lần
+                            Thông qua công nghệ cộng hưởng tần số âm thanh chính xác, hiệu quả thúc đẩy tuần hoàn máu, để cơ thể có đủ dinh dưỡng và oxy.
+                        </p>
+                    </div>
+                    <div class="service-image">
+                        <img src="soundimg/sound1.jpg" alt="音樂醫學">
+                    </div>
+                </div>
+                <div class="service-item scroll-animate scroll-animate-delay-2">
+                    <div class="service-panel">
+                        <h3 class="service-title">Thông Súc Vi Mạch</h3>
+                        <p class="service-text">
+                            Thông Súc 100 Tỷ Vi Mạch Toàn Thân Thư Kinh Hoạt Huyết
+                            Tăng Cường Dung Tích Phổi Và Phục Hồi Sức Sống
+                            , thâm nhập mạng lưới mạch máu cơ thể, hiệu quả cải thiện vận hành khí huyết.
+                        </p>
+                    </div>
+                    <div class="service-image">
+                        <img src="soundimg/sound2.jpg" alt="疏通全身微血管">
+                    </div>
+                </div>
+                <div class="service-item scroll-animate scroll-animate-delay-3">
+                    <div class="service-panel">
+                        <h3 class="service-title">Thải Độc Thanh Lọc</h3>
+                        <p class="service-text">
+                            Giúp Tách Độc Tố Tế Bào Để Độc Tố Thải Ra
+                            30 Phút Có Thể Phân Giải Huyết Khối Khí Huyết Lưu Thông
+                            , tăng tốc quá trình trao đổi chất trong cơ thể, hiệu quả loại bỏ độc tố và chất thải tích tụ.
+                        </p>
+                    </div>
+                    <div class="service-image">
+                        <img src="soundimg/sound3.jpg" alt="排毒淨化">
+                    </div>
+                </div>
+            </div>
+            <div class="section-header scroll-animate services-footer">
+                <p class="section-description section-description-large">
+                    Để tần số trở thành ngôn ngữ của cuộc sống, để âm thanh trở thành cầu nối giữa bạn và năng lượng bên trong<br>
+                    <span class="highlight">T&E GLOBAL<br>Dẫn Đầu Tương Lai Công Nghệ Năng Lượng Âm Thanh</span>
+                </p>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        (() => {
+            const elements = document.querySelectorAll('.scroll-animate');
+            if (!elements.length) return;
+
+            const checkInView = el => {
+                const rect = el.getBoundingClientRect();
+                return rect.top < window.innerHeight - 50 && rect.bottom > 0;
+            };
+
+            // 立即檢查已在視窗內的元素
+            elements.forEach(el => checkInView(el) && el.classList.add('animated'));
+
+            // 使用 Intersection Observer（現代瀏覽器）
+            if ('IntersectionObserver' in window) {
+                const observer = new IntersectionObserver(entries => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('animated');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+                elements.forEach(el => !el.classList.contains('animated') && observer.observe(el));
+            } else {
+                // 降級方案：滾動事件
+                let ticking = false;
+                const update = () => {
+                    document.querySelectorAll('.scroll-animate:not(.animated)').forEach(el => {
+                        checkInView(el) && el.classList.add('animated');
+                    });
+                    ticking = false;
+                };
+                window.addEventListener('scroll', () => {
+                    if (!ticking) {
+                        requestAnimationFrame(update);
+                        ticking = true;
+                    }
+                }, { passive: true });
+                update();
+            }
+        })();
+    </script>
+
+</body>
+
+</html>
