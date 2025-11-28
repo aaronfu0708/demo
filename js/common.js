@@ -170,5 +170,53 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.fade-in, .fade-in-up, .fade-in-left, .fade-in-right, .fade-in-scale, .fade-in-zoom, .fade-in-slide, .fade-in-bounce, .hero-title-animated, .hero-subtitle-animated, .hero-cta-animated, .search-section-animated').forEach(el => {
         observer.observe(el);
     });
+    
+    // 初始化地图功能
+    initMapLinks();
 });
+
+// 分公司地址映射
+const branchAddresses = {
+    'taipei': '104451台北市中山區敬業一路97號5樓',
+    'taichung': '40758台中市文心路二段201號13F-1',
+    'kaohsiung': '80661高雄市復興四路12號 A-18 2樓',
+    'vietnam': '5th Floor, IC Building, No. 82 Duy Tan Street, Dich Vong Hau Ward, Cau Giay District, Hanoi City, Vietnam',
+    'china': '廣州市白雲區永泰學山塘街81號學山文化創意谷A2棟213',
+    'hongkong': '香港九龍灣臨興街21號7樓12室',
+    'malaysia': 'B-1-15, Block B, 8 Avenue, Jalan Sungai Jernih 8/1, Seksyen 8, 46050 Petaling Jaya, Selangor, Malaysia',
+    'singapore': 'Blk4033 Ang Mo Kio Industrial Park 1, #01-72 Singapore 569640'
+};
+
+// 初始化地图链接功能
+function initMapLinks() {
+    // 获取所有地图链接
+    const mapLinks = document.querySelectorAll('.map-link');
+    
+    mapLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // 找到最近的 branch-card 元素
+            const branchCard = this.closest('.branch-card');
+            if (!branchCard) return;
+            
+            // 获取分公司 ID
+            const branchId = branchCard.id;
+            if (!branchId || !branchAddresses[branchId]) {
+                console.warn('未找到分公司地址:', branchId);
+                return;
+            }
+            
+            // 获取地址
+            const address = branchAddresses[branchId];
+            
+            // 构建 Google Maps URL
+            const encodedAddress = encodeURIComponent(address);
+            const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodedAddress}`;
+            
+            // 在新窗口打开地图
+            window.open(mapUrl, '_blank');
+        });
+    });
+}
 
