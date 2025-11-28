@@ -231,20 +231,10 @@ body {
     align-items: center;
     justify-content: center;
     padding: 120px 20px 80px;
-    background: linear-gradient(135deg, #0a1929 0%, #1a365d 50%, #0f2027 100%);
+    background: url('../img/leaf.jpg') center/cover no-repeat;
     overflow: hidden;
 }
 
-.product-hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('../img/leaf.jpg') center/cover no-repeat;
-    z-index: 1;
-}
 
 /* 深色遮罩層，增強對比 */
 .product-hero::after {
