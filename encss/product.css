@@ -791,7 +791,7 @@ body {
 
     /* 限制商品卡片最大寬度 */
     .product-card {
-        max-width: 350px;
+        max-width: 450px;
         margin: 0 auto;
     }
 
