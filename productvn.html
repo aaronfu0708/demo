@@ -3,33 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chăm Sóc Sức Khỏe Toàn Diện - Tập đoàn T&E Global</title>
-<link rel="stylesheet" href="vncss/product.css">
+    <title>全方位健康養生 - T&E Global 盛德信環球集團</title>
+    <link rel="stylesheet" href="css/product.css">
 </head>
 <body>
     <!-- 導航欄 -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
-            <a href="indexvn.html" class="logo" aria-label="T&amp;E GLOBAL">
+            <a href="index.html" class="logo" aria-label="T&amp;E GLOBAL">
                 <span class="logo-icon" role="img" aria-hidden="true"></span>
             </a>
 
             <ul class="nav-menu">
-                <li><a href="productvn.html">Chăm Sóc Sức Khỏe Toàn Diện</a></li>
-                <li><a href="servicevn.html">Điểm Dịch Vụ</a></li>
-                <li><a href="companyvn.html">Về Chúng Tôi</a></li>
-                <li><a href="sciencevn.html">Đội Ngũ Nghiên Cứu</a></li>
-                <li><a href="https://m.trustethic.com">Khu Vực Thành Viên</a></li>
+                <li><a href="product.html">全方位健康養生</a></li>
+                <li><a href="service.html">服務據點</a></li>
+                <li><a href="company.html">關於我們</a></li>
+                <li><a href="science.html">研發團隊</a></li>
+                <li><a href="https://m.trustethic.com">會員專區</a></li>
             </ul>
 
             <div class="language-selector">
                 <button class="language-btn" id="languageBtn">
-                    Tiếng Việt
+                    繁體中文
                 </button>
                 <div class="language-dropdown" id="languageDropdown">
-                    <a href="product.html">繁體中文</a>
+                    <a href="#" class="active">繁體中文</a>
                     <a href="producten.html">English</a>
-                    <a href="#" class="active">Tiếng Việt</a>
+                    <a href="productvn.html">Tiếng Việt</a>
                 </div>
             </div>
 
@@ -44,44 +44,181 @@
     <section class="product-hero">
         <div class="product-content">
             <div class="product-header">
-                <h1>Chăm Sóc Sức Khỏe Toàn Diện</h1>
-                <p class="subtitle">Điều Trị Nội · Điều Trị Ngoại · Tạo Không Gian</p>
+                <h1>全方位健康養生</h1>
+                <p class="subtitle">內療 · 外療 · 氛圍營造</p>
             </div>
 
-            <div class="view-all-products">
-                <a href="https://www.trustethic.com/vn/product/other" class="view-all-btn">
-                    <span class="title">Xem Tất Cả Sản Phẩm</span>
-                    <span class="arrow">→</span>
-                </a>
+            <!-- 分類標籤 -->
+            <div class="category-tabs">
+                <div class="category-tab active" data-category="atmosphere">氛圍營造</div>
+                <div class="category-tab" data-category="inner">補給產品</div>
+                <div class="category-tab" data-category="outer">調節產品</div>
             </div>
 
-            <div class="product-grid">
-                <a href="soundvn.html" class="product-card">
-                    <span class="new-badge">NEW!!</span>
-                    <div class="product-card-icon">
-                        <img src="soundimg/sound0.png" alt="音箱">
-                    </div>
-                    <h3 class="product-card-title">Cái Loa</h3>
-                    <p class="product-card-description">Loa Năm Chiếc Phi Thường</p>
-                </a>
+            <!-- 氛圍營造 -->
+            <div id="atmosphere" class="products-content active">
+                <div class="product-grid">
+                    <a href="sound.html" class="product-card">
+                        <span class="new-badge">NEW!!</span>
+                        <div class="product-card-icon">
+                            <img src="soundimg/sound0.png" alt="音箱">
+                        </div>
+                        <h3 class="product-card-title">音箱</h3>
+                        <p class="product-card-description">非凡五音箱</p>
+                    </a>
 
-                <a href="shirtvn.html" class="product-card">
-                    <span class="new-badge">NEW!!</span>
-                    <div class="product-card-icon">
-                        <img src="shirtimg/shirt2.png" alt="塑身衣">
-                    </div>
-                    <h3 class="product-card-title">Áo Định Hình</h3>
-                    <p class="product-card-description">Áo Năng Lượng Định Hình Sức Khỏe</p>
-                </a>
+                    <a href="shirt.html" class="product-card">
+                        <span class="new-badge">NEW!!</span>
+                        <div class="product-card-icon">
+                            <img src="shirtimg/shirt2.png" alt="塑身衣">
+                        </div>
+                        <h3 class="product-card-title">塑身衣</h3>
+                        <p class="product-card-description">健康塑形能量衣</p>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 補給產品 -->
+            <div id="inner" class="products-content">
+                <div class="product-grid">
+                    <a href="productcard/smartblack.html" class="product-card">
+                        <div class="product-card-icon">
+                            <img src="img/NCA022.jpg" alt="iSmart Energy智富力(人參口味)-黑戰神">
+                        </div>
+                        <h3 class="product-card-title">iSmart Energy智富力</h3>
+                        <p class="product-card-description">(人參口味)-黑戰神</p>
+                    </a>
+
+                    <a href="productcard/smartpurple.html" class="product-card">
+                        <div class="product-card-icon">
+                            <img src="img/NCA023.jpg" alt="iSmart Energy智富力(莓果口味)-紫耀霓">
+                        </div>
+                        <h3 class="product-card-title">iSmart Energy智富力</h3>
+                        <p class="product-card-description">(莓果口味)-紫耀霓</p>
+                    </a>
+
+                    <a href="productcard/tide.html" class="product-card">
+                        <div class="product-card-icon">
+                            <img src="img/NCA020.jpg" alt="iSmart99 Tide智富肽">
+                        </div>
+                        <h3 class="product-card-title">iSmart99 Tide智富肽</h3>
+                        <p class="product-card-description">全球肽旋風</p>
+                    </a>
+
+                    <a href="productcard/nutrition.html" class="product-card">
+                        <div class="product-card-icon">
+                            <img src="img/LA006.jpg" alt="辣麼營養">
+                        </div>
+                        <h3 class="product-card-title">辣麼厲害TL'amour MORINGA</h3>
+                        <p class="product-card-description">辣麼營養</p>
+                    </a>
+
+                    <a href="productcard/smart99.html" class="product-card">
+                        <div class="product-card-icon">
+                            <img src="img/NCA019.jpg" alt="iSmart99智富寶益生菌">
+                        </div>
+                        <h3 class="product-card-title">iSmart99智富寶益生菌</h3>
+                        <p class="product-card-description">頂尖劃時代智能新產品</p>
+                    </a>
+
+                    <a href="productcard/moto.html" class="product-card">
+                        <div class="product-card-icon">
+                            <img src="img/NCA018.jpg" alt="iSmart Moto智富元">
+                        </div>
+                        <h3 class="product-card-title">iSmart Moto智富元</h3>
+                        <p class="product-card-description">靜宜大學 研發中心產學合作</p>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 調節產品 -->
+            <div id="outer" class="products-content">
+                <div class="product-grid">
+                    <a href="productcard/moringa.html" class="product-card">
+                        <div class="product-card-icon">
+                            <img src="img/LA004.jpg" alt="辣麼順">
+                        </div>
+                        <h3 class="product-card-title">辣麼厲害TL'amour MORINGA</h3>
+                        <p class="product-card-description">辣麼順</p>
+                    </a>
+
+                    <a href="productcard/green.html" class="product-card">
+                        <div class="product-card-icon">
+                            <img src="img/LA005.jpg" alt="辣麼青">
+                        </div>
+                        <h3 class="product-card-title">辣麼厲害TL'amour MORINGA</h3>
+                        <p class="product-card-description">辣麼青</p>
+                    </a>
+
+                    <a href="productcard/101.html" class="product-card">
+                        <div class="product-card-icon">
+                            <img src="img/NCA024.jpg" alt="康愛 101 PLUS">
+                        </div>
+                        <h3 class="product-card-title">康愛 101 PLUS</h3>
+                        <p class="product-card-description">台灣珍貴的紅寶石</p>
+                    </a>
+
+                    <a href="productcard/102.html" class="product-card">
+                        <div class="product-card-icon">
+                            <img src="img/NCA015.jpg" alt="康愛 102 SQUARE">
+                        </div>
+                        <h3 class="product-card-title">康愛 102 SQUARE</h3>
+                        <p class="product-card-description">全方位養生MVP 擺脫甘苦生活</p>
+                    </a>
+
+                    <a href="productcard/602.html" class="product-card">
+                        <div class="product-card-icon">
+                            <img src="img/NCA016.jpg" alt="康愛 602 SQUARE">
+                        </div>
+                        <h3 class="product-card-title">康愛 602 SQUARE</h3>
+                        <p class="product-card-description">健康活力的秘訣 真誠守護幸福</p>
+                    </a>
+
+                    <a href="productcard/xin.html" class="product-card">
+                        <div class="product-card-icon">
+                            <img src="img/NCA021.jpg" alt="康愛 喜利欣">
+                        </div>
+                        <h3 class="product-card-title">康愛 喜利欣</h3>
+                        <p class="product-card-description">有效保護肝臟細胞 守護健康</p>
+                    </a>
+
+                    <a href="productcard/605.html" class="product-card">
+                        <div class="product-card-icon">
+                            <img src="img/NCA017.jpg" alt="康愛 605 SQUARE">
+                        </div>
+                        <h3 class="product-card-title">康愛 605 SQUARE</h3>
+                        <p class="product-card-description">晶彩世界 美麗人生新視野</p>
+                    </a>
+                </div>
             </div>
 
             <div class="product-footer">
-                <p class="product-footer-text">Công ty TNHH T&E Global©2025 ALL Right Reserved</p>
+                <p class="product-footer-text">盛德信股份有限公司©2025 ALL Right Reserved</p>
             </div>
         </div>
     </section>
 
-
     <script src="js/common.js"></script>
+    <script>
+        // 標籤切換功能
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = document.querySelectorAll('.category-tab');
+            const contents = document.querySelectorAll('.products-content');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const category = this.getAttribute('data-category');
+
+                    // 移除所有active狀態
+                    tabs.forEach(t => t.classList.remove('active'));
+                    contents.forEach(c => c.classList.remove('active'));
+
+                    // 添加active狀態
+                    this.classList.add('active');
+                    document.getElementById(category).classList.add('active');
+                });
+            });
+        });
+    </script>
 </body>
 </html>
