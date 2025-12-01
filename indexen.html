@@ -54,13 +54,14 @@
 
             <div class="search-section search-section-animated">
                 <div class="search-container">
-                    <input type="text" placeholder="Search products" class="search-input">
-                    <button class="search-button">
+                    <input type="text" placeholder="Search products" class="search-input" id="searchInput">
+                    <button class="search-button" id="searchBtn">
                         <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <circle cx="11" cy="11" r="8"></circle>
                             <path d="m21 21-4.35-4.35"></path>
                         </svg>
                     </button>
+                    <div class="search-results" id="searchResults"></div>
                 </div>
             </div>
         </div>
@@ -401,15 +402,103 @@
     <script src="js/common.js"></script>
     
     <script>
-        // Search feature
-        const searchInput = document.querySelector('.search-input');
-        const searchButton = document.querySelector('.search-button');
+        // Product database
+        const products = [
+            // Atmosphere Creation
+            { name: 'SW SOUND WAVES', description: 'Extraordinary Five Sound Speaker', url: 'sounden.html', category: 'Atmosphere Creation', keywords: 'sound waves speaker audio' },
+            { name: 'Health Support Suit', description: 'Health Sculpting Energy Wear', url: 'shirten.html', category: 'Atmosphere Creation', keywords: 'health support suit energy wear' },
+            
+            // Supplement
+            { name: 'iSmart Energy', description: '(Ginseng) Black Titan', url: 'productcarden/smartblack.html', category: 'Supplement', keywords: 'ismart energy ginseng black titan' },
+            { name: 'iSmart Energy', description: '(Fruit) Purple Aura', url: 'productcarden/smartpurple.html', category: 'Supplement', keywords: 'ismart energy fruit purple aura' },
+            { name: 'iSmart Tide', description: 'Global Peptide Cyclone', url: 'productcarden/tide.html', category: 'Supplement', keywords: 'ismart tide peptide cyclone' },
+            { name: 'TL\'amour MORINGA', description: 'Meal', url: 'productcarden/nutrition.html', category: 'Supplement', keywords: 'moringa meal nutrition' },
+            { name: 'iSmartBIOs99 Probiotics', description: 'Top epoch-making intelligent new products', url: 'productcarden/smart99.html', category: 'Supplement', keywords: 'ismartbios99 probiotics 99' },
+            { name: 'iSmart Moto Plus', description: 'Providence University R&D Center Industry-University Cooperation', url: 'productcarden/moto.html', category: 'Supplement', keywords: 'ismart moto plus' },
+            
+            // Regulatory
+            { name: 'TL\'amour MORINGA', description: 'Leaf Powder Tablets', url: 'productcarden/moringa.html', category: 'Regulatory', keywords: 'moringa leaf powder tablets' },
+            { name: 'TL\'amour MORINGA', description: 'Green Juice', url: 'productcarden/green.html', category: 'Regulatory', keywords: 'moringa green juice' },
+            { name: 'ConA 101 PLUS', description: 'Taiwan\'s precious ruby', url: 'productcarden/101.html', category: 'Regulatory', keywords: 'cona 101 plus ruby' },
+            { name: 'ConA 102 SQUARE', description: 'Get Rid of Your Bitter Life!!', url: 'productcarden/102.html', category: 'Regulatory', keywords: 'cona 102 square' },
+            { name: 'ConA 602 SQUARE', description: 'The Secrets towards Health and Infinite Vitality.', url: 'productcarden/602.html', category: 'Regulatory', keywords: 'cona 602 square vitality' },
+            { name: 'ConA 603 Plus', description: 'Effectively protect liver cells, protect health.', url: 'productcarden/xin.html', category: 'Regulatory', keywords: 'cona 603 plus liver protect' },
+            { name: 'ConA 605 SQUARE', description: 'Have Yourself a Great Vision!', url: 'productcarden/605.html', category: 'Regulatory', keywords: 'cona 605 square vision' }
+        ];
 
-        if (searchButton && searchInput) {
-            searchButton.addEventListener('click', function () {
-                const searchTerm = searchInput.value.trim();
-                if (searchTerm) {
-                    // TODO: add search logic
+        // Search feature
+        const searchInput = document.getElementById('searchInput');
+        const searchButton = document.getElementById('searchBtn');
+        const searchResults = document.getElementById('searchResults');
+
+        // Search function
+        function performSearch(query) {
+            if (!query || query.trim() === '') {
+                searchResults.innerHTML = '';
+                searchResults.classList.remove('active');
+                return;
+            }
+
+            const searchTerm = query.toLowerCase().trim();
+            const results = products.filter(product => {
+                const nameMatch = product.name.toLowerCase().includes(searchTerm);
+                const descMatch = product.description.toLowerCase().includes(searchTerm);
+                const keywordMatch = product.keywords.toLowerCase().includes(searchTerm);
+                return nameMatch || descMatch || keywordMatch;
+            });
+
+            displayResults(results);
+        }
+
+        // Display search results
+        function displayResults(results) {
+            if (results.length === 0) {
+                searchResults.innerHTML = '<div class="search-result-item no-results">No products found</div>';
+                searchResults.classList.add('active');
+                return;
+            }
+
+            searchResults.innerHTML = results.map(product => `
+                <a href="${product.url}" class="search-result-item">
+                    <span class="result-title">${product.name}</span>
+                    <span class="result-description">${product.description}</span>
+                </a>
+            `).join('');
+
+            searchResults.classList.add('active');
+        }
+
+        // Event listeners
+        if (searchInput && searchButton && searchResults) {
+            // Search on input
+            searchInput.addEventListener('input', function() {
+                performSearch(this.value);
+            });
+
+            // Click search button
+            searchButton.addEventListener('click', function() {
+                performSearch(searchInput.value);
+            });
+
+            // Enter key search
+            searchInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    performSearch(this.value);
+                }
+            });
+
+            // Click outside to close results
+            document.addEventListener('click', function(e) {
+                if (!searchInput.contains(e.target) && !searchResults.contains(e.target) && !searchButton.contains(e.target)) {
+                    searchResults.classList.remove('active');
+                }
+            });
+
+            // Click result item to navigate
+            searchResults.addEventListener('click', function(e) {
+                if (e.target.closest('.search-result-item')) {
+                    searchResults.classList.remove('active');
                 }
             });
         }

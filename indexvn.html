@@ -54,13 +54,14 @@
 
             <div class="search-section search-section-animated">
                 <div class="search-container">
-                    <input type="text" placeholder="Tìm kiếm sản phẩm" class="search-input">
-                    <button class="search-button">
+                    <input type="text" placeholder="Tìm kiếm sản phẩm" class="search-input" id="searchInput">
+                    <button class="search-button" id="searchBtn">
                         <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <circle cx="11" cy="11" r="8"></circle>
                             <path d="m21 21-4.35-4.35"></path>
                         </svg>
                     </button>
+                    <div class="search-results" id="searchResults"></div>
                 </div>
             </div>
         </div>
@@ -401,15 +402,102 @@
     <script src="js/common.js"></script>
     
     <script>
-                    // Chức năng tìm kiếm
-        const searchInput = document.querySelector('.search-input');
-        const searchButton = document.querySelector('.search-button');
+        // Cơ sở dữ liệu sản phẩm
+        const products = [
+            // Không khí
+            { name: 'SW SOUND WAVES', description: 'Loa năm âm vượt trội', url: 'soundvn.html', category: 'Không khí', keywords: 'sound waves loa speaker' },
+            { name: 'Health Support Suit', description: 'Trang phục năng lượng định hình sức khỏe', url: 'shirtvn.html', category: 'Không khí', keywords: 'health support suit trang phục năng lượng' },
+            
+            // Bổ sung
+            { name: 'iSmart Energy', description: '(Ginseng) Black Titan', url: 'productcardvn/smartblack.html', category: 'Bổ sung', keywords: 'ismart energy ginseng black titan' },
+            { name: 'iSmart Energy', description: '(Fruit) Purple Aura', url: 'productcardvn/smartpurple.html', category: 'Bổ sung', keywords: 'ismart energy fruit purple aura' },
+            { name: 'iSmart Tide', description: 'Global Peptide Cyclone', url: 'productcardvn/tide.html', category: 'Bổ sung', keywords: 'ismart tide peptide cyclone' },
+            { name: 'TL\'amour MORINGA', description: 'Meal', url: 'productcardvn/nutrition.html', category: 'Bổ sung', keywords: 'moringa meal nutrition' },
+            { name: 'iSmartBIOs99 Probiotics', description: 'Top epoch-making intelligent new products', url: 'productcardvn/smart99.html', category: 'Bổ sung', keywords: 'ismartbios99 probiotics 99' },
+            { name: 'iSmart Moto Plus', description: 'Providence University R&D Center Industry-University Cooperation', url: 'productcardvn/moto.html', category: 'Bổ sung', keywords: 'ismart moto plus' },
+            
+            // Điều chỉnh
+            { name: 'TL\'amour MORINGA', description: 'Leaf Powder Tablets', url: 'productcardvn/moringa.html', category: 'Điều chỉnh', keywords: 'moringa leaf powder tablets' },
+            { name: 'TL\'amour MORINGA', description: 'Green Juice', url: 'productcardvn/green.html', category: 'Điều chỉnh', keywords: 'moringa green juice' },
+            { name: 'ConA 102 SQUARE', description: 'Get Rid of Your Bitter Life!!', url: 'productcardvn/102.html', category: 'Điều chỉnh', keywords: 'cona 102 square' },
+            { name: 'ConA 602 SQUARE', description: 'The Secrets towards Health and Infinite Vitality.', url: 'productcardvn/602.html', category: 'Điều chỉnh', keywords: 'cona 602 square vitality' },
+            { name: 'ConA 603 Plus', description: 'Effectively protect liver cells, protect health.', url: 'productcardvn/xin.html', category: 'Điều chỉnh', keywords: 'cona 603 plus liver protect' },
+            { name: 'ConA 605 SQUARE', description: 'Have Yourself a Great Vision!', url: 'productcardvn/605.html', category: 'Điều chỉnh', keywords: 'cona 605 square vision' }
+        ];
 
-        if (searchButton && searchInput) {
-            searchButton.addEventListener('click', function () {
-                const searchTerm = searchInput.value.trim();
-                if (searchTerm) {
-                    // Thêm logic tìm kiếm thực tế
+        // Chức năng tìm kiếm
+        const searchInput = document.getElementById('searchInput');
+        const searchButton = document.getElementById('searchBtn');
+        const searchResults = document.getElementById('searchResults');
+
+        // Hàm tìm kiếm
+        function performSearch(query) {
+            if (!query || query.trim() === '') {
+                searchResults.innerHTML = '';
+                searchResults.classList.remove('active');
+                return;
+            }
+
+            const searchTerm = query.toLowerCase().trim();
+            const results = products.filter(product => {
+                const nameMatch = product.name.toLowerCase().includes(searchTerm);
+                const descMatch = product.description.toLowerCase().includes(searchTerm);
+                const keywordMatch = product.keywords.toLowerCase().includes(searchTerm);
+                return nameMatch || descMatch || keywordMatch;
+            });
+
+            displayResults(results);
+        }
+
+        // Hiển thị kết quả tìm kiếm
+        function displayResults(results) {
+            if (results.length === 0) {
+                searchResults.innerHTML = '<div class="search-result-item no-results">Không tìm thấy sản phẩm</div>';
+                searchResults.classList.add('active');
+                return;
+            }
+
+            searchResults.innerHTML = results.map(product => `
+                <a href="${product.url}" class="search-result-item">
+                    <span class="result-title">${product.name}</span>
+                    <span class="result-description">${product.description}</span>
+                </a>
+            `).join('');
+
+            searchResults.classList.add('active');
+        }
+
+        // Lắng nghe sự kiện
+        if (searchInput && searchButton && searchResults) {
+            // Tìm kiếm khi nhập
+            searchInput.addEventListener('input', function() {
+                performSearch(this.value);
+            });
+
+            // Nhấp nút tìm kiếm
+            searchButton.addEventListener('click', function() {
+                performSearch(searchInput.value);
+            });
+
+            // Tìm kiếm bằng phím Enter
+            searchInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    performSearch(this.value);
+                }
+            });
+
+            // Nhấp bên ngoài để đóng kết quả
+            document.addEventListener('click', function(e) {
+                if (!searchInput.contains(e.target) && !searchResults.contains(e.target) && !searchButton.contains(e.target)) {
+                    searchResults.classList.remove('active');
+                }
+            });
+
+            // Nhấp mục kết quả để điều hướng
+            searchResults.addEventListener('click', function(e) {
+                if (e.target.closest('.search-result-item')) {
+                    searchResults.classList.remove('active');
                 }
             });
         }

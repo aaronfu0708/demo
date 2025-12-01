@@ -54,13 +54,14 @@
 
             <div class="search-section search-section-animated">
                 <div class="search-container">
-                    <input type="text" placeholder="查找商品" class="search-input">
-                    <button class="search-button">
+                    <input type="text" placeholder="查找商品" class="search-input" id="searchInput">
+                    <button class="search-button" id="searchBtn">
                         <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <circle cx="11" cy="11" r="8"></circle>
                             <path d="m21 21-4.35-4.35"></path>
                         </svg>
                     </button>
+                    <div class="search-results" id="searchResults"></div>
                 </div>
             </div>
         </div>
@@ -401,15 +402,103 @@
     <script src="js/common.js"></script>
     
     <script>
-        // 搜索功能
-        const searchInput = document.querySelector('.search-input');
-        const searchButton = document.querySelector('.search-button');
+        // 商品數據庫
+        const products = [
+            // 氛圍營造
+            { name: '音箱', description: '非凡五音箱', url: 'sound.html', category: '氛圍營造', keywords: '音箱 音響 聲音' },
+            { name: '塑身衣', description: '健康塑形能量衣', url: 'shirt.html', category: '氛圍營造', keywords: '塑身衣 塑形 能量衣' },
+            
+            // 補給產品
+            { name: 'iSmart Energy智富力', description: '(人參口味)-黑戰神', url: 'productcard/smartblack.html', category: '補給產品', keywords: '智富力 人參 黑戰神 energy smart' },
+            { name: 'iSmart Energy智富力', description: '(莓果口味)-紫耀霓', url: 'productcard/smartpurple.html', category: '補給產品', keywords: '智富力 莓果 紫耀霓 energy smart' },
+            { name: 'iSmart99 Tide智富肽', description: '全球肽旋風', url: 'productcard/tide.html', category: '補給產品', keywords: '智富肽 tide 肽 旋風' },
+            { name: '辣麼厲害TL\'amour MORINGA', description: '辣麼營養', url: 'productcard/nutrition.html', category: '補給產品', keywords: '辣麼營養 營養 moringa' },
+            { name: 'iSmart99智富寶益生菌', description: '頂尖劃時代產品', url: 'productcard/smart99.html', category: '補給產品', keywords: '智富寶 益生菌 99 smart' },
+            { name: 'iSmart Moto智富元', description: '研發中心產學合作', url: 'productcard/moto.html', category: '補給產品', keywords: '智富元 moto 產學' },
+            
+            // 調節產品
+            { name: '辣麼厲害TL\'amour MORINGA', description: '辣麼順', url: 'productcard/moringa.html', category: '調節產品', keywords: '辣麼順 moringa 順' },
+            { name: '辣麼厲害TL\'amour MORINGA', description: '辣麼青', url: 'productcard/green.html', category: '調節產品', keywords: '辣麼青 moringa 青' },
+            { name: '康愛 101 PLUS', description: '台灣珍貴的紅寶石', url: 'productcard/101.html', category: '調節產品', keywords: '康愛 101 plus 紅寶石' },
+            { name: '康愛 102 SQUARE', description: '第三代配方', url: 'productcard/102.html', category: '調節產品', keywords: '康愛 102 square 配方' },
+            { name: '康愛 602 SQUARE', description: '健康活力的秘訣', url: 'productcard/602.html', category: '調節產品', keywords: '康愛 602 square 活力' },
+            { name: '康愛 喜利欣', description: '有效保護肝臟細胞', url: 'productcard/xin.html', category: '調節產品', keywords: '康愛 喜利欣 肝臟 保護' },
+            { name: '康愛 605 SQUARE', description: '晶彩世界 美麗人生新視野', url: 'productcard/605.html', category: '調節產品', keywords: '康愛 605 square 晶彩 美麗' }
+        ];
 
-        if (searchButton && searchInput) {
-            searchButton.addEventListener('click', function () {
-                const searchTerm = searchInput.value.trim();
-                if (searchTerm) {
-                    // 添加實際搜索邏輯
+        // 搜索功能
+        const searchInput = document.getElementById('searchInput');
+        const searchButton = document.getElementById('searchBtn');
+        const searchResults = document.getElementById('searchResults');
+
+        // 搜索函數
+        function performSearch(query) {
+            if (!query || query.trim() === '') {
+                searchResults.innerHTML = '';
+                searchResults.classList.remove('active');
+                return;
+            }
+
+            const searchTerm = query.toLowerCase().trim();
+            const results = products.filter(product => {
+                const nameMatch = product.name.toLowerCase().includes(searchTerm);
+                const descMatch = product.description.toLowerCase().includes(searchTerm);
+                const keywordMatch = product.keywords.toLowerCase().includes(searchTerm);
+                return nameMatch || descMatch || keywordMatch;
+            });
+
+            displayResults(results);
+        }
+
+        // 顯示搜索結果
+        function displayResults(results) {
+            if (results.length === 0) {
+                searchResults.innerHTML = '<div class="search-result-item no-results">未找到相關商品</div>';
+                searchResults.classList.add('active');
+                return;
+            }
+
+            searchResults.innerHTML = results.map(product => `
+                <a href="${product.url}" class="search-result-item">
+                    <span class="result-title">${product.name}</span>
+                    <span class="result-description">${product.description}</span>
+                </a>
+            `).join('');
+
+            searchResults.classList.add('active');
+        }
+
+        // 事件監聽
+        if (searchInput && searchButton && searchResults) {
+            // 輸入時搜索
+            searchInput.addEventListener('input', function() {
+                performSearch(this.value);
+            });
+
+            // 點擊搜索按鈕
+            searchButton.addEventListener('click', function() {
+                performSearch(searchInput.value);
+            });
+
+            // Enter鍵搜索
+            searchInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    performSearch(this.value);
+                }
+            });
+
+            // 點擊外部關閉結果
+            document.addEventListener('click', function(e) {
+                if (!searchInput.contains(e.target) && !searchResults.contains(e.target) && !searchButton.contains(e.target)) {
+                    searchResults.classList.remove('active');
+                }
+            });
+
+            // 點擊結果項時跳轉
+            searchResults.addEventListener('click', function(e) {
+                if (e.target.closest('.search-result-item')) {
+                    searchResults.classList.remove('active');
                 }
             });
         }
