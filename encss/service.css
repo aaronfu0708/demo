@@ -218,7 +218,7 @@ body {
 }
 
 
-/* Quick Navigation */
+/* 快速導航 */
 .quick-nav-section {
     position: relative;
     height: 65vh;
@@ -312,7 +312,7 @@ body {
     transform: translateY(0);
 }
 
-/* Branch Section */
+/* 服務據點區域 */
 .branches-section {
     padding: 100px 40px;
     background: #f0f9f4;

@@ -510,7 +510,7 @@ body {
     color: white;
 }
 
-/* Search results dropdown */
+/* 搜索結果下拉列表 */
 .search-results {
     position: absolute;
     top: calc(100% + 10px);
@@ -586,7 +586,7 @@ body {
     text-overflow: ellipsis;
 }
 
-/* Search results scrollbar */
+/* 搜索結果滾動條樣式 */
 .search-results::-webkit-scrollbar {
     width: 6px;
 }
@@ -605,7 +605,7 @@ body {
     background: rgba(0, 212, 255, 0.5);
 }
 
-/* Mobile: no limit on search results */
+/* 手機端不限制搜索結果數量 */
 @media (max-width: 768px) {
     .search-results {
         max-height: none;

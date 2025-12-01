@@ -239,7 +239,7 @@ body::before {
     transform: rotate(-45deg);
 }
 
-/* Hero Section */
+/* 主視覺區域 */
 .hero-section {
     position: relative;
     height: 90vh;
@@ -305,7 +305,7 @@ body::before {
     height: 101%;
 }
 
-/* Section Styles */
+/* 區域樣式 */
 .section {
     position: relative;
     padding: 100px 40px;
